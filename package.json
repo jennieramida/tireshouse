@@ -1,11 +1,11 @@
 {
-  "name": "5lab",
+  "name": "Starter",
   "version": "1.0.0",
-  "description": "5Lab project",
-  "author": "Apon Palanuwech",
-  "fbAppId": "655426948132305",
-  "apiUrl": "cms.5lab.co",
-  "gaId": "UA-119670360-4",
+  "description": "Starter project",
+  "author": "Koala",
+  "fbAppId": "",
+  "apiUrl": "",
+  "gaId": "",
   "private": true,
   "scripts": {
     "dev": "cross-env HOST=0.0.0.0 NODE_ENV=development nodemon server/index.js --watch server",
