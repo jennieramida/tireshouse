@@ -9,17 +9,20 @@ h4,
 h5,
 h6,
 button {
-  font-family: Kanit;
+  font-family: 'Prompt', sans-serif;
   font-weight: 400;
 }
 
+.Prompt {
+  font-family: 'Prompt', sans-serif;
+}
 ._cs-pt {
   user-select: none !important;
 }
 
 .page-enter-active,
 .page-leave-active {
-  transition: opacity .25s;
+  transition: opacity 0.25s;
 }
 
 .page-enter,
@@ -44,11 +47,11 @@ button {
   transition-property: background-image !important;
 }
 
-[lazy=loading] {
+[lazy='loading'] {
   background-position: center center !important;
 }
 
-[lazy=loaded] {
+[lazy='loaded'] {
   opacity: 1;
   background-size: cover;
 }

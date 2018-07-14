@@ -36,7 +36,7 @@ module.exports = {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css?family=Kanit:400,500,600&amp;subset=thai'
+          'https://fonts.googleapis.com/css?family=Prompt:300,400,500,600,700,800'
       }
     ]
   },
@@ -45,7 +45,7 @@ module.exports = {
    ** Customize the progress-bar color
    */
   loading: {
-    color: '#3B8070'
+    color: '#941E2E'
   },
 
   /*

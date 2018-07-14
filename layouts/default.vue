@@ -2,7 +2,7 @@
   <div>
     <Header/>
     <!-- Content -->
-    <main class="min-height-100vh _dp-f _alit-ct _ovfx-hd">
+    <main class="min-height-100vh _dp-f _ovf-hd">
       <nuxt/>
     </main>
     <Footer/>
