@@ -20,7 +20,7 @@
           <div 
             v-scroll-reveal="{viewFactor:0.5, delay:400,scale: 1, origin:'top', distance:'50px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
             class="_pst-asl _pdt-4px">
-            <nuxt-link to="/" >
+            <nuxt-link to="/booking" >
               <button class="bio-button header-button-mobile _mgt-32px _cl-darkred _bdrd-4px u-rise-5-hover">เปลี่ยนยางรถยนต์</button>
             </nuxt-link>
           </div>
@@ -57,7 +57,7 @@
             <div 
               v-scroll-reveal="{viewFactor:0.5, delay:300,scale: 1, origin:'left', distance:'100px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
               class="_pdt-32px">
-              <nuxt-link to="/" >
+              <nuxt-link to="/booking" >
                 <button 
                   class="bio-button header-button _fs-4 _cl-darkred _bdrd-4px"
                 >เปลี่ยนยางรถยนต์</button>
@@ -246,7 +246,7 @@
             <div 
               v-scroll-reveal="{viewFactor:0.5, delay:300,scale: 1, origin:'top', distance:'50px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
               class="_dp-f _jtfct-ct _mgbt-48px">
-              <nuxt-link to="/" >
+              <nuxt-link to="/booking" >
                 <button class="bio-button header-button-mobile _mgv-24px _cl-darkred _bdrd-4px u-rise-5-hover">เปลี่ยนยางรถยนต์</button>
               </nuxt-link>
             </div>

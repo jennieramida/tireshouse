@@ -14,7 +14,7 @@
         <div class="col-8 _dp-f _jtfct-spbtw _pdl-128px _alit-ct ">
           <div>
             <nuxt-link 
-              to="/"
+              to="/about"
               class="hover-underline-animation">
               บริการของเรา
             </nuxt-link>
@@ -33,7 +33,7 @@
               เข้าสู่ระบบ
             </nuxt-link>
           </div>
-          <nuxt-link to="/" >
+          <nuxt-link to="/booking" >
             <button class="bio-button header-button _cl-darkred _bdrd-4px">เปลี่ยนยางรถยนต์</button>
           </nuxt-link>
         </div>

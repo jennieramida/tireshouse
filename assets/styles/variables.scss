@@ -5,25 +5,23 @@ $blue: #111e48;
 $purple: #662871;
 $magenta: #d02cc0;
 $aqua: #b5fff0;
-$dark-aqua: #22608E;
-$light-purple: #6B18F1;
+$dark-aqua: #22608e;
+$light-purple: #6b18f1;
 $light-blue: #eef5ff;
 $light-grey: #f2f2f2;
-$pink: #F25C8D;
+$pink: #f25c8d;
 @mixin breakpoint($point) {
   @if $point==desktop {
     @media (min-width: $md) {
-      @content ;
+      @content;
     }
-  }
-  @else if $point==laptop {
+  } @else if $point==laptop {
     @media (max-width: $md) {
-      @content ;
+      @content;
     }
-  }
-  @else if $point==mobile {
+  } @else if $point==mobile {
     @media (max-width: $sm) {
-      @content ;
+      @content;
     }
   }
 }
