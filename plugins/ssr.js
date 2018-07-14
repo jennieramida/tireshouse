@@ -12,14 +12,16 @@ import {
   faMinus,
   faPlus
 } from '@fortawesome/fontawesome-pro-solid'
-import {
-  faFrown
-} from '@fortawesome/fontawesome-pro-regular'
+import { faFrown } from '@fortawesome/fontawesome-pro-regular'
 import VeeValidate from 'vee-validate'
 import VueScrollTo from 'vue-scrollto'
 import VModal from 'vue-js-modal/dist/ssr.index'
 import Transitions from 'vue2-transitions'
 import moment from 'moment'
+import faFacebookF from '@fortawesome/fontawesome-free-brands/faFacebookF'
+import faPhone from '@fortawesome/fontawesome-pro-solid/faPhone'
+import faEnvelope from '@fortawesome/fontawesome-pro-solid/faEnvelope'
+
 require('moment/locale/th')
 
 Vue.use(VueScrollTo)
@@ -36,5 +38,18 @@ Vue.use(require('vue-moment'), {
 })
 Vue.use(VModal)
 Vue.use(Transitions)
-fontawesome.library.add(faSpinner, faSearch, faShoppingCart, faShoppingBag, faFrown, faTimes, faMinus, faPlus)
+
+fontawesome.library.add(
+  faSpinner,
+  faSearch,
+  faShoppingCart,
+  faShoppingBag,
+  faFrown,
+  faTimes,
+  faMinus,
+  faPlus,
+  faFacebookF,
+  faPhone,
+  faEnvelope
+)
 Vue.component('fa-icon', FontAwesomeIcon)

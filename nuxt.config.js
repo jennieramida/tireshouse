@@ -63,7 +63,14 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/ssr.js', '~/plugins/axios.js'],
+  plugins: [
+    '~/plugins/ssr.js',
+    '~/plugins/axios.js',
+    {
+      src: '~/plugins/no-ssr.js',
+      ssr: false
+    }
+  ],
   render: {
     resourceHints: false
   },
