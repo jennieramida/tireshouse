@@ -1,4 +1,3 @@
-
 const express = require('express')
 const { Nuxt, Builder } = require('nuxt-edge')
 const app = express()
