@@ -4,18 +4,19 @@
       <div class="col-12 _tal-ct _mgv-32px">
         progress bar
       </div>
+      <nuxt-link to="/booking/place">debug-next</nuxt-link>
       <div class="col-12 _tal-ct _pdbt-24px">
         <div 
           v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
-          class="_fs-3 _dp-b _dp-n-md _fw-500 _cl-darkred">
+          class="_fs-3  _fw-500 _cl-darkred">
           เลือกยางที่ต้องการเปลี่ยน
         </div>
       </div>
     </div>
     <tires-card v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"/>
-    <tires-card  v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"/>
-    <tires-card  v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"/>
-    <tires-card  v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"/>
+    <tires-card v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"/>
+    <tires-card v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"/>
+    <tires-card v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"/>
  
   </div>
 </template>
