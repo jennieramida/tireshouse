@@ -5,7 +5,9 @@
         progress bar
       </div>
       <div class="col-12 _tal-ct _pdbt-24px">
-        <div class="_fs-3 _dp-b _dp-n-md _fw-500 _cl-darkred">
+        <div 
+          v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
+          class="_fs-3 _dp-b _dp-n-md _fw-500 _cl-darkred">
           เลือกขนาดยางรถยนต์
         </div>
       </div>
@@ -20,7 +22,9 @@
         <div class="_pdv-12px _cl-darkred _tal-ct _fs-5">วิธีดูขนาดของยางรถยนต์</div>
       </div>
       <!-- Form -->
-      <div class="col-12 col-md-8 _pdt-24px">
+      <div 
+        v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'right', distance:'100px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
+        class="col-12 col-md-8 _pdt-24px">
         <div class="_fs-3 _dp-n _dp-b-md _fw-500 _cl-darkred">
           เลือกขนาดยางรถยนต์
         </div>
@@ -70,8 +74,8 @@
         <div 
           v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
           class="_dp-f _jtfct-ct">
-          <nuxt-link to="/booking" >
-            <button class="bio-button header-button-red _mgv-24px _cl-darkred _bdrd-4px u-rise-5-hover">เปลี่ยนยางรถยนต์</button>
+          <nuxt-link to="/booking/search" >
+            <button class="bio-button header-button-red _mgv-24px-md _mgbt-64px _mgbt-0px-md _cl-darkred _bdrd-4px u-rise-5-hover">ค้นหายางรถยนต์</button>
           </nuxt-link>
         </div>
       </div>

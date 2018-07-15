@@ -21,7 +21,7 @@
             v-scroll-reveal="{viewFactor:0.5, delay:400,scale: 1, origin:'top', distance:'50px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
             class="_pst-asl _pdt-4px">
             <nuxt-link to="/booking" >
-              <button class="bio-button header-button-mobile _mgt-32px _cl-darkred _bdrd-4px u-rise-5-hover">เปลี่ยนยางรถยนต์</button>
+              <button class="bio-button header-button-red _mgt-32px _cl-darkred _bdrd-4px u-rise-5-hover">เปลี่ยนยางรถยนต์</button>
             </nuxt-link>
           </div>
         </div>
@@ -247,7 +247,7 @@
               v-scroll-reveal="{viewFactor:0.5, delay:300,scale: 1, origin:'top', distance:'50px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
               class="_dp-f _jtfct-ct _mgbt-48px">
               <nuxt-link to="/booking" >
-                <button class="bio-button header-button-mobile _mgv-24px _cl-darkred _bdrd-4px u-rise-5-hover">เปลี่ยนยางรถยนต์</button>
+                <button class="bio-button header-button-red _mgv-24px _cl-darkred _bdrd-4px u-rise-5-hover">เปลี่ยนยางรถยนต์</button>
               </nuxt-link>
             </div>
           </div>
@@ -303,7 +303,7 @@ $secondary: #f8f8f9;
   }
 }
 
-.header-button-mobile {
+.header-button-red {
   background-color: $primary;
   color: white;
   border-color: $primary;
