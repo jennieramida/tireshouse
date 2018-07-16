@@ -4,7 +4,7 @@
       <div class="col-12 _tal-ct _mgv-32px">
         progress bar
       </div>
-      <div class="col-12 _tal-ct _pdbt-24px">
+      <div class="col-12 _tal-ct _pdbt-48px">
         <div 
           v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
           class="_fs-3  _fw-500 _cl-darkred">
@@ -45,11 +45,16 @@
         <div class="_dp-f _mgt-12px">
           <div class="col-6 _dp-ilb">
             <div class="_pdv-12px">วัน</div>
-            <div class="bio-input">
+            <!-- <div class="bio-input">
               <input 
                 type="text" 
                 placeholder="Type Something">
-            </div>
+            </div> -->
+            <datetime 
+              v-model="val" 
+              format="DD/MM/YYYY" 
+              width="300px"
+              class="_zid-1 _pst-rlt"/>
           </div>
           <div class="col-6 _dp-ilb">
             <div class="_pdv-12px">เวลา</div>
@@ -73,8 +78,8 @@
           <div 
             v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
             class="_dp-f _jtfct-ct _pdv-24px">
-            <nuxt-link to="/booking/search" >
-              <button class="bio-button header-button-red _mgv-24px-md _mgbt-64px _mgbt-0px-md _cl-darkred _bdrd-4px u-rise-5-hover">ค้นหายางรถยนต์</button>
+            <nuxt-link to="/booking/checkout" >
+              <button class="bio-button header-button-red _mgv-24px-md _mgbt-64px _mgbt-0px-md _cl-darkred _bdrd-4px u-rise-5-hover">ชำระเงิน</button>
             </nuxt-link>
           </div>
         </div>
@@ -84,6 +89,19 @@
     
   </div>
 </template>
+
+<script>
+import datetime from 'vuejs-datetimepicker'
+
+export default {
+  components: { datetime },
+  methods: {
+    alertVal () {
+      alert(this.dob)
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 $primary: #941e2e;

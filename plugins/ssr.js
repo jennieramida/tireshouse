@@ -12,7 +12,9 @@ import {
   faMinus,
   faPlus
 } from '@fortawesome/fontawesome-pro-solid'
-import { faFrown } from '@fortawesome/fontawesome-pro-regular'
+import {
+  faFrown,
+} from '@fortawesome/fontawesome-pro-regular'
 import VeeValidate from 'vee-validate'
 import VueScrollTo from 'vue-scrollto'
 import VModal from 'vue-js-modal/dist/ssr.index'
@@ -21,6 +23,9 @@ import moment from 'moment'
 import faFacebookF from '@fortawesome/fontawesome-free-brands/faFacebookF'
 import faPhone from '@fortawesome/fontawesome-pro-solid/faPhone'
 import faEnvelope from '@fortawesome/fontawesome-pro-solid/faEnvelope'
+import faMapMarkerAlt from '@fortawesome/fontawesome-pro-light/faMapMarkerAlt'
+import faCalendar from '@fortawesome/fontawesome-pro-light/faCalendar'
+import faClock from '@fortawesome/fontawesome-pro-light/faClock'
 
 require('moment/locale/th')
 
@@ -50,6 +55,9 @@ fontawesome.library.add(
   faPlus,
   faFacebookF,
   faPhone,
-  faEnvelope
+  faEnvelope,
+  faMapMarkerAlt,
+  faCalendar,
+  faClock
 )
 Vue.component('fa-icon', FontAwesomeIcon)

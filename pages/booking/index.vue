@@ -4,7 +4,7 @@
       <div class="col-12 _tal-ct _mgv-32px">
         progress bar
       </div>
-      <div class="col-12 _tal-ct _pdbt-24px">
+      <div class="col-12 _tal-ct _pdbt-48px">
         <div 
           v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
           class="_fs-3 _dp-b _dp-n-md _fw-500 _cl-darkred">
