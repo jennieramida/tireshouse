@@ -15,7 +15,7 @@
 
     <div class="row">
       <div class="col-12 col-md-6 _pdbt-48px _pdbt-0px-md">
-        <div class=" _fs-4 _cl-black _pdbt-24px">รายละเอียดลูกค้า</div>
+        <div class=" _fs-4 _cl-black _pdbt-24px">ช่องทางการชำระเงิน</div>
         <div class="_pdv-24px">ชื่อ-นามสกุล</div>
         <div class="bio-input">
           <input 
@@ -85,7 +85,7 @@
             <div 
               v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
               class="_dp-f _jtfct-ct _pdv-24px _pdt-48px _pdt-24px-md">
-              <nuxt-link to="/booking/payment" >
+              <nuxt-link to="/booking/checkout" >
                 <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">ชำระเงิน</button>
               </nuxt-link>
             </div>
