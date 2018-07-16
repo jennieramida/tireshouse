@@ -3,7 +3,7 @@
     <div class="_dp-b">
       <!-- Heading Phone -->
       <div class="container _pst-rlt _dp-b _dp-n-md _mgt-16px _mgbt-64px">
-        <div class="row">
+        <div class="row _pd-12px">
           <div 
             v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'100px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
             class="col-12 _cl-darkred _tal-ct _fs-3 _fw-500">
