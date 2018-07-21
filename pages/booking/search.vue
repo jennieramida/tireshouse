@@ -1,9 +1,17 @@
 <template>
   <div class="container Prompt _mgbt-48px">
-    <div class="row">
-      <div class="col-12 _tal-ct _mgv-32px">
-        progress bar
+    <div class="row _dp-f _jtfct-ct _mgv-32px">
+      <div class="col-12 col-md-10">
+        <ul class="progressbar _fs-7 _fs-6-md ">
+          <li class="active">เลือกไซส์ยาง</li>
+          <li>เลือกยางรถยนต์</li>
+          <li>สถานที่และเวลา</li>
+          <li>รายละเอียดลูกค้า</li>
+          <li>ชำระเงิน</li>
+        </ul>
       </div>
+    </div>
+    <div class="row _pdt-24px">
       <nuxt-link to="/booking/place">debug-next</nuxt-link>
       <div class="col-12 _tal-ct _pdbt-48px">
         <div 
@@ -64,5 +72,60 @@ $secondary: #f8f8f9;
   font-size: 20px;
   padding-left: 18px;
   padding-right: 18px;
+}
+
+.progressbar {
+  counter-reset: step;
+}
+
+.progressbar li {
+  float: left;
+  width: 20%;
+  position: relative;
+  text-align: center;
+  &::before {
+    content: counter(step);
+    counter-increment: step;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #bebebe;
+    display: block;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    line-height: 27px;
+    background: white;
+    color: #bebebe;
+    text-align: center;
+    font-weight: bold;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #bebebe;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+  }
+}
+
+.progressbar li:first-child:after {
+  content: none;
+}
+
+.progressbar li:first-child:before {
+  border-color: $primary;
+  background: $primary;
+  color: white;
+}
+
+.progressbar li.active + li:after {
+  background: $primary;
+}
+.progressbar li.active + li:before {
+  border-color: $primary;
+  background: $primary;
+  color: white;
 }
 </style>
