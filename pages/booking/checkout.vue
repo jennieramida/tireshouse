@@ -106,18 +106,6 @@
   </div>
 </template>
 
-<script>
-import datetime from 'vuejs-datetimepicker'
-
-export default {
-  components: { datetime },
-  methods: {
-    alertVal () {
-      alert(this.dob)
-    }
-  }
-}
-</script>
 
 <style lang="scss" scoped>
 $primary: #941e2e;

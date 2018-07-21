@@ -6,7 +6,7 @@
           <li class="active">เลือกไซส์ยาง</li>
           <li class="active">เลือกยางรถยนต์</li>
           <li class="active">สถานที่และเวลา</li>
-          <li>รายละเอียดลูกค้า</li>
+          <li class="active">รายละเอียดลูกค้า</li>
           <li>ชำระเงิน</li>
         </ul>
       </div>
@@ -24,24 +24,26 @@
     <div class="row">
       <div class="col-12 col-md-6 _pdbt-48px _pdbt-0px-md">
         <div class=" _fs-4 _cl-black _pdbt-24px">ช่องทางการชำระเงิน</div>
-        <form class=" _pdv-24px">
-          <div>
+        <form class=" _mgv-12px">
+          <div class="_fs-5 _pdv-4px">
             <input 
-              id="c1" 
-              type="checkbox">
-            <label for="c1">ชำระด้วยบัตรเครดิต</label>
+              type="radio" 
+              name="credit" 
+              value="credit"> บัตรเดบิต/บัตรเครดิต</input>
           </div>
-          <div>
+          <div class="_fs-5 _pdv-4px">
+            
             <input 
-              id="c2" 
-              type="checkbox">
-            <label for="c2">ชำระด้วยการโอนเงิน</label>
+              type="radio" 
+              name="transfer" 
+              value="transfer"> โอนเงิน</input>
           </div>
-          <div>
+          <div class="_fs-5 _pdv-4px">
+
             <input 
-              id="c3" 
-              type="checkbox">
-            <label for="c3">ผ่อนชำระ</label>
+              type="radio" 
+              name="payoff" 
+              value="payoff"> ผ่อนชำระ</input>
           </div>
         </form>
 
@@ -55,19 +57,6 @@
     
   </div>
 </template>
-
-<script>
-import datetime from 'vuejs-datetimepicker'
-
-export default {
-  components: { datetime },
-  methods: {
-    alertVal () {
-      alert(this.dob)
-    }
-  }
-}
-</script>
 
 <style lang="scss" scoped>
 $primary: #941e2e;

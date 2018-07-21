@@ -58,11 +58,7 @@
                 type="text" 
                 placeholder="Type Something">
             </div> -->
-            <datetime 
-              v-model="val" 
-              format="DD/MM/YYYY" 
-              width="300px"
-              class="_zid-1 _pst-rlt"/>
+         
           </div>
           <div class="col-6 _dp-ilb">
             <div class="_pdv-12px">เวลา</div>
@@ -98,18 +94,7 @@
   </div>
 </template>
 
-<script>
-import datetime from 'vuejs-datetimepicker'
 
-export default {
-  components: { datetime },
-  methods: {
-    alertVal () {
-      alert(this.dob)
-    }
-  }
-}
-</script>
 
 <style lang="scss" scoped>
 $primary: #941e2e;
