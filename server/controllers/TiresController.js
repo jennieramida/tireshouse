@@ -17,3 +17,11 @@ exports.search = (req,res,next) => {
   .catch(next);
   
 };
+
+exports.info = (req,res,next) => {
+  Tires.searchInfo()
+  .then(output => {
+    res.json(output);
+  })
+  .catch(next);
+}
