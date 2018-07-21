@@ -2,12 +2,11 @@
   <div class="_w-100pct">
     <div class="container Prompt">
       <div class="row _dp-f _jtfct-ct _mgv-32px">
-        <div class="col-12 col-md-10">
+        <div class="col-12 col-md-8">
           <ul class="progressbar _fs-8 _fs-6-md ">
             <li>เลือกไซส์ยาง</li>
             <li>เลือกยางรถยนต์</li>
             <li>สถานที่และเวลา</li>
-            <li>รายละเอียดลูกค้า</li>
             <li>ชำระเงิน</li>
           </ul>
         </div>
@@ -44,8 +43,8 @@
               <div class="bio-select">
                 <select>
                   <option default>Please Select an Item...</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
+                  <option>123</option>
+                  <option>124</option>
                   <option>Option 3</option>
                 </select>
               </div>
@@ -122,7 +121,7 @@ $secondary: #f8f8f9;
 
 .progressbar li {
   float: left;
-  width: 20%;
+  width: 25%;
   position: relative;
   text-align: center;
   &::before {
