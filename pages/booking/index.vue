@@ -43,9 +43,21 @@
               <div class="bio-select">
                 <select>
                   <option default>Please Select an Item...</option>
-                  <option>123</option>
-                  <option>124</option>
-                  <option>Option 3</option>
+                  <option>165</option>
+                  <option>175</option>
+                  <option>185</option>
+                  <option>195</option>
+                  <option>205</option>
+                  <option>215</option>
+                  <option>225</option>
+                  <option>235</option>
+                  <option>245</option>
+                  <option>255</option>
+                  <option>265</option>
+                  <option>275</option>
+                  <option>285</option>
+                  <option>295</option>
+                  <option>315</option>
                 </select>
               </div>
             </div>
@@ -54,9 +66,17 @@
               <div class="bio-select">
                 <select>
                   <option default>Please Select an Item...</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
+                  <option>30</option>
+                  <option>35</option>
+                  <option>40</option>
+                  <option>45</option>
+                  <option>50</option>
+                  <option>55</option>
+                  <option>60</option>
+                  <option>65</option>
+                  <option>70</option>
+                  <option>75</option>
+                  <option>N/A</option>
                 </select>
               </div>
             </div>
@@ -65,19 +85,109 @@
               <div class="bio-select">
                 <select>
                   <option default>Please Select an Item...</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
+                  <option>13</option>
+                  <option>14</option>
+                  <option>15</option>
+                  <option>16</option>
+                  <option>17</option>
+                  <option>18</option>
+                  <option>19</option>
+                  <option>20</option>
+                  <option>21</option>
+                  <option>22</option>
                 </select>
               </div>
             </div>
-            <div class="col-12 col-md-6 _pdt-64px _tal-ct _tal-l-md _cs-pt _fw-500 _fs-5 _cl-darkred">
+            <div 
+              class="col-12 col-md-6 _pdt-24px _pdt-64px-md  _tal-ct _tal-l-md _cs-pt _fw-500 _fs-5 _cl-darkred"
+              @click="isActive = !isActive">
               + เลือกขนาดยางล้อหลังที่ต่างกัน
             </div>
           </div>
         </div>
       </div>
-      <div class="row _pdt-0px _mgt-64px">
+      <div 
+        
+        class="row ">
+        <div class="col-md-4"/>
+        <div 
+          :class="{ active: isActive }" 
+          class="col-md-8 col-12 back">
+          <div 
+            v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'right', distance:'100px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
+            class="_pdt-24px">
+            <div class="_fs-4 _dp-b-md _fw-500 _cl-darkred">
+              เลือกขนาดยางล้อหลัง
+            </div>
+            <!-- Options -->
+            <div class="row _pdt-24px">
+              <div class="col-12 col-md-6">
+                <div class="_pdv-12px">Width</div>
+                <div class="bio-select">
+                  <select>
+                    <option default>Please Select an Item...</option>
+                    <option>165</option>
+                    <option>175</option>
+                    <option>185</option>
+                    <option>195</option>
+                    <option>205</option>
+                    <option>215</option>
+                    <option>225</option>
+                    <option>235</option>
+                    <option>245</option>
+                    <option>255</option>
+                    <option>265</option>
+                    <option>275</option>
+                    <option>285</option>
+                    <option>295</option>
+                    <option>315</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="_pdv-12px">Series</div>
+                <div class="bio-select">
+                  <select>
+                    <option default>Please Select an Item...</option>
+                
+                    <option>30</option>
+                    <option>35</option>
+                    <option>40</option>
+                    <option>45</option>
+                    <option>50</option>
+                    <option>55</option>
+                    <option>60</option>
+                    <option>65</option>
+                    <option>70</option>
+                    <option>75</option>
+                    <option>N/A</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 _pdt-12px">
+                <div class="_pdv-12px">Diameter</div>
+                <div class="bio-select">
+                  <select>
+                    <option default>Please Select an Item...</option>
+                      
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                    <option>21</option>
+                    <option>22</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row _pdt-0px _mgv-48px">
         <div class="col">
           <div 
             v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
@@ -93,12 +203,30 @@
 </template>
 
 
+<script>
+export default {
+   data: () => ({
+    isActive: false
+    // works: []
+  }),
+}
+</script>
 
 <style lang="scss" scoped>
 $primary: #941e2e;
 $secondary: #f8f8f9;
 @import 'assets/styles/variables';
 
+.back {
+  display: none;
+  transition: 2s;
+  opacity: 0;
+}
+.back.active {
+  display: block;
+  transition: 2s;
+  opacity: 1;
+}
 ._cl-darkred {
   color: $primary;
 }
