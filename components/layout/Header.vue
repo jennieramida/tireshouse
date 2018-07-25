@@ -14,21 +14,25 @@
         <div class="col-8 _dp-f _jtfct-spbtw _pdl-128px _alit-ct ">
           <div>
             <nuxt-link 
-              to="/about"
-              class="hover-underline-animation">
-              บริการของเรา
+              v-scroll-to="'#services'"
+              to="/#services"> 
+              <a 
+                href="#"
+                class="hover-underline-animation"> บริการของเรา</a>
             </nuxt-link>
           </div>
           <div>
             <nuxt-link 
-              to="/"
-              class="hover-underline-animation">
-              ติดต่อเรา
+              v-scroll-to="'#about'"
+              to="/#about"> 
+              <a 
+                href="#"
+                class="hover-underline-animation"> เกี่ยวกับเรา</a>
             </nuxt-link>
           </div>
           <div>
             <nuxt-link 
-              to="/"
+              to="/signin"
               class="hover-underline-animation">
               เข้าสู่ระบบ
             </nuxt-link>
