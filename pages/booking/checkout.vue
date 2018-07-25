@@ -70,8 +70,22 @@
             แก้ไข
           </nuxt-link></div>
         </div>
-        <div class="_mgv-32px _pdv-64px _bgcl-accent">
-          <div class="_pdv-24px">MAP (del duplicate div)</div>
+        <div class="_mgv-32px _bgcl-accent">
+          <no-ssr>
+            <GmapMap
+              :center="{lat:13.7563, lng:100.5018}"
+              :zoom="10"
+              map-type-id="roadmap"
+              style="width: 512px; height:256px"
+              class="_w-100pct"
+            >
+              <GmapMarker 
+                v-for="(marker, index) in markers"
+                :key="index"
+                :position="marker.position"
+              />
+            </GmapMap>
+          </no-ssr>
         </div>
         <div class="row">
           <div class="_pdt-12px _fs-5 col-md-3 col-4">
@@ -105,6 +119,20 @@
     
   </div>
 </template>
+
+
+<script>
+import * as VueGoogleMaps from '~/node_modules/vue2-google-maps/src/main'
+export default{
+  data: () =>  ({
+      place: null,
+      center: {lat:13.7563, lng:100.5018},
+      markers: [{
+        position: {lat: '', lng: ''}
+      }],
+  }),
+}
+</script>
 
 
 <style lang="scss" scoped>
