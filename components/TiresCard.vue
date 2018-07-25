@@ -19,14 +19,14 @@
             </div>
           </div>
           <div class="row _lh-150pct ">
-            <div class="col">
+            <div class="col-6">
               ขนาดยาง<br>
               หน้ากว้างยาง (มม.)<br>
               แก้มยางสูง (มม.)<br>
               เส้นผ่านศูนย์กลางกระทะล้อ (นิ้ว)<br>
               ความสูงยางโดยรวม (มม.)<br>
             </div>
-            <div class="col _fw-300">
+            <div class="col-6 _fw-300">
               : {{ size }}<br>
               : {{ width }}<br>
               : {{ height }}<br>
@@ -34,6 +34,7 @@
               : {{ all }}<br>
             </div>
           </div>
+          
         </div>
         <div class="col-3 _pdt-32px">
           <div class="_fs-3 _tal-r _fw-500">{{ price }} บาท</div>

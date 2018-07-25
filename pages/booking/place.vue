@@ -23,15 +23,30 @@
 
     <div class="row">
       <div class="col-12 col-md-6">
-        MAP
+        <no-ssr>
+          <GmapMap
+            :center="{lat:13.7563, lng:100.5018}"
+            :zoom="10"
+            map-type-id="roadmap"
+            style="width: 512px; height:512px"
+          >
+            <GmapMarker 
+              v-for="(marker, index) in markers"
+              :key="index"
+              :position="marker.position"
+            />
+          </GmapMap>
+        </no-ssr>
       </div>
       <div class="col-12 col-md-6">
         <div class="col-12">
           <div class="_pdv-12px">สถานที่</div>
           <div class="bio-input">
-            <input 
-              type="text" 
-              placeholder="Type Something">
+            <no-ssr>
+              <gmap-autocomplete 
+                class="_mgh-0px" 
+                @place_changed="setPlace"/>
+            </no-ssr>
           </div>
         </div>
         <div class="col-12 _mgt-12px">
@@ -94,6 +109,45 @@
   </div>
 </template>
 
+<script>
+import * as VueGoogleMaps from '~/node_modules/vue2-google-maps/src/main'
+export default{
+  data: () =>  ({
+      place: null,
+      center: {lat:13.7563, lng:100.5018},
+      markers: [{
+        position: {lat: '', lng: ''}
+      }],
+  }),
+  methods: {
+    setPlace (place) {
+      this.place = place
+      console.log(place)
+      console.log('koalalalla')
+       this.lat = this.place.geometry.location.lat()
+         this.lng = this.place.geometry.location.lng()
+         console.log(this.lat)
+       if (this.place) {
+         this.lat = this.place.geometry.location.lat()
+         this.lng = this.place.geometry.location.lng()
+        this.markers.push({
+          position: {
+            lat: this.lat,
+            lng: this.lng,
+          }
+       
+        })
+
+        // this.center.lat = this.place.geometry.location.lat()
+        // this.center.lng = this.place.geometry.location.lng()
+        // this.dataPlace = this.place
+        // this.place = null;
+      }
+
+    }
+  }
+}
+</script>
 
 
 <style lang="scss" scoped>
