@@ -42,22 +42,25 @@
               <div class="_pdv-12px">Width</div>
               <div class="bio-select">
                 <select>
-                  <option default>Please Select an Item...</option>
-                  <option>165</option>
-                  <option>175</option>
-                  <option>185</option>
-                  <option>195</option>
-                  <option>205</option>
-                  <option>215</option>
-                  <option>225</option>
-                  <option>235</option>
-                  <option>245</option>
-                  <option>255</option>
-                  <option>265</option>
-                  <option>275</option>
-                  <option>285</option>
-                  <option>295</option>
-                  <option>315</option>
+                  <option 
+
+                    disabled 
+                    value="">โปรดเลือกขนาดยางรถยนต์</option>
+                  <option value="165">165</option>
+                  <option value="175">175</option>
+                  <option value="185">185</option>
+                  <option value="195">195</option>
+                  <option value="205">205</option>
+                  <option value="215">215</option>
+                  <option value="225">225</option>
+                  <option value="235">235</option>
+                  <option value="245">245</option>
+                  <option value="255">255</option>
+                  <option value="265">265</option>
+                  <option value="275">275</option>
+                  <option value="285">285</option>
+                  <option value="295">295</option>
+                  <option value="315">315</option>
                 </select>
               </div>
             </div>
@@ -65,18 +68,21 @@
               <div class="_pdv-12px">Series</div>
               <div class="bio-select">
                 <select>
-                  <option default>Please Select an Item...</option>
-                  <option>30</option>
-                  <option>35</option>
-                  <option>40</option>
-                  <option>45</option>
-                  <option>50</option>
-                  <option>55</option>
-                  <option>60</option>
-                  <option>65</option>
-                  <option>70</option>
-                  <option>75</option>
-                  <option>N/A</option>
+                  <option 
+        
+                    disabled 
+                    value="">โปรดเลือกขนาดยางรถยนต์</option>
+                  <option value="30">30</option>
+                  <option value="35">35</option>
+                  <option value="40">40</option>
+                  <option value="45">45</option>
+                  <option value="50">50</option>
+                  <option value="55">55</option>
+                  <option value="60">60</option>
+                  <option value="65">65</option>
+                  <option value="70">70</option>
+                  <option value="75">75</option>
+                  <option value="n/a">N/A</option>
                 </select>
               </div>
             </div>
@@ -84,17 +90,20 @@
               <div class="_pdv-12px">Diameter</div>
               <div class="bio-select">
                 <select>
-                  <option default>Please Select an Item...</option>
-                  <option>13</option>
-                  <option>14</option>
-                  <option>15</option>
-                  <option>16</option>
-                  <option>17</option>
-                  <option>18</option>
-                  <option>19</option>
-                  <option>20</option>
-                  <option>21</option>
-                  <option>22</option>
+                  <option 
+
+                    disabled 
+                    value="">โปรดเลือกขนาดยางรถยนต์</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
                 </select>
               </div>
             </div>
@@ -125,22 +134,24 @@
                 <div class="_pdv-12px">Width</div>
                 <div class="bio-select">
                   <select>
-                    <option default>Please Select an Item...</option>
-                    <option>165</option>
-                    <option>175</option>
-                    <option>185</option>
-                    <option>195</option>
-                    <option>205</option>
-                    <option>215</option>
-                    <option>225</option>
-                    <option>235</option>
-                    <option>245</option>
-                    <option>255</option>
-                    <option>265</option>
-                    <option>275</option>
-                    <option>285</option>
-                    <option>295</option>
-                    <option>315</option>
+                    <option 
+                      disabled 
+                      value="">โปรดเลือกขนาดยางรถยนต์</option>
+                    <option value="165">165</option>
+                    <option value="175">175</option>
+                    <option value="185">185</option>
+                    <option value="195">195</option>
+                    <option value="205">205</option>
+                    <option value="215">215</option>
+                    <option value="225">225</option>
+                    <option value="235">235</option>
+                    <option value="245">245</option>
+                    <option value="255">255</option>
+                    <option value="265">265</option>
+                    <option value="275">275</option>
+                    <option value="285">285</option>
+                    <option value="295">295</option>
+                    <option value="315">315</option>
                   </select>
                 </div>
               </div>
@@ -148,19 +159,21 @@
                 <div class="_pdv-12px">Series</div>
                 <div class="bio-select">
                   <select>
-                    <option default>Please Select an Item...</option>
-                
-                    <option>30</option>
-                    <option>35</option>
-                    <option>40</option>
-                    <option>45</option>
-                    <option>50</option>
-                    <option>55</option>
-                    <option>60</option>
-                    <option>65</option>
-                    <option>70</option>
-                    <option>75</option>
-                    <option>N/A</option>
+                    <option 
+                      
+                      disabled 
+                      value="">โปรดเลือกขนาดยางรถยนต์</option>
+                    <option value="30">30</option>
+                    <option value="35">35</option>
+                    <option value="40">40</option>
+                    <option value="45">45</option>
+                    <option value="50">50</option>
+                    <option value="55">55</option>
+                    <option value="60">60</option>
+                    <option value="65">65</option>
+                    <option value="70">70</option>
+                    <option value="75">75</option>
+                    <option value="n/a">N/A</option>
                   </select>
                 </div>
               </div>
@@ -168,18 +181,20 @@
                 <div class="_pdv-12px">Diameter</div>
                 <div class="bio-select">
                   <select>
-                    <option default>Please Select an Item...</option>
+                    <option 
                       
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                    <option>19</option>
-                    <option>20</option>
-                    <option>21</option>
-                    <option>22</option>
+                      disabled 
+                      value="">โปรดเลือกขนาดยางรถยนต์</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
                   </select>
                 </div>
               </div>

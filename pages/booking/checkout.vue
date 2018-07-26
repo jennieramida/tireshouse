@@ -45,20 +45,20 @@
             placeholder="โปรดกรอกอีเมล">
         </div>
 
-        <div class="_pdv-24px">รหัสผ่าน</div>
+        <!--<div class="_pdv-24px">รหัสผ่าน</div>
         <div class="bio-input">
           <input 
             type="password"
             placeholder="โปรดตั้งรหัสผ่านใหม่">
-        </div>
+        </div> -->
 
         <div class="_fs-7 _fs-6-md _mgt-12px _pdt-12px">
           เป็นสมาชิก Tireshouse แล้ว?  
           <nuxt-link 
             to="/signin" 
             class="_cl-darkred">
-            กดที่นี่เพื่อเข้าสู่ระบบ
-          </nuxt-link>
+            กดที่นี่เพื่อเข้าสู่ระบบ</nuxt-link>
+          เพื่อติดตามการบริการ
         </div>
       </div>
       

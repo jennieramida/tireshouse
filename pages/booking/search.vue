@@ -21,10 +21,22 @@
         </div>
       </div>
     </div>
-    <tires-card v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"/>
-    <tires-card v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"/>
-    <tires-card v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"/>
-    <tires-card v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"/>
+    <div
+      v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
+      v-for="(item,i) in tirescard"
+      :key="i" >
+      <tires-card 
+        :suppliers="item.suppliers"
+        :tires="item.tires"
+        :heading="item.heading"
+        :info="item.info"
+        :size="item.size"
+        :width="item.width"
+        :height="item.height"
+        :diameter="item.diameter"
+        :all="item.all"
+        :price="item.price"
+    /></div>
  
   </div>
 </template>
@@ -33,24 +45,35 @@
 import TiresCard from '~/components/TiresCard'
 export default {
   components: {TiresCard},
-// data: () => ({
-//     services : [
-//       {
-//         image: require('~/assets/images/default.jpg'),
-//         heading: 'EDC and Scanner',
-//         info: 'Transaction acceptance via EDC (online transaction); merchant scans QR code from customer mobile device.'
-//       },{
-//         image: require('~/assets/images/default.jpg'),
-//         heading: 'POS and Scanner',
-//         info: 'Transaction acceptance via POS (web service transaction); merchant scans QR code from customer mobile device. Sycapt will provide API for POS integration.'
-//       },{
-//         image: require('~/assets/images/default.jpg'),
-//         heading: 'Static QR Code',
-//         info: 'Transaction acceptance by customer scans the static QR code installed at merchant.'
-//       }
-    // ]
+  data: () => ({
+    tirescard: [
+    {
+      suppliers: require('~/assets/images/suppliers/michelin.jpg'),
+      tires: require('~/assets/images/tire.jpg'),
+      heading: '195/65R15 PRIMACY 3 ST',
+      info:'ยางสำหรับรถเก๋งที่นุ่มเงียบผสานเทคโนโลยีสูตรเนื้อยางที่มีความยืดหยุ่นสูงช่วยลดแรงสั่นสะเทือนและดูดซับแรงกระแทกจากพื้นถนน อายุการใช้งานที่ยาวนานขึ้น',
+      size:'195/65R15',
+      width: '195.00',
+      height: '126.75',
+      diameter: '15',
+      all:  '634.50',
+      price: '2,990.00'
+    },  
+    {
+      suppliers: require('~/assets/images/suppliers/michelin.jpg'),
+      tires: require('~/assets/images/tire.jpg'),
+      heading: '195/65R15 PRIMACY 3 ST',
+      info:'ยางสำหรับรถเก๋งที่นุ่มเงียบผสานเทคโนโลยีสูตรเนื้อยางที่มีความยืดหยุ่นสูงช่วยลดแรงสั่นสะเทือนและดูดซับแรงกระแทกจากพื้นถนน อายุการใช้งานที่ยาวนานขึ้น',
+      size:'195/65R15',
+      width: '195.00',
+      height: '126.75',
+      diameter: '15',
+      all:  '634.50',
+      price: '2,990.00',
     }
-    // )}
+    ]
+  })
+}
 </script>
 
 <style lang="scss" scoped>

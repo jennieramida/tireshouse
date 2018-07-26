@@ -100,17 +100,62 @@
           </div>
 
         </form>
-
+        <div class="col-12">
+          <div 
+            v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
+            class="_dp-f _jtfct-ct _pdv-24px _pdt-48px _pdt-24px-md">
+            <nuxt-link to="/booking/complete" >
+              <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">ชำระเงิน</button>
+            </nuxt-link>
+          </div>
+        </div>
       </div>
       
       <div class="col-12 col-md-6 _pdbt-48px _pdbt-0px-md">
         <div class=" _fs-4 _cl-black _pdbt-24px">รายการสั่งซื้อ</div>
+        <chosen-product/>
       </div>
     </div>
    
     
   </div>
 </template>
+
+<script>
+
+import ChosenProduct from '~/components/ChosenProduct'
+export default {
+  components: {ChosenProduct},
+  data: () => ({
+    product: [
+    {
+      suppliers: require('~/assets/images/suppliers/michelin.jpg'),
+      tires: require('~/assets/images/tire.jpg'),
+      heading: '195/65R15 PRIMACY 3 ST',
+      info:'ยางสำหรับรถเก๋งที่นุ่มเงียบผสานเทคโนโลยีสูตรเนื้อยางที่มีความยืดหยุ่นสูงช่วยลดแรงสั่นสะเทือนและดูดซับแรงกระแทกจากพื้นถนน อายุการใช้งานที่ยาวนานขึ้น',
+      size:'195/65R15',
+      width: '195.00',
+      height: '126.75',
+      diameter: '15',
+      all:  '634.50',
+      price: '2,990.00'
+    },  
+    {
+      suppliers: require('~/assets/images/suppliers/michelin.jpg'),
+      tires: require('~/assets/images/tire.jpg'),
+      heading: '195/65R15 PRIMACY 3 ST',
+      info:'ยางสำหรับรถเก๋งที่นุ่มเงียบผสานเทคโนโลยีสูตรเนื้อยางที่มีความยืดหยุ่นสูงช่วยลดแรงสั่นสะเทือนและดูดซับแรงกระแทกจากพื้นถนน อายุการใช้งานที่ยาวนานขึ้น',
+      size:'195/65R15',
+      width: '195.00',
+      height: '126.75',
+      diameter: '15',
+      all:  '634.50',
+      price: '2,990.00',
+    }
+    ]
+  })
+}
+</script>
 
 <style lang="scss" scoped>
 $primary: #941e2e;

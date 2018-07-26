@@ -41,10 +41,11 @@
           <div class="_fs-5 _tal-r">/ต่อเส้น</div>
           <div class="bio-select _mgv-12px">
             <select>
-              <option>1 เส้น</option>
-              <option>2 เส้น</option>
+              <option 
+                default>4 เส้น</option>
               <option>3 เส้น</option>
-              <option default>4 เส้น</option>
+              <option>2 เส้น</option>
+              <option>1 เส้น</option>
             </select>
           </div>
           <div class="_dp-f _jtfct-fe">
@@ -71,11 +72,13 @@
           <div class="_fs-4 _tal-r _fw-500">{{ price }} บาท</div>
           <div class="_fs-5 _tal-r">/ต่อเส้น</div>
           <div class="bio-select _mgv-12px">
+            
             <select>
-              <option>1 เส้น</option>
-              <option>2 เส้น</option>
+              <option 
+                default>4 เส้น</option>
               <option>3 เส้น</option>
-              <option default>4 เส้น</option>
+              <option>2 เส้น</option>
+              <option>1 เส้น</option>
             </select>
           </div>
         </div>
@@ -102,7 +105,7 @@ export default {
     },
     heading: {
       type: String,
-      default: '195/65R15 PRIMACY 3 ST'
+      default: ''
     },
     info: {
       type: String,
