@@ -73,6 +73,11 @@
                 type="text" 
                 placeholder="Type Something">
             </div> -->
+            <div class="bio-input">
+              <date-picker 
+                v-model="date" 
+                :config="options"/>
+            </div>
          
           </div>
           <div class="col-6 _dp-ilb">
@@ -111,13 +116,25 @@
 
 <script>
 import * as VueGoogleMaps from '~/node_modules/vue2-google-maps/src/main'
+ import 'bootstrap/dist/css/bootstrap.css';
+  import datePicker from 'vue-bootstrap-datetimepicker';
+  import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
+   
 export default{
+  components: {
+      datePicker
+    },
   data: () =>  ({
       place: null,
       center: {lat:13.7563, lng:100.5018},
       markers: [{
         position: {lat: '', lng: ''}
       }],
+      date: new Date(),
+       options: {
+          format: 'DD/MM/YYYY',
+          useCurrent: false
+       }
   }),
   methods: {
     setPlace (place) {
