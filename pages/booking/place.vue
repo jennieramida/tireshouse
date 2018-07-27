@@ -116,7 +116,7 @@
 
 <script>
 import * as VueGoogleMaps from '~/node_modules/vue2-google-maps/src/main'
- import 'bootstrap/dist/css/bootstrap.css';
+
   import datePicker from 'vue-bootstrap-datetimepicker';
   import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
    

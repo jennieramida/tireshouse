@@ -23,6 +23,11 @@
 
     <div class="row">
       <div class="col-12 col-md-6 _pdbt-48px _pdbt-0px-md">
+        <div class="_fs-4 _cl-black _pdbt-24px">รายการสั่งซื้อ</div>
+        <chosen-product/>
+      </div>
+
+      <div class="col-12 col-md-6 _pdbt-48px _pdbt-0px-md">
         <div class=" _fs-4 _cl-black _pdbt-24px">ช่องทางการชำระเงิน</div>
         <form class="_fs-5 _mgl-16px">
           <div class="bio-radio bio-accordion _pdv-8px">
@@ -55,7 +60,7 @@
                   placeholder="โปรดกรอกรหัสหลังบัตร">
        
                 <div class="_pdt-24px _pdbt-12px">วันหมดอายุ</div>
-                <div class="bio-input">
+                <div class="bio-input _pdbt-48px">
                   <input 
                     type="text" 
                     placeholder="MM/YY">
@@ -109,11 +114,6 @@
             </nuxt-link>
           </div>
         </div>
-      </div>
-      
-      <div class="col-12 col-md-6 _pdbt-48px _pdbt-0px-md">
-        <div class=" _fs-4 _cl-black _pdbt-24px">รายการสั่งซื้อ</div>
-        <chosen-product/>
       </div>
     </div>
    
