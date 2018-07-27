@@ -1,12 +1,12 @@
 <template>
   <div class="container _mgv-8px _pdl-0px _mgl-0px">
     <!-- Desktop -->
-    <div class="_dp-n _dp-b-md card">
+    <div class="_dp-b card">
       <div class="row _pdt-32px">
         <div class="col-5 _pdh-32px">
           <div 
             v-lazy:background="suppliers" 
-            class="_h-32px-md _h-256px _bgs-ct _bgrp-nrp _bgpst-t "/>
+            class="_h-32px _bgs-ct _bgrp-nrp _bgpst-t "/>
           <div 
             v-lazy:background="tires" 
             class="tire-h _mgbt-12px _bgs-ct _bgrp-nrp _bgpst-t "/>
@@ -19,17 +19,17 @@
       </div>
       <div class="row _pdh-24px">  
         <div class="col-12 _bdtw-1px _bdcl-gray"/>
-        <div class="col-5 _pdv-24px  _pdl-24px">
-          <div class=" _lh-150pct _fw-500 _fs-5">ราคายางรถยนต์</div>
-          <div class=" _lh-150pct _fw-500 _fs-5">ค่าบริการ</div>
-          <div class=" _lh-150pct _fw-500 _fs-5">ส่วนลด</div>
-          <div class=" _lh-150pct _fw-500 _fs-5 _pdt-24px">ยอดชำระ</div>
+        <div class="col-md-5 col-6 _pdv-24px  _pdl-24px-md _pdl-12px">
+          <div class=" _lh-150pct _fw-500 _fs-5-md _fs-6">ราคายางรถยนต์</div>
+          <div class=" _lh-150pct _fw-500 _fs-5-md _fs-6">ค่าบริการ</div>
+          <div class=" _lh-150pct _fw-500 _fs-5-md _fs-6">ส่วนลด</div>
+          <div class=" _lh-150pct _fw-500 _fs-5-md _fs-6 _pdt-24px">ยอดชำระ</div>
         </div>
-        <div class="col-5 _pdv-24px ">
-          <div class="_lh-150pct _fs-5">{{ total }} บาท</div>
-          <div class="_lh-150pct _fs-5">{{ service }} บาท</div>
-          <div class="_lh-150pct _fs-5">{{ discount }} บาท</div>
-          <div class="_lh-150pct _fs-5 _pdt-24px">{{ grandtotal }} บาท</div>
+        <div class="col-md-5 col-6 _pdv-24px ">
+          <div class="_lh-150pct _fs-5-md _fs-6">{{ total }} บาท</div>
+          <div class="_lh-150pct _fs-5-md _fs-6">{{ service }} บาท</div>
+          <div class="_lh-150pct _fs-5-md _fs-6">{{ discount }} บาท</div>
+          <div class="_lh-150pct _fs-5-md _fs-6 _pdt-24px">{{ grandtotal }} บาท</div>
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@
           <div class="_dp-f _jtfct-ct">
             <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">
               <nuxt-link 
-                to="/booking/payment" 
+                to="/booking/checkout" 
                 class="_cl-white">
                 เข้าสู่ระบบ
             </nuxt-link></button>

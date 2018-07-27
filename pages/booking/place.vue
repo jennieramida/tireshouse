@@ -28,7 +28,7 @@
             :center="{lat:13.7563, lng:100.5018}"
             :zoom="10"
             map-type-id="roadmap"
-            style="width: 512px; height:512px"
+            class="map-height map-width"
           >
             <GmapMarker 
               v-for="(marker, index) in markers"
@@ -40,7 +40,7 @@
       </div>
       <div class="col-12 col-md-6">
         <div class="col-12">
-          <div class="_pdv-12px">สถานที่</div>
+          <div class="_pdv-12px _pdt-48px _pdt-0px-md">สถานที่</div>
           <div class="bio-input">
             <no-ssr>
               <gmap-autocomplete 
@@ -171,6 +171,20 @@ export default{
 $primary: #941e2e;
 $secondary: #f8f8f9;
 @import 'assets/styles/variables';
+
+.map-height {
+  height: 512px;
+  @include breakpoint(mobile) {
+    height: 300px;
+  }
+}
+
+.map-width {
+  width: 512px;
+  @include breakpoint(mobile) {
+    width: 90vw;
+  }
+}
 
 ._cl-darkred {
   color: $primary;
