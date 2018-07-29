@@ -27,56 +27,105 @@
             @click="isShowing = 'profile'"> <p class="hover-underline-animation">แก้ไขโปรไฟล์</p>
           </div>
           <div class="_fs-5  _dp-b _pdv-4px _fw-300">
-            <p class="hover-underline-animation">ออกจากระบบ</p>
+            <nuxt-link to="/">
+              <p class="hover-underline-animation _cl-dark">ออกจากระบบ</p>
+            </nuxt-link>
           </div>
         </div>
       </div>
       <div class="col-md-8 col-12">
         <div v-show="isShowing === 'order'">
           <div>
-            <div class="_fs-3 ">ติดตามรายการเปลี่ยนยาง</div>
+            <div class="_fs-3 _pdbt-24px">ติดตามรายการเปลี่ยนยาง</div>
+            <!-- ถ้าไม่มีการทำรายการมาก่อน Show this one -->
+            <!-- <div>
+            <div class="_cl-darkred _tal-ct _pdt-128px _fs-4"> คุณยังไม่มีรายการเปลี่ยนยาง</div>
+            <div class="_dp-f _jtfct-ct">
+              <nuxt-link to="/booking" >
+                <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">เปลี่ยนยางรถยนต์</button>
+              </nuxt-link>
+            </div>
+          </div> -->
+            <div>
+              <div class="row _mgv-32px">
+                <div class="col-12 _dp-f _jtfct-ct">
+                  <ul class="progressbar _w-100pct _fs-6-md ">
+                    <li>รอยืนยันช่าง</li>
+                    <li>รายละเอียดช่าง</li>
+                    <li>ให้คะแนน</li>
+                  </ul>
+                </div>
+                <div class="col-12">
+                  <div class="_fs-5 _tal-ct _pdt-64px _pdbt-24px _cl-darkred">รายละเอียดรายการเปลี่ยนยาง</div>
+                </div>
+                <div class="col-5 _pdl-0px _tal-r _lh-150pct">
+                  <div>สถานที่</div>
+                  <br>
+                  <div>วัน</div>
+                  <div>เวลา</div>
+                </div>
+                <div class="col-6 _pdr-0px  _tal-l _lh-150pct">
+                  <div>ไอดีโอ คิว พญาไท 138 ถนนพญาไท แขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400</div>
+                  <div>4 กรกฎาคม 2560</div>
+                  <div>18:00 น.</div>
+                </div>
+                <div>
+                  หากต้องการเปลี่ยนแปลง กรุณาติดต่อ Tireshouse
+                </div>
+             
+              </div>
+            </div>
           </div>
         </div>
         <div v-show="isShowing === 'history'">
-          <div class="_fs-3 ">ประวัติการทำรายการเปลี่ยนยาง</div>
+          <div class="_fs-3 _pdbt-24px">ประวัติการทำรายการเปลี่ยนยาง</div>
+          <!-- ถ้าไม่มีการทำรายการมาก่อน Show this one -->
+          <!-- <div>
+            <div class="_cl-darkred _tal-ct _pdt-128px _fs-4"> คุณยังไม่มีรายการเปลี่ยนยาง</div>
+            <div class="_dp-f _jtfct-ct">
+              <nuxt-link to="/booking" >
+                <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">เปลี่ยนยางรถยนต์</button>
+              </nuxt-link>
+            </div>
+          </div> -->
         </div>
         <div v-show="isShowing === 'profile'">
           <div class="">
-            <div class="_fs-3 ">แก้ไขโปรไฟล์</div>
+            <div class="_fs-3 _pdbt-24px">แก้ไขโปรไฟล์</div>
             <div>
-              <div class="_pdt-24px _pdbt-4px">ชื่อ-นามสกุล</div>
+              <div class="_pdbt-4px">ชื่อ-นามสกุล</div>
               <div class="bio-input">
                 <input 
                   type="text" 
-                  placeholder="โปรดกรอกชื่อและนามสกุล">
+                  value="รมิดา จึงไพศาล">
               </div>
 
               <div class="_pdt-24px _pdbt-4px">เบอร์โทรศัพท์</div>
               <div class="bio-input">
                 <input 
                   type="tel" 
-                  placeholder="โปรดกรอกเบอร์โทรศัพท์">
+                  value="0959969153">
               </div>
 
               <div class="_pdt-24px _pdbt-4px">อีเมล</div>
               <div class="bio-input">
                 <input 
                   type="email" 
-                  placeholder="โปรดกรอกอีเมล">
+                  value="jennieramida@gmail.com">
               </div>
 
               <div class="_pdt-24px _pdbt-4px">รหัสผ่าน</div>
               <div class="bio-input">
                 <input 
                   type="password"
-                  placeholder="โปรดตั้งรหัสผ่านใหม่">
+                  value="hellojennie">
               </div>
 
               <div class="_pdt-24px _pdbt-4px">ยืนยันรหัสผ่าน</div>
               <div class="bio-input">
                 <input 
                   type="password"
-                  placeholder="โปรดตั้งรหัสผ่านใหม่">
+                  value="hellojennie">
               </div>
             </div>
             <div class="_dp-f _jtfct-ct">
@@ -157,6 +206,61 @@ input,
 select,
 textarea {
   font-family: 'Prompt';
+}
+
+.progressbar {
+  counter-reset: step;
+}
+
+.progressbar li {
+  float: left;
+  width: 33%;
+  position: relative;
+  text-align: center;
+  &::before {
+    content: counter(step);
+    counter-increment: step;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #bebebe;
+    display: block;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    line-height: 27px;
+    background: white;
+    color: #bebebe;
+    text-align: center;
+    font-weight: bold;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #bebebe;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+  }
+}
+
+.progressbar li:first-child:after {
+  content: none;
+}
+
+.progressbar li:first-child:before {
+  border-color: $primary;
+  background: $primary;
+  color: white;
+}
+
+.progressbar li.active + li:after {
+  background: $primary;
+}
+.progressbar li.active + li:before {
+  border-color: $primary;
+  background: $primary;
+  color: white;
 }
 </style>
 
