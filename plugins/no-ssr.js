@@ -4,7 +4,10 @@ import * as VueGoogleMaps from '~/node_modules/vue2-google-maps/src/main'
 import datePicker from 'vue-bootstrap-datetimepicker';
 import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
 import VModal from 'vue-js-modal'
+import VueTimepicker from 'vue2-timepicker';
 
+
+Vue.use(VueTimepicker)
 Vue.use(VModal)
 Vue.use(datePicker);
 

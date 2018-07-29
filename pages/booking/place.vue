@@ -74,18 +74,19 @@
                 placeholder="Type Something">
             </div> -->
             <div class="bio-input">
-              <date-picker 
-                v-model="date" 
-                :config="options"/>
+              <no-ssr>
+                <date-picker 
+                  v-model="date" 
+                  :config="options"/></no-ssr>
             </div>
          
           </div>
           <div class="col-6 _dp-ilb">
             <div class="_pdv-12px">เวลา</div>
             <div class="bio-input">
-              <input 
-                type="text" 
-                placeholder="Type Something">
+              <no-ssr>
+                <vue-timepicker :minute-interval="10"/>
+              </no-ssr>
             </div>
           </div>
         </div>
@@ -116,13 +117,14 @@
 
 <script>
 import * as VueGoogleMaps from '~/node_modules/vue2-google-maps/src/main'
-
+import VueTimepicker from 'vue2-timepicker';
   import datePicker from 'vue-bootstrap-datetimepicker';
   import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
    
 export default{
   components: {
-      datePicker
+      datePicker,
+      VueTimepicker
     },
   data: () =>  ({
       place: null,
@@ -171,6 +173,24 @@ export default{
 $primary: #941e2e;
 $secondary: #f8f8f9;
 @import 'assets/styles/variables';
+
+.time-picker .dropdown ul li.active,
+.time-picker .dropdown ul li.active:hover {
+  background: #941e2e !important;
+  color: #fff;
+}
+
+.time-picker input.display-time {
+  border: 1px solid #d2d2d2 !important;
+  border-radius: 4px !important;
+  width: 15em !important;
+  height: 2.2em;
+  padding: 0.3em 0.5em;
+  font-size: 1em;
+}
+.time-picker {
+  width: 14em !important;
+}
 
 .map-height {
   height: 512px;
