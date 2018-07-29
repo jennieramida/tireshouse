@@ -54,6 +54,37 @@
             </nuxt-link>
           </div>
         </div>
+        <!-- Back Tire -->
+        <div 
+          :class="hasBack === true" 
+          class="_w-100pct row">
+          <div class="col-3"/>
+          <div class="col-6 _pdl-32px _mgt-24px">
+            <div class="row">
+              <div class="col">
+                <div class="_fs-4 _fw-500">{{ backheading }}</div>
+                <div class="_fs-6 _fw-300 _lh-125pct _pdv-12px">{{ backinfo }}</div>
+              </div>
+            </div>
+            <div class="row _lh-150pct ">
+              <div class="col-6">
+                ขนาดยาง<br>
+                หน้ากว้างยาง (มม.)<br>
+                แก้มยางสูง (มม.)<br>
+                เส้นผ่านศูนย์กลางกระทะล้อ (นิ้ว)<br>
+                ความสูงยางโดยรวม (มม.)<br>
+              </div>
+              <div class="col-6 _fw-300">
+                : {{ backsize }}<br>
+                : {{ backwidth }}<br>
+                : {{ backheight }}<br>
+                : {{ backdiameter }}<br>
+                : {{ backall }}<br>
+              </div>
+            </div>
+          
+          </div>
+        </div>
       </div>
     </div>
     <!-- Mobile -->
@@ -134,7 +165,44 @@ export default {
     price: {
       type: String,
       default: '2,990.00'
-    }
+    },
+     backsuppliers: {
+      type: String,
+      default: require('~/assets/images/suppliers/michelin.jpg')
+    },
+    backtires: {
+      type: String,
+      default: require('~/assets/images/tire.jpg')
+    },
+    backheading: {
+      type: String,
+      default: ''
+    },
+    backinfo: {
+      type: String,
+      default: ''
+    },
+    backsize: {
+      type: String,
+      default: ''
+    },
+    backwidth: {
+      type: String,
+      default: ''
+    },
+    backheight: {
+      type: String,
+      default: ''
+    },
+    backdiameter: {
+      type: String,
+      default: ''
+    },
+    backall: {
+      type: String,
+      default: ''
+    },
+
   }
 }
 </script>

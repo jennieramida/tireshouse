@@ -1,17 +1,17 @@
 <template>
   <div class="container">
-    <div class="row">
+    <div class="row ">
       <div class="col">
-        <div class="_cl-darkred _fw-500">
+        <div class="_cl-darkred _fw-500 _tal-ct _tal-l-md _pdbt-12px">
           {{ date }}, {{ time }}
         </div>
         <div class="row _pdv-8px _pdt-16px-md">
           <div class="col-md-2 col-12">
-            <div>
+            <div class="_fw-500">
               ข้อมูลยาง
             </div>
           </div>
-          <div class="col _pdv-12px _pdv-0px-md">
+          <div class="col _pdv-12px _pdv-0px-md _fw-300">
             <div>
               {{ item }}, {{ brand }}, Insurance {{ insurance }}
             </div>
@@ -19,11 +19,11 @@
         </div>
         <div class="row">
           <div class="col-md-2 col-12">
-            <div>
+            <div class="_fw-500">
               ข้อมูลช่าง
             </div>
           </div>
-          <div class="col _pdv-12px _pdv-0px-md">
+          <div class="col _pdv-12px _pdv-0px-md _fw-300">
             <div>
               {{ technician }}
             </div>

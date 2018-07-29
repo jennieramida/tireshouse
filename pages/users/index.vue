@@ -57,25 +57,40 @@
                   </ul>
                 </div>
                 <!-- Step1 -->
-                <!-- <div class="col-12">
+                <div class="col-12">
                   <div class="_fs-5 _tal-ct _pdt-64px _pdbt-24px _cl-darkred">รายละเอียดรายการเปลี่ยนยาง</div>
                 </div>
-                <div class="col-4 _cl-darkred _pdl-0px _tal-r _lh-150pct">
-                  <div>สถานที่</div>
-                  <br>
-                  <div>วัน</div>
-                  <div>เวลา</div>
-                </div>
-                <div class="col-6 _pdr-0px  _tal-l _lh-150pct">
-                  <div>ไอดีโอ คิว พญาไท 138 ถนนพญาไท แขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400</div>
-                  <div>4 กรกฎาคม 2560</div>
-                  <div>18:00 น.</div>
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-md-4 col-3 _cl-darkred _pdl-0px _tal-r _lh-150pct">
+                      <div>สถานที่</div>
+                    </div>
+                    <div class="col-md-6 col-8 _pdr-0px  _tal-l _lh-150pct">
+                      <div>ไอดีโอ คิว พญาไท 138 ถนนพญาไท แขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400</div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 col-3 _cl-darkred _pdl-0px _tal-r _lh-150pct">
+                      <div>วัน</div>
+                    </div>
+                    <div class="col-md-6 col-8 _pdr-0px  _tal-l _lh-150pct">
+                      <div>4 กรกฎาคม 2560</div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 col-3 _cl-darkred _pdl-0px _tal-r _lh-150pct">
+                      <div>เวลา</div>
+                    </div>
+                    <div class="col-md-6 col-8 _pdr-0px  _tal-l _lh-150pct">
+                      <div>18:00 น.</div>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-12 _tal-ct _fw-300 _pdt-24px _fs-7">
                   หากต้องการเปลี่ยนแปลงรายละเอียด กรุณาติดต่อ<a 
                     href="tel:" 
                     class="_cl-darkred">            Tireshouse</a>
-                </div> -->
+                </div>
                 <!-- End Step 1 -->
                 
                 <!-- Step 2 -->
@@ -96,8 +111,9 @@
                     class="_cl-darkred">            Tireshouse</a>
                 </div> -->
                 <!-- End Step 2 -->
+
                 <!-- Step 3 -->
-                <div class="col-12">
+                <!-- <div class="col-12">
                   <div class="_fs-5 _tal-ct _pdt-64px _pdbt-24px _cl-darkred">กรุณาให้คะแนนการให้บริการ</div>
                   <div class="_dp-f _jtfct-ct">
                     <fieldset class="rating">
@@ -143,7 +159,7 @@
                           title="1 star"/>
                     </fieldset>
                   </div>
-                </div>
+                </div> -->
                 <!-- End Step 3-->
               </div>
             </div>
