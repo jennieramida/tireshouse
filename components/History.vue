@@ -2,8 +2,73 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        history
+        <div class="_cl-darkred _fw-500">
+          {{ date }}, {{ time }}
+        </div>
+        <div class="row _pdv-8px _pdt-16px-md">
+          <div class="col-md-2 col-12">
+            <div>
+              ข้อมูลยาง
+            </div>
+          </div>
+          <div class="col _pdv-12px _pdv-0px-md">
+            <div>
+              {{ item }}, {{ brand }}, Insurance {{ insurance }}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2 col-12">
+            <div>
+              ข้อมูลช่าง
+            </div>
+          </div>
+          <div class="col _pdv-12px _pdv-0px-md">
+            <div>
+              {{ technician }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+ props: {
+    date: {
+      type: String,
+      default: '29 กรกฎาคม 2560'
+    },
+    time: {
+      type: String,
+      default: '18:00'
+    },
+    item: {
+      type: String,
+      default: '195/65R15 PRIMACY 3 ST'
+    },
+    brand: {
+      type: String,
+      default: 'Michelin'
+    },
+    insurance: {
+      type: String,
+      default: '56789065'
+    },
+    technician: {
+      type: String,
+      default: 'ชื่อช่าง'
+    }
+}
+}
+</script>
+
+
+<style lang="scss" scoped>
+$primary: #941e2e;
+._cl-darkred {
+  color: $primary;
+}
+</style>
