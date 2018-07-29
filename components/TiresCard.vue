@@ -55,7 +55,7 @@
           </div>
         </div>
         <!-- Back Tire -->
-        <div 
+        <!-- <div 
           :class="hasBack === true" 
           class="_w-100pct row">
           <div class="col-3"/>
@@ -84,7 +84,7 @@
             </div>
           
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- Mobile -->
