@@ -5,10 +5,10 @@ exports.search = (req,res,next) => {
     // res.end();
   Tires.searchTireTypeFront(req.query.width_f, req.query.series_f, req.query.diameter_f)
   .then(front_wheel => {
-    (req.query.width_b !== '' && req.query.series_b!=='' && req.query.diameter_b!=='')?
+    const array_match_data = {};
+    // (req.query.width_b !== '' && req.query.series_b!=='' && req.query.diameter_b!=='')?
     (Tires.searchTireTypeBack(req.query.width_b, req.query.series_b, req.query.diameter_b)
     .then(back_wheel=> {
-      const array_match_data = {};
       /* make brand on front wheel */
       for(var i=0;i<front_wheel.length;i+=1){
         if(!(front_wheel[i].brand in array_match_data)){
@@ -32,7 +32,8 @@ exports.search = (req,res,next) => {
       
       res.json(array_match_data);
     })
-    .catch(next)):res.json([front_wheel]);
+    .catch(next))
+    // :res.json([array_match_data]);//else condition
   })
   .catch(next);
   

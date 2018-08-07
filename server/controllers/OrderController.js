@@ -19,3 +19,26 @@ exports.add = (req,res,next) => {
     console.log(error);
   });
 }
+
+exports.getOrder = (req,res,next) => {
+  // const orderId = req.body.orderId;
+  const userId = req.user.userId;
+  
+  Order.getOrderDetail(userId)
+  .then( ouput => {
+    res.json(output);
+  })
+}
+
+exports.getLastOrder = (req,res,next) => {
+  const userId = req.user.userId;
+
+  Order.getLastOrderDetail(userId)
+    .then(ouput => {
+      res.json(output);
+    })
+}
+
+exports.updateOrder = (req,res,next) => {
+  
+}
