@@ -1,6 +1,7 @@
 const Order = require('../models/OrderControl');
 
 exports.add = (req,res,next) => {
+
   const bodyProducts = req.body.products;
   const bodyAddress = req.body.address;
   const userid = req.user.userId;
@@ -19,7 +20,6 @@ exports.add = (req,res,next) => {
     console.log(error);
   });
 }
-
 exports.getOrder = (req,res,next) => {
   // const orderId = req.body.orderId;
   const userId = req.user.userId;
@@ -42,3 +42,4 @@ exports.getLastOrder = (req,res,next) => {
 exports.updateOrder = (req,res,next) => {
   
 }
+
