@@ -1,4 +1,5 @@
 const db = require('../db');
+const moment = require('moment');
 
 const User = {};
 
@@ -43,6 +44,32 @@ const User = {};
 //     return transaction.batch([q1, q2, q3]);
 //   })
 // );
+User.createCustomer = (username, password, firstname, lastname, email, mobile, birthday, address, credit_id) => (
+  db.oneOrNone('INSERT INTO customer (username, password, firstname, lastname, email, mobile, birthday, address, credit_id, created_date)	VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)',
+    [username, password, firstname, lastname, email, mobile, birthday, address, credit_id, moment().format('YYYY-MM-DD HH:mm:ss')])
+)
+
+User.createTechnician = (username, password, firstname, lastname, email, mobile, birthday, address, credit_id) => (
+  db.oneOrNone('INSERT INTO technician (username, password, firstname, lastname, email, mobile, birthday, address, credit_id, created_date)	VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)',
+    [username, password, firstname, lastname, email, mobile, birthday, address, credit_id, moment().format('YYYY-MM-DD HH:mm:ss')])
+)
+
+User.findCustomerByUsername = username => (
+  db.oneOrNone('SELECT * FROM customer WHERE username=$1', [username])
+)
+
+User.findTechnicianByUsername = username => (
+  db.oneOrNone('SELECT * FROM technician WHERE username=$1', [username])
+)
+
+User.findCustomerById = id => (
+  db.oneOrNone('SELECT * FROM customer WHERE id=$1',[id])
+)
+
+User.findTechnicianById = id => (
+  db.manyOrNone('SELECT * FROM technician WHERE id=$1',[id])
+)
+
 User.create = (user,id) => (
   db.one('INSERT INTO users (username, password, first_name, last_name, email, mobile_num, status, birthday, address) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING username, password',
   [

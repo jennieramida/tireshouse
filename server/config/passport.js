@@ -8,14 +8,25 @@ jwtOptions.secretOrKey = process.env.JWT_SECRET;
 
 module.exports = (passport) => {
   const strategy = new JwtStrategy(jwtOptions, (jwtPayload, cb) => {
-      User.findById(jwtPayload.id)
-      .then((user) => {
-        console.log(user)
-        if (user) {
-          cb(null, user);
+    console.log(jwtPayload);
+      User.findCustomerById(jwtPayload.id)
+      .then((userCustomer) => {
+        if (userCustomer) {
+          userCustomer.flag = 'customer';
+          cb(null, userCustomer);
         }
         else {
-          cb(null, false);
+          User.findTechnicianById(jwtPayload.id)
+          .then((userTechnician)=>{
+            if (userTechnician) {
+              userTechnician.flag = 'technician';
+              cb(null, userTechnician);
+            }
+            else {
+              cb(null, false);
+            }
+          })
+            .catch(error => cb(error));
         }
       })
       .catch(error => cb(error));
