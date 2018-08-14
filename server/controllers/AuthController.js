@@ -23,7 +23,11 @@ exports.signin = (req, res, next) => {
             username: user.username,
             token
           });
+        } else {
+          res.json('Incorrect Password')
         }
+      } else {
+        res.json('Incorrect Username or Password')
       }
     })
     .catch(next);
@@ -41,7 +45,11 @@ exports.signin = (req, res, next) => {
               username: user.username,
               token
             });
+          } else {
+            res.json('Incorrect Password')
           }
+        } else {
+          res.json('Incorrect Username or Password')
         }
       })
       .catch(next);
@@ -50,8 +58,7 @@ exports.signin = (req, res, next) => {
 
 exports.signup = (req, res, next) => {
   console.log(req.body);
-  // username, password, firstname, lastname, email, mobile, birthday, address, credit_id
-  // const newUser = req.body.user;
+ 
   const flagUser = req.body.flag;
   const usernameUser = req.body.username
   const passwordUser = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync());

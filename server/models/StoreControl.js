@@ -3,7 +3,7 @@ const Store = {};
 const moment = require('moment');
 
 Store.insertStore = (name, address, phone,) => (
-  db.oneOrNone('INSERT INTO store ( name, address, phone, created_date )	VALUES($1,$2,$3,$4)',
+  db.oneOrNone('INSERT INTO store ( name, address, phone, created_time )	VALUES($1,$2,$3,$4)',
     [name, address, phone, moment().format('YYYY-MM-DD HH:mm:ss')])
 )
 

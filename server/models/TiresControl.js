@@ -1,14 +1,15 @@
 const db = require('../db');
-const Tire = {};
+const Tires = {};
+const moment = require('moment');
 
-Tire.searchTireTypeFront = (width, series, center_wheel) => (
+Tires.searchTireTypeFront = (width, series, center_wheel) => (
   db.many("SELECT * FROM tire  WHERE tire_width=$1 AND tire_series=$2 AND center_wheel=$3 ", [width, series, center_wheel])
 )
-Tire.searchTireTypeBack = (width, series, center_wheel) => (
+Tires.searchTireTypeBack = (width, series, center_wheel) => (
   db.many("SELECT * FROM tire  WHERE tire_width=$1 AND tire_series=$2 AND center_wheel=$3", [width, series, center_wheel])
 )
 
-Tire.searchInfo = () => (
+Tires.searchInfo = () => (
   db.tx(t => {
     // creating a sequence of transaction queries:
     const q1 = t.manyOrNone('SELECT DISTINCT tire_width FROM tire');
@@ -19,14 +20,22 @@ Tire.searchInfo = () => (
   })
 )
 
-Tire.insertTire = () => (
-  db.oneOrNone('INSERT INTO tires (brand, model, name, width, series, size, price, created_date) VALUES($1, $2, $3, $4, $5, $6, $7, $8)',
+Tires.insertTire = (brand, model, name, width, series, size, price) => (
+  db.oneOrNone('INSERT INTO tires (brand, model, name, width, series, size, price, created_time) VALUES($1, $2, $3, $4, $5, $6, $7, $8)',
     [brand, model, name, width, series, size, price, moment().format('YYYY-MM-DD HH:mm:ss')])
 )
 
-Tire.updateTire = (brand, model, name, width, series, size, price, id) => (
-  db.one('UPDATE tires SET brand=$1, model=$2, name=$3, width=$4, series=$5, size=$6, price=$7 WHERE id=$8',
+Tires.updateTire = (brand, model, name, width, series, size, price, id) => (
+  db.one('UPDATE tires SET brand=$1, model=$2, name=$3, width=$4, series=$5, size=$6, price=$7 WHERE id=$8 RETURNING id',
     [brand, model, name, width, series, size, price, id])
 )
 
-module.exports = Tire;
+Tires.getTire =() => (
+  db.manyOrNone('SELECT * FROM tires')
+)
+
+Tires.deleteTire = id => (
+  db.result('DELETE FROM tires WHERE id=$1', [id])
+)
+
+module.exports = Tires;

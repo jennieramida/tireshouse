@@ -35,12 +35,12 @@ Order.getLastOrderDetail = (userid) => {
 }
 /*NEW*/
 Order.insertOrder = (customer_id, location, Zone, lat, long, order_date) => (
-  db.oneOrNone('INSERT INTO order_record (customer_id, process_id,  amount, order_date_time, location, zone_id, latitude, longitude, created_date) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)',
+  db.oneOrNone('INSERT INTO order_record (customer_id, process_id,  amount, order_date_time, location, zone_id, latitude, longitude, created_time) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)',
     [customer_id, process_id,  amount, order_date_time, location, zone_id, latitude, longitude, moment().format('YYYY-MM-DD HH:mm:ss')])
 )
 
 Order.updateOrder = (customer_id, process_id,  amount, order_date_time, location, zone_id, latitude, longitude) => (
-  db.one('UPDATE SET  customer_id=$1, process_id=$2, amount=$3, order_date_time=$4, location=$5, zone_id=$6, latitude=$7, longitude=$8, created_date=$9, updated_time=$10 WHERE id=$11',
+  db.one('UPDATE SET  customer_id=$1, process_id=$2, amount=$3, order_date_time=$4, location=$5, zone_id=$6, latitude=$7, longitude=$8, created_time=$9, updated_time=$10 WHERE id=$11',
     [customer_id, process_id, amount, order_date_time, location, zone_id, latitude, longitude, moment().format('YYYY-MM-DD HH:mm:ss'), id])
 )
 

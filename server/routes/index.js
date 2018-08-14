@@ -5,7 +5,9 @@ const auth = require('./auth');
 const api = require('./api');
 
 router.use('/auth', auth);
-router.use('/api', passport.authenticate('jwt', { session: false }), api);
+router.use('/customerapi', passport.authenticate('jwtcust', { session: false }), api);
+router.use('/technicianapi', passport.authenticate('jwttech', { session: false }), api);
+
 router.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', '..', 'dist', 'index.html'));
 });

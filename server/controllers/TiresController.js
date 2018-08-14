@@ -59,3 +59,52 @@ exports.info = (req,res,next) => {
   })
   .catch(next);
 }
+
+exports.getTire = (req, res, next) => {
+  Tires.getTire()
+  .then(getOutput => {
+    res.json(getOutput);
+  })
+  .catch(next);
+}
+
+exports.insertTire = (req, res, next) => {
+  const brandTire = req.body.brand;
+  const modelTire = req.body.model;
+  const nameTire = req.body.name;
+  const widthTire = req.body.width;
+  const seriesTire = req.body.series;
+  const sizeTire = req.body.size;
+  const priceTire = req.body.price;
+  Tires.insertTire(brandTire, modelTire, nameTire, widthTire, seriesTire, sizeTire, priceTire)
+  .then( insertOutput => {
+    res.json("end");
+  })
+  .catch(next);
+}
+
+exports.updateTire = (req, res, next) => {
+  const brandTire = req.body.brand;
+  const modelTire = req.body.model;
+  const nameTire = req.body.name;
+  const widthTire = req.body.width;
+  const seriesTire = req.body.series;
+  const sizeTire = req.body.size;
+  const priceTire = req.body.price;
+  const idTire = req.body.id;
+  Tires.updateTire(brandTire, modelTire, nameTire, widthTire, seriesTire, sizeTire, priceTire, idTire)
+  .then(updateOutput => {
+    res.json("end");
+  })
+ .catch(next);
+}
+
+exports.deleteTire = (req, res, next) => {
+  const idTire = req.body.id;
+  Tires.deleteTire(idTire)
+  .then( deleteOutput => {
+    res.json(deleteOutput);
+  })
+  .catch(next);
+}
+

@@ -3,7 +3,7 @@ const Process = {};
 const moment = require('moment');
 
 Process.insertProcess = (name, value) => (
-  db.oneOrNone('INSERT INTO process ( name, value, created_date) VALUES ($1,$2,$3)',
+  db.oneOrNone('INSERT INTO process ( name, value, created_time) VALUES ($1,$2,$3)',
     [name, value, moment().format('YYYY-MM-DD HH:mm:ss')])
 )
 
