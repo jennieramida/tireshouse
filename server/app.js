@@ -17,5 +17,5 @@ app.use(passport.initialize());
 app.use('/static', express.static(path.resolve(__dirname, 'storage', 'public')));
 app.use(routes);
 app.use(errorHandler);
-
+console.log("hello")
 module.exports = app;
