@@ -14,10 +14,7 @@
           <div class="_fs-5-md _fs-6 _fw-300">jennieramida@gmail.com</div>
         </div>
         <div class=" _bdbtlrd-8px _bdbtrrd-8px _pdv-32px-md _pdv-16px _cl-dark bg-white _tal-ct _fs-4 _fw-400">
-          <div 
-            class="_fs-5-md _fs-6  _dp-b _pdv-4px-md _pdv-1px _fw-300" 
-            @click="isShowing = 'order'"> <p class="hover-underline-animation">ติดตามสถานะการเปลี่ยนยาง</p>
-          </div>
+         
           <div 
             class="_fs-5-md _fs-6  _dp-b _pdv-4px-md _pdv-1px _fw-300" 
             @click="isShowing = 'history'">  <p class="hover-underline-animation">ประวัติการทำรายการเปลี่ยนยาง</p>
@@ -34,11 +31,11 @@
         </div>
       </div>
       <div class="col-md-8 col-12">
-        <div v-show="isShowing === 'order'">
-          <div>
-            <div class="_fs-3-md _tal-l-md _tal-ct _fs-4 _pdbt-24px _pdt-32px _pdt-0px-md">ติดตามสถานะการเปลี่ยนยาง</div>
-            <!-- ถ้าไม่มีการทำรายการมาก่อน Show this one -->
-            <!-- <div>
+       
+        <div v-show="isShowing === 'history'">
+          <div class="_fs-3-md _tal-l-md _tal-ct _fs-4 _pdbt-24px _pdt-32px _pdt-0px-md">ประวัติการทำรายการเปลี่ยนยาง</div>
+          <!-- ถ้าไม่มีการทำรายการมาก่อน Show this one -->
+          <!-- <div>
             <div class="_cl-darkred _tal-ct _pdt-128px _fs-4"> คุณยังไม่มีรายการเปลี่ยนยาง</div>
             <div class="_dp-f _jtfct-ct">
               <nuxt-link to="/booking" >
@@ -46,55 +43,84 @@
               </nuxt-link>
             </div>
           </div> -->
-            <div>
-              <div class="row _mgv-32px">
-                <div class="col-12 _dp-f _jtfct-ct">
-                  <ul class="progressbar _w-100pct _fs-6-md ">
-                    <!-- list will contain class="active" if active -->
-                    <li>รอยืนยันช่าง</li>
-                    <li>รายละเอียดช่าง</li>
-                    <li>ให้คะแนน</li>
-                  </ul>
-                </div>
-                <!-- Step1 -->
-                <div class="col-12">
-                  <div class="_fs-5 _tal-ct _pdt-64px _pdbt-24px _cl-darkred">รายละเอียดรายการเปลี่ยนยาง</div>
-                </div>
-                <div class="col-12">
-                  <div class="row">
-                    <div class="col-md-4 col-3 _cl-darkred _pdl-0px _tal-r _lh-150pct">
-                      <div>สถานที่</div>
+          <div 
+            v-for="(item,i) in history"
+            :key="i" 
+            class="_pdv-24px bio-accordion">
+            <input 
+              :id="i" 
+              type="checkbox">
+            <label :for="i">
+              <history
+                :date="item.date"
+                :time="item.time"
+                :item="item.item"
+                :brand="item.brand"
+                :insurance="item.insurance"
+                :technician="item.technician"
+            /></label>
+           
+            <div class="bio-accordion-content">
+              <div>
+                <div class="_fs-5-md _tal-l-md _tal-ct _fs-4 _pdbt-24px _pdt-32px ">ติดตามสถานะการเปลี่ยนยาง</div>
+                <!-- ถ้าไม่มีการทำรายการมาก่อน Show this one -->
+                <!-- <div>
+            <div class="_cl-darkred _tal-ct _pdt-128px _fs-4"> คุณยังไม่มีรายการเปลี่ยนยาง</div>
+            <div class="_dp-f _jtfct-ct">
+              <nuxt-link to="/booking" >
+                <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">เปลี่ยนยางรถยนต์</button>
+              </nuxt-link>
+            </div>
+          </div> -->
+                <div>
+                  <div class="row _mgv-32px">
+                    <div class="col-12 _dp-f _jtfct-ct">
+                      <ul class="progressbar _w-100pct _fs-6-md ">
+                        <!-- list will contain class="active" if active -->
+                        <li>รอยืนยันช่าง</li>
+                        <li>รายละเอียดช่าง</li>
+                        <li>ให้คะแนน</li>
+                      </ul>
                     </div>
-                    <div class="col-md-6 col-8 _pdr-0px  _tal-l _lh-150pct">
-                      <div>ไอดีโอ คิว พญาไท 138 ถนนพญาไท แขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400</div>
+                    <!-- Step1 -->
+                    <div class="col-12">
+                      <div class="_fs-5 _tal-ct _pdt-64px _pdbt-24px _cl-darkred">รายละเอียดรายการเปลี่ยนยาง</div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4 col-3 _cl-darkred _pdl-0px _tal-r _lh-150pct">
-                      <div>วัน</div>
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col-md-4 col-3 _cl-darkred _pdl-0px _tal-r _lh-150pct">
+                          <div>สถานที่</div>
+                        </div>
+                        <div class="col-md-6 col-8 _pdr-0px  _tal-l _lh-150pct">
+                          <div>ไอดีโอ คิว พญาไท 138 ถนนพญาไท แขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400</div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4 col-3 _cl-darkred _pdl-0px _tal-r _lh-150pct">
+                          <div>วัน</div>
+                        </div>
+                        <div class="col-md-6 col-8 _pdr-0px  _tal-l _lh-150pct">
+                          <div>4 กรกฎาคม 2560</div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4 col-3 _cl-darkred _pdl-0px _tal-r _lh-150pct">
+                          <div>เวลา</div>
+                        </div>
+                        <div class="col-md-6 col-8 _pdr-0px  _tal-l _lh-150pct">
+                          <div>18:00 น.</div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-md-6 col-8 _pdr-0px  _tal-l _lh-150pct">
-                      <div>4 กรกฎาคม 2560</div>
+                    <div class="col-12 _tal-ct _fw-300 _pdt-24px _fs-7">
+                      หากต้องการเปลี่ยนแปลงรายละเอียด กรุณาติดต่อ<a 
+                        href="tel:" 
+                        class="_cl-darkred">            Tireshouse</a>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4 col-3 _cl-darkred _pdl-0px _tal-r _lh-150pct">
-                      <div>เวลา</div>
-                    </div>
-                    <div class="col-md-6 col-8 _pdr-0px  _tal-l _lh-150pct">
-                      <div>18:00 น.</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 _tal-ct _fw-300 _pdt-24px _fs-7">
-                  หากต้องการเปลี่ยนแปลงรายละเอียด กรุณาติดต่อ<a 
-                    href="tel:" 
-                    class="_cl-darkred">            Tireshouse</a>
-                </div>
-                <!-- End Step 1 -->
+                    <!-- End Step 1 -->
                 
-                <!-- Step 2 -->
-                <!-- <div class="col-12">
+                    <!-- Step 2 -->
+                    <!-- <div class="col-12">
                   <div class="_fs-5 _tal-ct _pdt-64px _pdbt-24px _cl-darkred">รายละเอียดช่าง</div>
                 </div>
                 <div class="col-6 _cl-darkred _pdl-0px _tal-r _lh-150pct">
@@ -110,10 +136,10 @@
                     href="tel:" 
                     class="_cl-darkred">            Tireshouse</a>
                 </div> -->
-                <!-- End Step 2 -->
+                    <!-- End Step 2 -->
 
-                <!-- Step 3 -->
-                <!-- <div class="col-12">
+                    <!-- Step 3 -->
+                    <!-- <div class="col-12">
                   <div class="_fs-5 _tal-ct _pdt-64px _pdbt-24px _cl-darkred">กรุณาให้คะแนนการให้บริการ</div>
                   <div class="_dp-f _jtfct-ct">
                     <fieldset class="rating">
@@ -160,34 +186,11 @@
                     </fieldset>
                   </div>
                 </div> -->
-                <!-- End Step 3-->
+                    <!-- End Step 3-->
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div v-show="isShowing === 'history'">
-          <div class="_fs-3-md _tal-l-md _tal-ct _fs-4 _pdbt-24px _pdt-32px _pdt-0px-md">ประวัติการทำรายการเปลี่ยนยาง</div>
-          <!-- ถ้าไม่มีการทำรายการมาก่อน Show this one -->
-          <!-- <div>
-            <div class="_cl-darkred _tal-ct _pdt-128px _fs-4"> คุณยังไม่มีรายการเปลี่ยนยาง</div>
-            <div class="_dp-f _jtfct-ct">
-              <nuxt-link to="/booking" >
-                <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">เปลี่ยนยางรถยนต์</button>
-              </nuxt-link>
-            </div>
-          </div> -->
-          <div 
-            v-for="(item,i) in history"
-            :key="i" 
-            class="_pdv-24px">
-            <history
-              :date="item.date"
-              :time="item.time"
-              :item="item.item"
-              :brand="item.brand"
-              :insurance="item.insurance"
-              :technician="item.technician"
-            />
           </div>
         </div>
         <div v-show="isShowing === 'profile'">
@@ -246,7 +249,7 @@ import History from '~/components/History.vue'
 export default {
   components: {History},
   data: () => ({
-    isShowing: 'order',
+    isShowing: 'history',
      history: [
        {
       date: '23 กรกฎาคม 2560',
