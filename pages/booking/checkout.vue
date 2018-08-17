@@ -21,8 +21,8 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-12 col-md-6 _pdbt-48px _pdbt-0px-md">
+    <div class="row _dp-f _jtfct-ct">
+      <div class="col-12 col-md-8 _pdbt-48px _pdbt-0px-md">
         <div class=" _fs-4 _cl-black _pdbt-24px">รายละเอียดลูกค้า</div>
         <div class="_pdv-24px">ชื่อ-นามสกุล</div>
         <div class="bio-input">
@@ -60,58 +60,15 @@
             กดที่นี่เพื่อเข้าสู่ระบบ</nuxt-link>
           เพื่อติดตามการบริการ
         </div>
-      </div>
+     
       
-      <div class="col-12 col-md-6">
-        <div class="row">
-          <div class="col-md-6 col-7 _fs-4 _cl-black _pdbt-24px">สถานที่และวันเวลา</div>
-          <div class="col-md-6 col-5 _fs-5 _pdt-4px _pdt-0px-md _cl-black _tal-r _pdbt-24px"><nuxt-link 
-            to="/booking/place">
-            แก้ไข
-          </nuxt-link></div>
-        </div>
-        <div class="_mgv-32px _bgcl-accent">
-          <no-ssr>
-            <GmapMap
-              :center="{lat:13.7563, lng:100.5018}"
-              :zoom="10"
-              map-type-id="roadmap"
-              style="width: 512px; height:256px"
-              class="_w-100pct"
-            >
-              <GmapMarker 
-                v-for="(marker, index) in markers"
-                :key="index"
-                :position="marker.position"
-              />
-            </GmapMap>
-          </no-ssr>
-        </div>
-        <div class="row">
-          <div class="_pdt-12px _fs-5 col-md-3 col-4">
-            <fa-icon 
-              :icon="['fal','map-marker-alt']" 
-              class="_cl-darkred _mgr-8px _fw-600"/>สถานที่</div>
-          <div class="col-md-9 col-8 _pdt-12px _lh-150pct">ไอดีโอ คิว พญาไท 138 ถนนพญาไท แขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400</div>
-          <div class="_pdt-12px _fs-5 col-md-3 col-4">
-            <fa-icon 
-              :icon="['fal','calendar']" 
-              class="_cl-darkred _mgr-8px _fw-600"/>วัน</div>
-          <div class="col-md-9 col-8 _pdt-12px _lh-150pct">4 กรกฎาคม 2560</div>
-          <div class="_pdt-12px _fs-5 col-md-3 col-4">
-            <fa-icon 
-              :icon="['fal','clock']" 
-              class="_cl-darkred _mgr-8px _fw-600"/>เวลา</div>
-          <div class="col-md-9 col-8 _pdt-12px _lh-150pct">18:00 น.</div>
-          <div class="col">
-            <div 
-              v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
-              class="_dp-f _jtfct-ct _pdv-24px _pdt-48px _pdt-24px-md">
-              <nuxt-link to="/booking/payment" >
-                <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">ชำระเงิน</button>
-              </nuxt-link>
-            </div>
-          </div>
+  
+        <div 
+          v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
+          class="_dp-f _jtfct-ct _pdv-24px _pdt-48px _pdt-24px-md">
+          <nuxt-link to="/booking/payment" >
+            <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">ยืนยัน</button>
+          </nuxt-link>
         </div>
       </div>
     </div>
@@ -122,16 +79,7 @@
 
 
 <script>
-import * as VueGoogleMaps from '~/node_modules/vue2-google-maps/src/main'
-export default{
-  data: () =>  ({
-      place: null,
-      center: {lat:13.7563, lng:100.5018},
-      markers: [{
-        position: {lat: '', lng: ''}
-      }],
-  }),
-}
+
 </script>
 
 

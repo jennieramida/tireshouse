@@ -23,57 +23,50 @@
 
     <div class="row">
       <div class="col-12 col-md-6">
-        <no-ssr>
-          <GmapMap
-            :center="{lat:13.7563, lng:100.5018}"
-            :zoom="10"
-            map-type-id="roadmap"
-            class="map-height map-width"
-          >
-            <GmapMarker 
-              v-for="(marker, index) in markers"
-              :key="index"
-              :position="marker.position"
-            />
-          </GmapMap>
-        </no-ssr>
+     
+        <div class="_pdv-24px">ค้นหาสถานที่ </div>
+        <div class="bio-input">
+          <input 
+            type="text" 
+            placeholder="ค้นหาสถานที่">
+          
+        </div>
+        <div class="_pdv-24px">
+
+          <div class="_bgcl-accent _h-256px"> supposed to be map</div>
+        </div>
       </div>
       <div class="col-12 col-md-6">
-        <div class="col-12">
-          <div class="_pdv-12px _pdt-48px _pdt-0px-md">สถานที่</div>
-          <div class="bio-input">
-            <no-ssr>
-              <gmap-autocomplete 
-                class="_mgh-0px" 
-                @place_changed="setPlace"/>
-            </no-ssr>
-          </div>
+        <div class="_pdv-24px">รายละเอียดสถานที่</div>
+        <div class="bio-input">
+          <input 
+            type="text" 
+            placeholder="กรอกบ้านเลขที่ ถนน">
         </div>
-        <div class="col-12 _mgt-12px">
-          <div class="_pdv-12px">เขต</div>
-          <div class="bio-input">
-            <input 
-              type="text" 
-              placeholder="Type Something">
-          </div>
+
+        <div class="_pdv-24px">เขต</div>
+        <div class="bio-input">
+          <input 
+            type="text" 
+            placeholder="เขต/อำเภอ">
         </div>
-        <div class="col-12 _mgt-12px">
-          <div class="_pdv-12px">จังหวัด</div>
-          <div class="bio-input">
-            <input 
-              type="text" 
-              placeholder="Type Something">
-          </div>
+      
+        <div class="_pdv-24px">จังหวัด</div>
+        <div class="bio-input">
+          <input 
+            type="text" 
+            placeholder="จังหวัด">
+   
         </div>
-        <div class="_dp-f _mgt-12px">
-          <div class="col-6 _dp-ilb">
-            <div class="_pdv-12px">วัน</div>
+        <div class="_dp-f _jtfct-spbtw ">
+          <div class=" _dp-ilb">
+            <div class="_pdv-24px">วัน</div>
             <!-- <div class="bio-input">
               <input 
                 type="text" 
                 placeholder="Type Something">
             </div> -->
-            <div class="bio-input">
+            <div class="bio-input _w-256px">
               <no-ssr>
                 <date-picker 
                   v-model="date" 
@@ -81,23 +74,16 @@
             </div>
          
           </div>
-          <div class="col-6 _dp-ilb">
-            <div class="_pdv-12px">เวลา</div>
-            <div class="bio-input">
+          <div class=" _dp-ilb">
+            <div class="_pdv-24px">เวลา</div>
+            <div class="bio-input _w-256px _pdr-256px">
               <no-ssr>
                 <vue-timepicker :minute-interval="10"/>
               </no-ssr>
             </div>
           </div>
         </div>
-        <div class="col-12 _mgt-12px">
-          <div class="_pdv-12px">รายละเอียดเพิ่มเติม</div>
-          <div class="bio-textarea">
-            <textarea 
-              rows="3" 
-              placeholder="Textarea"/>
-          </div>
-        </div>
+  
         
         <div class="col">
           <div 
@@ -116,7 +102,7 @@
 </template>
 
 <script>
-import * as VueGoogleMaps from '~/node_modules/vue2-google-maps/src/main'
+
 import VueTimepicker from 'vue2-timepicker';
   import datePicker from 'vue-bootstrap-datetimepicker';
   import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
@@ -127,44 +113,13 @@ export default{
       VueTimepicker
     },
   data: () =>  ({
-      place: null,
-      center: {lat:13.7563, lng:100.5018},
-      markers: [{
-        position: {lat: '', lng: ''}
-      }],
+    
       date: new Date(),
        options: {
           format: 'DD/MM/YYYY',
           useCurrent: false
        }
-  }),
-  methods: {
-    setPlace (place) {
-      this.place = place
-      console.log(place)
-      console.log('koalalalla')
-       this.lat = this.place.geometry.location.lat()
-         this.lng = this.place.geometry.location.lng()
-         console.log(this.lat)
-       if (this.place) {
-         this.lat = this.place.geometry.location.lat()
-         this.lng = this.place.geometry.location.lng()
-        this.markers.push({
-          position: {
-            lat: this.lat,
-            lng: this.lng,
-          }
-       
-        })
-
-        // this.center.lat = this.place.geometry.location.lat()
-        // this.center.lng = this.place.geometry.location.lng()
-        // this.dataPlace = this.place
-        // this.place = null;
-      }
-
-    }
-  }
+  })
 }
 </script>
 
@@ -190,20 +145,6 @@ $secondary: #f8f8f9;
 }
 .time-picker {
   width: 14em !important;
-}
-
-.map-height {
-  height: 512px;
-  @include breakpoint(mobile) {
-    height: 300px;
-  }
-}
-
-.map-width {
-  width: 512px;
-  @include breakpoint(mobile) {
-    width: 90vw;
-  }
 }
 
 ._cl-darkred {
@@ -275,5 +216,14 @@ $secondary: #f8f8f9;
   border-color: $primary;
   background: $primary;
   color: white;
+}
+
+.time-picker input.display-time {
+  border: 1px solid #d2d2d2 !important;
+  width: 16em !important;
+  height: 2.2em !important;
+  padding: 0.3em 0.5em !important;
+  font-size: 1em !important;
+  border-radius: 4px !important;
 }
 </style>

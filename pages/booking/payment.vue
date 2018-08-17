@@ -20,14 +20,44 @@
         </div>
       </div>
     </div>
-
+    
     <div class="row">
-      <div class="col-12 col-md-6 _pdbt-48px _pdbt-0px-md">
-        <div class="_fs-4 _cl-black _pdbt-24px">รายการสั่งซื้อ</div>
+    
+
+      <div class="col-12 col-md-6 _pdbt-48px _pdbt-0px-md _pdr-32px">
+        <div class="row">
+          <div class="col-md-6 col-7 _fs-4 _cl-black _pdbt-24px">สถานที่และวันเวลา</div>
+          <div class="col-md-6 col-5 _fs-5 _pdt-4px _pdt-0px-md _cl-black _tal-r _pdbt-24px"><nuxt-link 
+            to="/booking/place">
+            แก้ไข
+          </nuxt-link></div>
+        </div>
+        <div class="_mgv-32px _h-128px _bgcl-accent">
+          MAP
+        </div>
+        <div class="row">
+          <div class="_pdt-12px _fs-5 col-md-3 col-4">
+            <fa-icon 
+              :icon="['fal','map-marker-alt']" 
+              class="_cl-darkred _mgr-8px _fw-600"/>สถานที่</div>
+          <div class="col-md-9 col-8 _pdt-12px _lh-150pct">ไอดีโอ คิว พญาไท 138 ถนนพญาไท แขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400</div>
+          <div class="_pdt-12px _fs-5 col-md-3 col-4">
+            <fa-icon 
+              :icon="['fal','calendar']" 
+              class="_cl-darkred _mgr-8px _fw-600"/>วัน</div>
+          <div class="col-md-9 col-8 _pdt-12px _lh-150pct">4 กรกฎาคม 2560</div>
+          <div class="_pdt-12px _fs-5 col-md-3 col-4">
+            <fa-icon 
+              :icon="['fal','clock']" 
+              class="_cl-darkred _mgr-8px _fw-600"/>เวลา</div>
+          <div class="col-md-9 col-8 _pdt-12px _lh-150pct">18:00 น.</div>
+       
+        </div>
+        <div class="_fs-4 _cl-black _pdv-48px">รายการสั่งซื้อ</div>
         <chosen-product/>
       </div>
 
-      <div class="col-12 col-md-6 _pdbt-48px _pdbt-0px-md">
+      <div class="col-12 col-md-6 _pdbt-48px _pdbt-0px-md _pdl-32px">
         <div class=" _fs-4 _cl-black _pdbt-24px">ช่องทางการชำระเงิน</div>
         <form class="_fs-5 _mgl-16px">
           <div class="bio-radio bio-accordion _pdv-8px">
