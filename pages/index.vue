@@ -6,14 +6,14 @@
         <div class="row _pd-12px">
           <div 
             v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'100px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
-            class="col-12 _cl-darkred _tal-ct _fs-3 _fw-500">
-            บริการเปลี่ยนยางรถยนต์
+            class="col-12 _cl-darkred _tal-ct _fs-2 _fw-500">
+            บริการเปลี่ยน<br>ยางรถยนต์
           </div>
           <div 
             v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'100px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
             class="col-12 _tal-ct _pdt-8px _fw-400 _pdh-48px">
-            ให้บริการเปลี่ยนยางรถยนต์ถึงบ้านคุณ <br>ช่วยทำให้การเปลี่ยนยางรถยนต์
-            <br>เป็นเรื่องง่ายและสะดวกสบายมากยิ่งขึ้น  
+            ให้บริการเปลี่ยนยางรถยนต์ถึงบ้านคุณ ช่วยทำให้การเปลี่ยนยางรถยนต์
+            เป็นเรื่องง่ายและสะดวกสบายมากยิ่งขึ้น  
           </div>
         </div>
         <div class="row _dp-f _jtfct-ct _pst-rlt">
@@ -68,7 +68,9 @@
       </div>
     </div>
     <!-- Step Desktop -->
-    <div class="_dp-b ">
+    <div 
+      id="services"
+      class="_dp-b ">
       <div class="container _mgt-128px _pdt-64px _dp-b _pst-rlt">
         <div class="row _pdt-24px">
           <div class="col-12 col-md-7 _tal-ct _tal-l">
@@ -153,7 +155,9 @@
       </div>
     </div>
     <!-- About -->
-    <div class="container-fluid">
+    <div 
+      id="about"
+      class="container-fluid">
       <div class="row bg-red _mgbt-48px _dp-f-md _alit-ct-md">
         <div class="col-md-6 col-12 _w-100vw tires-h _pdh-0px">
           <div 
