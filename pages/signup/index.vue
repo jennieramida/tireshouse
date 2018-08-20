@@ -4,8 +4,22 @@
       <div class="row">
         <div class="col-4"/>
         <div class="col">
-          <div class="_fs-2 _cl-black _tal-ct _pdt-64px">เข้าสู่ระบบ</div>
-          <div class="_pdt-24px _fs-5 _cl-black _pdbt-8px">อีเมล</div>
+          <div class="_fs-2 _cl-black _tal-ct _pdt-64px">สมัครสมาชิก</div>
+          <div class="_pdv-24px">ชื่อ-นามสกุล</div>
+          <div class="bio-input">
+            <input 
+              type="text" 
+              placeholder="โปรดกรอกชื่อและนามสกุล">
+          </div>
+
+          <div class="_pdv-24px">เบอร์โทรศัพท์</div>
+          <div class="bio-input">
+            <input 
+              type="tel" 
+              placeholder="โปรดกรอกเบอร์โทรศัพท์">
+          </div>
+
+          <div class="_pdv-24px">อีเมล</div>
           <div class="bio-input">
             <input 
               type="email" 
@@ -18,22 +32,19 @@
               type="password"
               placeholder="โปรดกรอกรหัสผ่านใหม่">
           </div>
-          <div class="_pdt-24px _fs-7 _cl-black _pdbt-8px _dp-f _jtfct-spbtw">
-            <div>
+          <div class="_pdt-24px _fs-7 _cl-black _pdbt-8px ">
+            <div>เป็นสมาชิกแล้ว?
               <nuxt-link 
-                to="/reset" 
-                class="_cl-darkred">ลืมรหัสผ่าน</nuxt-link></div>
-            <div>ยังไม่เป็นสมาชิก? 
-              <nuxt-link 
-                to="/signup" 
-                class="_cl-darkred">สมัครสมาชิก</nuxt-link></div>
+                to="/signin" 
+                class="_cl-darkred">เข้าสู่ระบบ</nuxt-link></div>
+     
           </div>
           <div class="_dp-f _jtfct-ct">
             <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">
               <nuxt-link 
                 to="/booking/checkout" 
                 class="_cl-white">
-                เข้าสู่ระบบ
+                สมัครสมาชิก
             </nuxt-link></button>
           </div>
         </div>
