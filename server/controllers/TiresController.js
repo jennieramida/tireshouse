@@ -1,4 +1,5 @@
 const Tires = require('../models/TiresControl');
+const {outputHandler, successHandler} = require('../middlewares')
 
 exports.search = (req,res,next) => {
  //query for test localhost:3000/common/tires/search?widthF=195&seriesF=70&sizeF=14
@@ -8,13 +9,55 @@ exports.search = (req,res,next) => {
   const widthBack = req.query.backtWidth
   const seriesBack = req.query.backtSeries
   const sizeBack = req.query.backSize
-  
-  Tires.searchTireType(widthFront, seriesFront, sizeFront)
-  .then(getOutputFront => {
-    // console.log(getOutputFront);
-    res.json(getOutputFront);
-  })
-  .catch(next);
+  const arrayMatchData = {};
+  if(widthBack === "" || seriesBack === "" || sizeBack ==="" ){
+    Tires.searchTireType(widthFront, seriesFront, sizeFront)
+    .then(getOutputFront => {
+      for (var i = 0; i < getOutputFront.length; i += 1) {
+        if (!(getOutputFront[i].brand in arrayMatchData)) {
+          arrayMatchData[getOutputFront[i].brand] = { "front": []};
+        }
+      }
+      for (var i = 0; i < getOutputFront.length; i += 1) {
+        arrayMatchData[getOutputFront[i].brand].front.push(getOutputFront[i])
+      }
+      // console.log(getOutputFront);
+      res.json(outputHandler(arrayMatchData));
+    })
+    .catch(next);
+  } else {
+    Tires.searchTireType(widthFront, seriesFront, sizeFront)
+      .then(getOutputFront => {
+        
+        Tires.searchTireType(widthFront, seriesFront, sizeFront)
+          .then(getOutputBack => {
+            // console.log(getOutputFront);
+            for(var i=0; i< getOutputFront.length; i+=1){
+              if (!(getOutputFront[i].brand in arrayMatchData)) {
+                arrayMatchData[getOutputFront[i].brand] = {"front":[],"back":[]};
+              }
+            }
+            for (var i = 0; i < getOutputBack.length; i += 1) {
+              if (!(getOutputBack[i].brand in arrayMatchData)) {
+                arrayMatchData[getOutputBack[i].brand] = { "front": [], "back": [] };
+              }
+            }
+
+            for(var i=0; i<getOutputFront.length; i+=1) {
+              arrayMatchData[getOutputFront[i].brand].front.push(getOutputFront[i])
+            }
+
+            for (var i = 0; i < getOutputBack.length; i += 1) {
+              arrayMatchData[getOutputBack[i].brand].back.push(getOutputBack[i])
+            }
+
+           
+            res.json(outputHandler(arrayMatchData));
+          })
+          .catch(next);
+      })
+      .catch(next);
+  }
   // if (req.query.width_f == '' && req.query.series_f == '' && req.query.size_f == ''){
   //   if (req.query.width_b !== '' && req.query.series_b !== '' && req.query.size_b !== '') {
   //     Tires.searchTireType(req.query.width_b, req.query.series_b, req.query.size_b)
@@ -81,8 +124,7 @@ exports.info = (req,res,next) => {
     // for (var i = 0; i < infoOutput[2].length; i += 1) {
     //   resInfoOutput['size'].push(infoOutput[2][i].size);
     // }
-    // console.log(resInfoOutput)
-    res.json(infoOutput);
+    res.json(outputHandler(infoOutput)) 
   })
   .catch(next);
 }
@@ -90,7 +132,7 @@ exports.info = (req,res,next) => {
 exports.getTire = (req, res, next) => {
   Tires.getTire()
   .then(getOutput => {
-    res.json(getOutput);
+    res.json(outputHandler(getOutput));
   })
   .catch(next);
 }
@@ -105,7 +147,7 @@ exports.insertTire = (req, res, next) => {
   const priceTire = req.body.price;
   Tires.insertTire(brandTire, modelTire, nameTire, widthTire, seriesTire, sizeTire, priceTire)
   .then( insertOutput => {
-    res.json("end");
+    res.json(successHandler('insert'));
   })
   .catch(next);
 }
@@ -121,7 +163,7 @@ exports.updateTire = (req, res, next) => {
   const idTire = req.body.id;
   Tires.updateTire(brandTire, modelTire, nameTire, widthTire, seriesTire, sizeTire, priceTire, idTire)
   .then(updateOutput => {
-    res.json("end");
+    res.json(successHandler("update"));
   })
  .catch(next);
 }
@@ -130,7 +172,7 @@ exports.deleteTire = (req, res, next) => {
   const idTire = req.body.id;
   Tires.deleteTire(idTire)
   .then( deleteOutput => {
-    res.json(deleteOutput);
+    res.json(successHandler("delete"));
   })
   .catch(next);
 }

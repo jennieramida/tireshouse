@@ -2,41 +2,23 @@ const db = require('../db');
 const Order = {};
 const moment = require('moment');
 
-/* OLD*/ 
-Order.addProcessTech = (userid, address) => (
-  db.oneOrNone('INSERT INTO process_tech (name, date, status ) VALUES ($1, $2, $3 ) RETURNING processtech_id',
-    ['', moment().format('YYYY-MM-DD HH:mm:ss'),'สินค้าใหม่'] )
+/*NEW*/
+Order.insertOrder = (customer_id, location, latitude, longitude, order_date_time) => (
+  db.oneOrNone('INSERT INTO order_record (customer_id,  location, latitude, longitude, order_date_time, created_time) VALUES ($1,$2,$3,$4,$5,$6) RETURNING id',
+    [customer_id, location, latitude, longitude, order_date_time, moment().format('YYYY-MM-DD HH:mm:ss')])
 )
 
-Order.addOrder = (userid, products, processtech_id) => (
+Order.insertOrderDetail = (data, order_id ) => (
   db.tx(t => {
     // creating a sequence of transaction queries:
-    const queries = products.map( (prod) => {
+    const queries = data.map((dt) => {
       return t.one(
-        'INSERT INTO orders (user_id, tire_id, process_id, amount, price) VALUES ($1, $2, $3, $4, $5) RETURNING order_id ',
-        [userid, prod.id, processtech_id.processtechId, prod.amount, prod.price]);
+        'INSERT INTO order_detail (order_id, tire_id, amount) VALUES ($1, $2, $3 ) RETURNING id',
+        [order_id, dt.tireId, dt.amount]);
     });
-
-    // t.one('INSERT');
-    
-     // returning a promise that determines a successful transaction:
+      // returning a promise that determines a successful transaction:
     return t.batch(queries); // all of the queries are to be resolved;
   })
-)
-
-Order.getOrderDetail = ( userid) => {
-  db.manyOrNone('SELECT * FROM process_tech as Proc, Orders as Ord WHERE Proc.processtech_id=Ord.process_id AND Ord.user_id=$1 ',
-  [ userid] )
-}
-
-Order.getLastOrderDetail = (userid) => {
-  db.manyOrNone('process_tech as Proc, Orders as Ord WHERE Proc.processtech_id=Ord.process_id AND Ord.user_id=$1 AND status=$1',
-    [userid,'สินค้าใหม่'])
-}
-/*NEW*/
-Order.insertOrder = (customer_id, location, Zone, lat, long, order_date) => (
-  db.oneOrNone('INSERT INTO order_record (customer_id, process_id,  amount, order_date_time, location, zone_id, latitude, longitude, created_time) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)',
-    [customer_id, process_id,  amount, order_date_time, location, zone_id, latitude, longitude, moment().format('YYYY-MM-DD HH:mm:ss')])
 )
 
 Order.updateOrder = (customer_id, process_id,  amount, order_date_time, location, zone_id, latitude, longitude) => (
@@ -44,13 +26,22 @@ Order.updateOrder = (customer_id, process_id,  amount, order_date_time, location
     [customer_id, process_id, amount, order_date_time, location, zone_id, latitude, longitude, moment().format('YYYY-MM-DD HH:mm:ss'), id])
 )
 
-Order.updateTechnicianInOrder = (id, technician_id) => (
-  db.one('UPDATE SET technician_id=$1, updated_time=$2 WHERE id=$3',
-    [id, moment().format('YYYY-MM-DD HH:mm:ss'), technician_id])
+Order.cancelOrder = (order_id) => (
+  db.tx ( t=> {
+    const q1 = t.result('DELETE FROM order_record WHERE id=$1',[prder_id])
+    const q2 = t.result('DELETE FROM process_history WHERE order_id=$1 ',[order_id])
+    const q3 = t.result('DELETE FROM order_detail WHERE order_id=$1 ', [order_id])
+    return t.batch([q1, q2, q3]);
+  })
 )
-
-// Order.insertOrderDetail = () => (
-//   // db.oneOrNone
+Order.getOrder = () => {
+  db.one('SELECT * FROM orders')
+}
+// Order.updateTechnicianInOrder = (id, technician_id) => (
+//   db.one('UPDATE SET technician_id=$1, updated_time=$2 WHERE id=$3',
+//     [id, moment().format('YYYY-MM-DD HH:mm:ss'), technician_id])
 // )
+
+// Order.updateStaffInoirder
 
 module.exports = Order;

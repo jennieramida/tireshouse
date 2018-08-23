@@ -12,21 +12,12 @@ module.exports = (passport) => {
       User.findCustomerById(jwtPayload.id)
       .then((userCustomer) => {
         if (userCustomer) {
+          console.log(userCustomer)
           userCustomer.flag = 'customer';
           cb(null, userCustomer);
         }
         else {
-          User.findTechnicianById(jwtPayload.id)
-          .then((userTechnician)=>{
-            if (userTechnician) {
-              userTechnician.flag = 'technician';
-              cb(null, userTechnician);
-            }
-            else {
-              cb(null, false);
-            }
-          })
-            .catch(error => cb(error));
+          cb(null, false);
         }
       })
       .catch(error => cb(error));

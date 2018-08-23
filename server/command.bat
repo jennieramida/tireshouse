@@ -1,0 +1,1 @@
+"C:\Program Files\PostgreSQL\10\bin\pg_ctl.exe" -D "C:\Program Files\PostgreSQL\10\Data" restart

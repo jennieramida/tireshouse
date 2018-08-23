@@ -29,29 +29,29 @@ User.findTechnicianById = id => (
   db.manyOrNone('SELECT * FROM technician WHERE id=$1',[id])
 )
 
-User.updateProfileCustomer = (username, firstname, lastname, email, mobile, birthday, address, credit_id, id) => (
-  db.one('UPDATE customer set username=$1, firstname=$2, lastname=$3, email=$4, mobile=$5, birthday=$6, address=$7, credit_id=$8, updated_time=$9 WHERE id=$10',
-    [username, firstname, lastname, email, mobile, birthday, address, credit_id, moment().format('YYYY-MM-DD HH:mm:ss'), id])
+User.updateProfileCustomer = ( firstname, lastname, email, mobile, birthday, address, credit_id, id) => (
+  db.result('UPDATE customer set  firstname=$1, lastname=$2, email=$3, mobile=$4, birthday=$5, address=$6, credit_id=$7, updated_time=$8 WHERE id=$9',
+    [firstname, lastname, email, mobile, birthday, address, credit_id, moment().format('YYYY-MM-DD HH:mm:ss'), id])
 )
 
-User.updateProfileTechnician = (username, firstname, lastname, email, mobile, birthday, address, credit_id, id) => (
-  db.one('UPDATE technician set username=$1, firstname=$2, lastname=$3, email=$4, mobile=$5, birthday=$6, address=$7, credit_id=$8, updated_time=$9 ,WHERE id=$10',
-    [username, firstname, lastname, email, mobile, birthday, address, credit_id, moment().format('YYYY-MM-DD HH:mm:ss'), id])
+User.updateProfileTechnician = (firstname, lastname, email, mobile, birthday, address, credit_id, id) => (
+  db.result('UPDATE technician set  firstname=$1, lastname=$2, email=$3, mobile=$4, birthday=$5, address=$6, credit_id=$7, updated_time=$8 WHERE id=$9',
+    [firstname, lastname, email, mobile, birthday, address, credit_id, moment().format('YYYY-MM-DD HH:mm:ss'), id])
 )
 
 User.changePasswordCustomer = (password, id) => (
-  db.one('UPDATE customer set password=$1, updated_time=$2 WHERE id=$3 RETURNING id', [password, moment().format('YYYY-MM-DD HH:mm:ss'), id])
+  db.result('UPDATE customer set password=$1, updated_time=$2 WHERE id=$3 RETURNING id', [password, moment().format('YYYY-MM-DD HH:mm:ss'), id])
 )
 
 User.changePasswordTechnician = (password, id) => (
-  db.one('UPDATE technician set password=$1, updated_time=$2 WHERE id=$3 RETURNING id', [password, moment().format('YYYY-MM-DD HH:mm:ss'), id])
+  db.result('UPDATE technician set password=$1, updated_time=$2 WHERE id=$3 RETURNING id', [password, moment().format('YYYY-MM-DD HH:mm:ss'), id])
 )
 
 User.getProfileCustomer = () => (
   db.manyOrNone('SELECT username, firstname, lastname, email, mobile, birthday, address FROM customer')
 )
 
-User.getProfileCustomer = () => (
+User.getProfileTechnician = () => (
   db.manyOrNone('SELECT username, firstname, lastname, email, mobile, birthday, address FROM technician')
 )
 
