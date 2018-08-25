@@ -8,7 +8,7 @@ ProcessHistory.insertProcessHistory = (order_id) => (
 )
 
 ProcessHistory.updateProcessHistory = (order_id, process_id) => (
-  db.one("UPDATE process_history SET process_id=$1 WHERE order_id=$2",
+  db.result("UPDATE process_history SET process_id=$1 WHERE order_id=$2",
   [process_id, order_id ])
 )
 

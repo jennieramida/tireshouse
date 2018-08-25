@@ -6,22 +6,24 @@ exports.search = (req,res,next) => {
   const widthFront = req.query.frontWidth
   const seriesFront = req.query.frontSeries
   const sizeFront = req.query.frontSize
-  const widthBack = req.query.backtWidth
-  const seriesBack = req.query.backtSeries
+  const widthBack = req.query.backWidth
+  const seriesBack = req.query.backSeries
   const sizeBack = req.query.backSize
-  const arrayMatchData = {};
+  const arrayMatchData = [];
+  console.log(widthBack+"+"+seriesBack)
   if(widthBack === "" || seriesBack === "" || sizeBack ==="" ){
     Tires.searchTireType(widthFront, seriesFront, sizeFront)
     .then(getOutputFront => {
+      // for (var i = 0; i < getOutputFront.length; i += 1) {
+      //   if (!(getOutputFront[i].brand in arrayMatchData)) {
+      //     arrayMatchData[getOutputFront[i].brand] = { "front": []};
+      //   }
+      // }
+      console.log(getOutputFront);
       for (var i = 0; i < getOutputFront.length; i += 1) {
-        if (!(getOutputFront[i].brand in arrayMatchData)) {
-          arrayMatchData[getOutputFront[i].brand] = { "front": []};
-        }
+        arrayMatchData.push({"front":getOutputFront[i],"back":null})
+        // arrayMatchData[i].back.push([])
       }
-      for (var i = 0; i < getOutputFront.length; i += 1) {
-        arrayMatchData[getOutputFront[i].brand].front.push(getOutputFront[i])
-      }
-      // console.log(getOutputFront);
       res.json(outputHandler(arrayMatchData));
     })
     .catch(next);
@@ -29,29 +31,16 @@ exports.search = (req,res,next) => {
     Tires.searchTireType(widthFront, seriesFront, sizeFront)
       .then(getOutputFront => {
         
-        Tires.searchTireType(widthFront, seriesFront, sizeFront)
+        Tires.searchTireType(widthBack, seriesBack, sizeBack)
           .then(getOutputBack => {
-            // console.log(getOutputFront);
-            for(var i=0; i< getOutputFront.length; i+=1){
-              if (!(getOutputFront[i].brand in arrayMatchData)) {
-                arrayMatchData[getOutputFront[i].brand] = {"front":[],"back":[]};
-              }
-            }
-            for (var i = 0; i < getOutputBack.length; i += 1) {
-              if (!(getOutputBack[i].brand in arrayMatchData)) {
-                arrayMatchData[getOutputBack[i].brand] = { "front": [], "back": [] };
+            for(var i=0;i<getOutputFront.length;i+=1){
+              for(var j=0;j<getOutputBack.length;j+=1){
+                if(getOutputBack[j].brand===getOutputFront[i].brand){
+                  arrayMatchData.push({ "front": getOutputFront[i], "back": getOutputBack[j] })
+                }
               }
             }
 
-            for(var i=0; i<getOutputFront.length; i+=1) {
-              arrayMatchData[getOutputFront[i].brand].front.push(getOutputFront[i])
-            }
-
-            for (var i = 0; i < getOutputBack.length; i += 1) {
-              arrayMatchData[getOutputBack[i].brand].back.push(getOutputBack[i])
-            }
-
-           
             res.json(outputHandler(arrayMatchData));
           })
           .catch(next);
