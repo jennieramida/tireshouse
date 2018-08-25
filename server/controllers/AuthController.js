@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt-nodejs');
 const User = require('../models/User');
-
+const { outputHandler } = require('../middlewares')
 const jwtSecret = process.env.JWT_SECRET;
 
 exports.signin = (req, res, next) => {
@@ -80,7 +80,15 @@ exports.signup = (req, res, next) => {
       else {
         User.createCustomer(usernameUser, passwordUser, firstnameUser, lastnameUser, emailUser, mobileUser, birthdayUser, addressUser, creditIdUser)
         .then((createdUser) => {
-          res.json(createdUser);
+          const token = jwt.sign({
+            id: createdUser.id,
+            username: createdUser.username
+          }, jwtSecret);
+          res.json(outputHandler({
+            createdUser,
+            token
+          }));
+
         })
         .catch(next)
       }
@@ -97,7 +105,15 @@ exports.signup = (req, res, next) => {
         else {
           User.createTechnician(usernameUser, passwordUser, firstnameUser, lastnameUser, emailUser, mobileUser, birthdayUser, addressUser, creditIdUser)
             .then((createdUser) => {
-              res.json(createdUser);
+              const token = jwt.sign({
+                id: createdUser.id,
+                username: createdUser.username
+              }, jwtSecret);
+              res.json(outputHandler({
+                createdUser,
+                token
+              }));
+
             })
             .catch(next)
         }

@@ -3,9 +3,9 @@ const Order = {};
 const moment = require('moment');
 
 /*NEW*/
-Order.insertOrder = (customer_id, location, latitude, longitude, order_date_time) => (
-  db.oneOrNone('INSERT INTO order_record (customer_id,  location, latitude, longitude, order_date_time, created_time) VALUES ($1,$2,$3,$4,$5,$6) RETURNING id',
-    [customer_id, location, latitude, longitude, order_date_time, moment().format('YYYY-MM-DD HH:mm:ss')])
+Order.insertOrder = (customer_id, location, zone_id, latitude, longitude) => (
+  db.oneOrNone('INSERT INTO order_record (customer_id,  location, zone_id, latitude, longitude, order_date_time, created_time) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING id',
+    [customer_id, location, zone_id, latitude, longitude, moment().format('YYYY-MM-DD HH:mm:ss'), moment().format('YYYY-MM-DD HH:mm:ss')])
 )
 
 Order.insertOrderDetail = (data, order_id ) => (
@@ -34,9 +34,30 @@ Order.cancelOrder = (order_id) => (
     return t.batch([q1, q2, q3]);
   })
 )
-Order.getOrder = () => {
+
+Order.getOrder = () => (
   db.one('SELECT * FROM orders')
-}
+)
+
+Order.getOrderById = (id) => (
+  db.one('SELECT * FROM orders WHERE id = $1 ',[id])
+)
+
+Order.getOrderByZone = (process_id, zone_id) => (
+  db.manyOrNone('SELECT * FROM order_record as o , process_history as p WHERE o.id=p.order_id AND zone_id=$1 AND p.process_id=$2',
+    [zone_id, process_id])
+)
+
+Order.updateOrderByTechnician = (id, technician_id) => (
+  db.result('UPDATE order_record SET technician_id=$1, updated_time=$2 WHERE id=$3',
+    [ technician_id, moment().format('YYYY-MM-DD HH:mm:ss'), id])
+)
+
+Order.updateOrdeyByStaff = (id, store_id) => (
+  db.result('UPDATE order_record SET store_id=$1, updated_time=$2 WHERE id=$3',
+    [store_id, moment().format('YYYY-MM-DD HH:mm:ss'), id])
+)
+
 // Order.updateTechnicianInOrder = (id, technician_id) => (
 //   db.one('UPDATE SET technician_id=$1, updated_time=$2 WHERE id=$3',
 //     [id, moment().format('YYYY-MM-DD HH:mm:ss'), technician_id])

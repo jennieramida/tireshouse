@@ -20,4 +20,8 @@ Zone.getZone = () => (
   db.manyOrNone('SELECT * FROM zone')
 )
 
+Zone.findZoneByName = (name) => (
+  db.oneOrNone('SELECT * FROM zone WHERE zone_name=$1', [name])
+)
+
 module.exports = Zone;
