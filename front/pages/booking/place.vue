@@ -1,4 +1,5 @@
 <template>
+
   <div class="container Prompt">
     <div class="row _dp-f _jtfct-ct _mgv-32px">
       <div class="col-12 col-md-8">
@@ -70,10 +71,11 @@
                 placeholder="Type Something">
             </div> -->
             <div class="bio-input _w-256px">
-              <no-ssr>
+              <!-- <no-ssr> -->
                 <date-picker
                   v-model="date"
-                  :config="options"/></no-ssr>
+                  :config="options"/>
+                  <!-- </no-ssr> -->
             </div>
 
           </div>
@@ -81,9 +83,7 @@
             <div class="_pdv-24px">เวลา</div>
             <div class="bio-input _w-256px _pdr-256px">
               <no-ssr>
-                <vue-timepicker :minute-interval="10"
-                v-model="time"
-                />
+                <vue-timepicker> </vue-timepicker>
               </no-ssr>
             </div>
           </div>
@@ -106,15 +106,17 @@
 
 <script>
 
-import VueTimepicker from 'vue2-timepicker';
-import datePicker from 'vue-bootstrap-datetimepicker';
-import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
-
+// import VueTimepicker from 'vue2-timepicker';
+// import datePicker from 'vue-bootstrap-datetimepicker';
+// import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
+import NoSSR from 'vue-no-ssr';
 export default{
 
+
   components: {
-      datePicker,
-      VueTimepicker
+    'no-ssr': NoSSR,
+      // datePicker,
+      // VueTimepicker
     },
 
   data: () =>  ({

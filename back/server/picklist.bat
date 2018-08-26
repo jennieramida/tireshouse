@@ -1,0 +1,1 @@
+yarn add dotenv express morgan passport jsonwebtoken bcrypt-nodejs humps pg-promise moment cors passport-jwt axios

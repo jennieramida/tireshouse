@@ -3,7 +3,7 @@ import VueScrollReveal from 'vue-scroll-reveal'
 
 import datePicker from 'vue-bootstrap-datetimepicker';
 import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
-import VModal from 'vue-js-modal'
+import VModal from 'vue-js-modal';
 import VueTimepicker from 'vue2-timepicker';
 
 Vue.use(VueTimepicker)
