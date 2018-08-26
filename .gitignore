@@ -1,15 +1,14 @@
 # dependencies
-node_modules
-
+back/node_modules
+front/node_modules
 # logs
-npm-debug.log
+front/npm-debug.log
 
 # Nuxt build
-.nuxt
-
+front/.nuxt
 # Nuxt generate
-dist
-
-yarn.lock
-
-.DS_Store
+front/dist
+front/yarn.locks
+back/server/yarn.locks
+front/.DS_Store
+package.json
