@@ -17,7 +17,7 @@ Zone.deleteZone = (id) => (
 )
 
 Zone.getZone = () => (
-  db.manyOrNone('SELECT * FROM zone')
+  db.manyOrNone('SELECT zone_name FROM zone')
 )
 
 Zone.findZoneByName = (name) => (

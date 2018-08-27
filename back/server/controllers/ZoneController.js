@@ -4,7 +4,12 @@ const { outputHandler, successHandler } = require('../middlewares')
 exports.getZone = (req, res, next) => {
   Zone.getZone()
   .then(getOutput =>{
-    res.json(outputHandler(getOutput));
+    console.log(getOutput)
+    const arrayOutput = []; 
+    for( var i=0;i<getOutput.length;i+=1){
+      arrayOutput.push(getOutput[i].zoneName);
+    }
+    res.json(outputHandler({zone: arrayOutput}));
   })
   .catch(next);
 }

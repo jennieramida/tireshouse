@@ -9,9 +9,9 @@ Tires.searchTireType = (width, series, size) => (
 Tires.searchInfo = () => (
   db.tx(t => {
     // creating a sequence of transaction queries:
-    const q1 = t.manyOrNone('SELECT DISTINCT width FROM tires');
-    const q2 = t.manyOrNone('SELECT DISTINCT series FROM tires');
-    const q3 = t.manyOrNone('SELECT DISTINCT size FROM tires');
+    const q1 = t.manyOrNone('SELECT DISTINCT width FROM tires ORDER BY width ASC');
+    const q2 = t.manyOrNone('SELECT DISTINCT series FROM tires  ORDER BY series ASC');
+    const q3 = t.manyOrNone('SELECT DISTINCT size FROM tires  ORDER BY size ASC');
     // returning a promise that determines a successful transaction:
     return t.batch([q1, q2, q3]); // all of the queries are to be resolved;
   })
