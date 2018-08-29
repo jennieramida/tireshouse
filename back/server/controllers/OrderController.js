@@ -48,6 +48,19 @@ exports.updateOrderProgressByTechnician = (req, res, next) => {
   .catch(next);
 } 
 
+exports.getOrderWithDeatil = (req, res, next) =>{
+  const OrderId = req.body.orderId;
+  console.log(req.user);
+  Order.getOrderById(OrderId)
+  .then( getOutputOrder => {
+    Order.getOrderDetail(OrderId)
+    .then(getOutputDetail =>{
+      res.json(outputHandler({"order":getOutputOrder, "detail":getOutputDetail}));
+    })
+    .catch(next);
+  })
+  .catch(next);
+}
 exports.getOrder = (req, res, next) => {
   Order.getOrder()
   .then(getOutput=>{

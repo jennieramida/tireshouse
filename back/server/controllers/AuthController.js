@@ -5,20 +5,23 @@ const { outputHandler } = require('../middlewares')
 const jwtSecret = process.env.JWT_SECRET;
 
 exports.signin = (req, res, next) => {
-  console.log(req.body)
+ 
   const flagUser = req.body.flag;
   const usernameUser = req.body.username
   const passwordUser = req.body.password
+  console.log(flagUser)
   if(flagUser==='customer') {
     User.findCustomerByUsername(usernameUser)
     .then((user) => {
       if(user) {
         if (bcrypt.compareSync(passwordUser, user.password)) {
           const token = jwt.sign({
+            type: 'customer',
             id: user.id,
             username: user.username
           }, jwtSecret);
           res.json({
+            type: 'customer',
             id: user.id,
             username: user.username,
             token
@@ -31,16 +34,31 @@ exports.signin = (req, res, next) => {
       }
     })
     .catch(next);
-  } else {
+  } else if (flagUser === 'staff'){
+    const token = jwt.sign({
+      type: 'staff',
+      code: usernameUser,
+      key: passwordUser
+    }, jwtSecret);
+    res.json({
+      type: 'staff',
+      id: '999999',
+      username: 'staff',
+      token
+    });
+  }
+  else if (flagUser === 'technician') {
     User.findTechnicianByUsername(usernameUser)
       .then((user) => {
         if (user) {
           if (bcrypt.compareSync(passwordUser, user.password)) {
             const token = jwt.sign({
+              type: 'technician',
               id: user.id,
               username: user.username
             }, jwtSecret);
             res.json({
+              type: 'technician',
               id: user.id,
               username: user.username,
               token

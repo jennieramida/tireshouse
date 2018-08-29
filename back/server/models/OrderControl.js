@@ -40,7 +40,7 @@ Order.getOrder = () => (
 )
 
 Order.getOrderById = (id) => (
-  db.one('SELECT * FROM orders WHERE id = $1 ',[id])
+  db.one('SELECT * FROM order_record WHERE id = $1 ',[id])
 )
 
 Order.getOrderByZone = (process_id, zone_id) => (
@@ -58,6 +58,9 @@ Order.updateOrdeyByStaff = (id, store_id) => (
     [store_id, moment().format('YYYY-MM-DD HH:mm:ss'), id])
 )
 
+Order.getOrderDetail = (order_id) => (
+  db.manyOrNone('SELECT * FROM order_detail WHERE order_id=$1', [order_id])
+)
 // Order.updateTechnicianInOrder = (id, technician_id) => (
 //   db.one('UPDATE SET technician_id=$1, updated_time=$2 WHERE id=$3',
 //     [id, moment().format('YYYY-MM-DD HH:mm:ss'), technician_id])

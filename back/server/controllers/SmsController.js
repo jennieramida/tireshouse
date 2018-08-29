@@ -5,7 +5,7 @@ const axios = require('axios');
 const OTPPolicyTime = "5 mins";
 
 exports.smsCallResposne = (req, res, next) => {
-  const outputSms = { "messege": makeid()};
+  const outputSms = { "messege": "ok"};
   res.json(outputHandler(outputSms));
 }
 
@@ -30,7 +30,7 @@ exports.smsOTPHandler = (req, res, next) => {
 //generateString
 makeid = () => {
   var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var possible = "0123456789";
 
   for (var i = 0; i < 6; i++)
     text += possible.charAt(Math.floor(Math.random() * possible.length));
