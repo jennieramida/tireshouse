@@ -24,16 +24,34 @@
 
     <div class="row">
       <div class="col-12 col-md-6">
-
+    
         <div class="_pdv-24px">ค้นหาสถานที่ </div>
         <div class="bio-input">
           <input
+            v-model="findPlaceAddress"
+            v-on:keyup.enter="findPlace"
             type="text"
             placeholder="ค้นหาสถานที่">
 
         </div>
         <div class="_pdv-24px">
-
+      
+          <GmapMap
+  :center="{ lat: 13.736717, lng:100.523186}"
+  :zoom="12"
+  ref="mmm"
+  map-type-id="terrain"
+  style="width: 500px; height: 300px"
+>
+  <GmapMarker
+    :key="index"
+    v-for="(m, index) in $store.state.GEOCODE_RESULTS.markers"
+    :position="m.position"
+    :clickable="true"
+    :draggable="true"
+    @click="center=m.position"
+  />
+</GmapMap>
           <div class="_bgcl-accent _h-256px"> supposed to be map</div>
         </div>
       </div>
@@ -120,6 +138,7 @@ export default{
     },
 
   data: () =>  ({
+      findPlaceAddress:'',
       detail:'',
       area:'',
       province:'',
@@ -145,7 +164,20 @@ export default{
       inputAddressArray["date"] = (this.date)
       console.log(inputAddressArray);
       this.$store.commit('ADDRESSSELECTED', inputAddressArray)
+    },
+    findPlace: function(event) {
+      
+       this.$store.dispatch('FINDPLACEGEOCODE',this.findPlaceAddress)
+       .then( (response)=> {
+         let position = this.$store.state.GEOCODE_RESULTS.markers[0].position
+          //need loading
+        this.$refs.mmm.panTo({
+              lat: position.lat,
+              lng: position.lng
+            });
+       })
     }
+
   },
 
 }

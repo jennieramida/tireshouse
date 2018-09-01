@@ -18,6 +18,9 @@ const mutations = {
     state.error.errorCode = payload.errorcode
     state.error.errorMsg = payload.errormsg
   },
+  LATLONGFROMGEOCODE (state, payload) {
+    state.GEOCODE_RESULTS = payload
+  }
 }
 
 export default mutations

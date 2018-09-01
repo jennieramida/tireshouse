@@ -16,6 +16,32 @@ const actions = {
 	  	let { data } = await axios.get(config.PATH+'/common/tires/search'+getString)
       commit('TIRESELECTED', data)
 
-  	},
+	},
+	async FINDPLACEGEOCODE({ commit }, queryString) {
+		let stringUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="
+		let keyUrl = "&key=AIzaSyBPhWQjyLqgDZkctg0AzewEhJgVPeLCiyU"
+		 
+		let { data } = await axios.get(stringUrl + queryString+ keyUrl);
+		let output = parseJsonToLatLong(data)
+		commit('LATLONGFROMGEOCODE', output);
+		return output;
+	},
+	
 }
 export default actions
+
+const parseJsonToLatLong = (data) => {
+	let lat,long,address
+	let output = {}
+
+	if(data.status==="OK"){
+		let result = data.results[0]
+		lat = result.geometry.location.lat
+		long = result.geometry.location.lng
+		address = result.address_components
+		output = {"markers": [{position: {"lat":lat,"lng":long}}],"address":address};
+	} else {
+		output = {"error": "Wrong Format"}
+	}
+	return output;
+}

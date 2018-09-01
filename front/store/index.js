@@ -15,6 +15,8 @@ const createStore = () => {
         errorCode: "",
         errorMsg: ""
       },
+      DEFAULT_LAT_LONG: { "lat": "13.736717", "lng":"100.523186"},
+      GEOCODE_RESULTS:""
     },
     // plugins: [createPersistedState],
     mutations,

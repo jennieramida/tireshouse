@@ -5,10 +5,18 @@ import datePicker from 'vue-bootstrap-datetimepicker';
 import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
 import VModal from 'vue-js-modal';
 import VueTimepicker from 'vue2-timepicker';
+import * as VueGoogleMaps from 'vue2-google-maps'
+
 
 Vue.use(VueTimepicker)
 Vue.use(VModal)
 Vue.use(datePicker);
+Vue.use( VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyBPhWQjyLqgDZkctg0AzewEhJgVPeLCiyU',
+    libraries: 'places'
+  }
+})
 
 
 Vue.use(VueScrollReveal)
