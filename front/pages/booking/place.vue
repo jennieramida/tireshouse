@@ -52,7 +52,7 @@
     @click="center=m.position"
   />
 </GmapMap>
-          <div class="_bgcl-accent _h-256px"> supposed to be map</div>
+         
         </div>
       </div>
       <div class="col-12 col-md-6">
