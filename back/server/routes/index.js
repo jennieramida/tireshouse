@@ -11,9 +11,10 @@ const staff = require('./staff')
 
 router.use('/auth', auth);
 router.use('/common', common);
+router.use('/staff',staff);
 router.use('/customer', passport.authenticate('jwtcust', { session: false }), customer);
 router.use('/technician', passport.authenticate('jwttech', { session: false }), technician);
-router.use('/staff', passport.authenticate('jwtstaff', { session: false }), staff);
+// router.use('/staff', passport.authenticate('jwtstaff', { session: false }), staff);
 
 router.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', '..', 'dist', 'index.html'));

@@ -31,6 +31,10 @@ Tires.getTire =() => (
   db.manyOrNone('SELECT * FROM tires')
 )
 
+Tires.getTireById = (id) => (
+  db.oneOrNone("SELECT * FROM tires WHERE id =$1",[id])
+)
+
 Tires.deleteTire = id => (
   db.result('DELETE FROM tires WHERE id=$1', [id])
 )

@@ -20,4 +20,8 @@ Store.getStore = () => (
   db.manyOrNone('SELECT * FROM store')
 );
 
+Store.getStoreById = (id) => (
+  db.oneOrNone('SELECT * FROM store WHERE id=$1',[id])
+);
+
 module.exports = Store;

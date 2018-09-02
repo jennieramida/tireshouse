@@ -17,6 +17,20 @@ const createStore = () => {
       },
       DEFAULT_LAT_LONG: { "lat": "13.736717", "lng":"100.523186"},
       GEOCODE_RESULTS:""
+      
+      //please write code above staff section
+      ,
+      ORDER_LIST:[],
+      ORDER_LIST_DETAIL:[],
+      TIRE_LIST:[],
+      TIRE_LIST_DETAIL:[],
+      ZONE_LIST:[],
+      ZONE_LIST_DETAIL:[],
+      STORE_LIST:[],
+      STORE_LIST_DETAIL:[],
+      PAGINATION:""
+
+
     },
     // plugins: [createPersistedState],
     mutations,

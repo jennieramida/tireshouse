@@ -26,7 +26,39 @@ const actions = {
 		commit('LATLONGFROMGEOCODE', output);
 		return output;
 	},
-	
+	// staff partition please write above this
+	async GETLISTORDER({ commit } ) {
+		let { data } = await axios.get(config.PATH + '/staff/order/getorder')
+		commit('LISTORDER', data)
+	},
+	async GETLISTORDERDETAIL({ commit },queryString) {
+		let { data } = await axios.post(config.PATH + '/staff/order/getorderdetail' , queryString)
+		commit('LISTORDERDETAIL', data)
+	},
+	async GETLISTTIRE({commit}){
+		let { data } = await axios.get(config.PATH + '/staff/store/tire')
+		commit('LISTTIRE', data)
+	},
+	async GETLISTTIREDETAIL({ commit }, queryString) {
+		let { data } = await axios.post(config.PATH + '/staff/store/tiredetail', queryString)
+		commit('LISTTIREDETAIL', data)
+	},
+	async GETLISTZONE({ commit }) {
+		let { data } = await axios.get(config.PATH + '/staff/store/tire')
+		commit('LISTZONE', data)
+	},
+	async GETLISTZONEDETAIL({ commit }, queryString) {
+		let { data } = await axios.post(config.PATH + '/staff/store/tiredetail', queryString)
+		commit('LISTZONEDETAIL', data)
+	},
+	async GETLISTSTORE({ commit }) {
+		let { data } = await axios.get(config.PATH + '/staff/store/staff')
+		commit('LISTSTORE', data)
+	},
+	async GETLISTSTOREDETAIL({ commit }, queryString) {
+		let { data } = await axios.post(config.PATH + '/staff/store/staffdetail', queryString)
+		commit('LISTSTOREDETAIL', data)
+	},
 }
 export default actions
 

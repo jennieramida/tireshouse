@@ -5,9 +5,11 @@ import datePicker from 'vue-bootstrap-datetimepicker';
 import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
 import VModal from 'vue-js-modal';
 import VueTimepicker from 'vue2-timepicker';
-import * as VueGoogleMaps from 'vue2-google-maps'
+import * as VueGoogleMaps from 'vue2-google-maps';
+import SuiVue from 'semantic-ui-vue';
+// import '../semantic/dist/semantic.min.css';
 
-
+Vue.use(SuiVue)
 Vue.use(VueTimepicker)
 Vue.use(VModal)
 Vue.use(datePicker);

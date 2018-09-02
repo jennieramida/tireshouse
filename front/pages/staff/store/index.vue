@@ -1,0 +1,112 @@
+<template>
+  <div>
+      <div class="ui segment " align="center">
+        <h2 is="sui-header" floated="right">Floated Content</h2>
+ 
+       <!-- {{$store.state}} -->
+        <sui-divider clearing />
+        <sui-table size="small" selectable celled>
+        <sui-table-header>
+          <sui-table-row>
+            <sui-table-header-cell v-for="h in headers " :key="h" >{{h}}</sui-table-header-cell>
+          </sui-table-row>
+        </sui-table-header>
+
+        <sui-table-body>
+          <sui-table-row v-for="data in $store.state.STORE_LIST.data.slice($store.state.PAGINATION.start, $store.state.PAGINATION.end)" :key="data.id" v-on:click="pathToOrderDeatail(data.id)">
+            <sui-table-cell >
+              {{data.id}} 
+            </sui-table-cell>
+            <sui-table-cell >
+              {{data.name}}
+            </sui-table-cell>
+            <sui-table-cell >
+              {{data.address}}
+            </sui-table-cell>
+            <sui-table-cell >
+              {{data.phone}}
+            </sui-table-cell>
+            <sui-table-cell >
+              {{data.createdTime}}
+            </sui-table-cell>
+            <sui-table-cell >
+              {{data.updatedTime}}
+            </sui-table-cell>
+          </sui-table-row>
+      
+        </sui-table-body>
+
+        <sui-table-footer>
+          <sui-table-row>
+            <sui-table-header-cell colspan="9">
+              <sui-menu v-sui-floated:right pagination>
+                <!-- <a is="sui-menu-item" icon>
+                  <sui-icon name="left chevron" />
+                </a> -->
+                      <!-- <sui-icon name="right chevron" /> -->
+                <a is="sui-menu-item"  v-for="num in parseInt($store.state.STORE_LIST.data.length/10)+1" :key="num" v-on:click="paging(num)">
+                {{num}}</a>
+ 
+              </sui-menu>
+            </sui-table-header-cell>
+          </sui-table-row>
+        </sui-table-footer>
+      </sui-table>
+                <!-- {{($store.state.TIRE_LIST.data.length/10).toFixed()}} -->
+    </div>
+  </div>
+</template>
+
+<script>
+  let pageSize = 10;
+export default {
+  async fetch({store}){
+    store.commit("PAGING", {"start":0,"end":pageSize-1})
+    await store.dispatch("GETLISTSTORE")
+  } ,
+  data: () => ({
+    headers: ["index","name","address","phone","create time","updatetime"]
+  }),
+  methods: {
+    pathToOrderDeatail: function(id) {
+       this.$router.push('/staff/store/'+id)
+    },
+    paging: function(num) {
+     
+      let startPage = (num*pageSize)-pageSize
+      let endPage = (num*pageSize)-1
+      this.$store.commit("PAGING", {"start":startPage,"end":endPage})
+    }
+  },
+
+
+}
+</script>
+
+<style lang="scss" scoped>
+$primary: #941e2e;
+$secondary: #f8f8f9;
+
+input,
+select,
+textarea {
+  font-family: 'Prompt';
+}
+
+._cl-darkred {
+  color: $primary;
+}
+
+.header-button-red {
+  background-color: $primary;
+  color: white;
+  border-color: $primary;
+  font-size: 20px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+

@@ -78,6 +78,7 @@ module.exports = {
    ** Nuxt.js modules
    */
   modules: [
+    'semantic-ui-vue/nuxt',
     '@nuxtjs/toast',
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios'

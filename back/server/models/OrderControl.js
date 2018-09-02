@@ -36,7 +36,7 @@ Order.cancelOrder = (order_id) => (
 )
 
 Order.getOrder = () => (
-  db.one('SELECT * FROM orders')
+  db.manyOrNone('SELECT * FROM order_record')
 )
 
 Order.getOrderById = (id) => (

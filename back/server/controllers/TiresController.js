@@ -80,6 +80,16 @@ exports.getTire = (req, res, next) => {
   .catch(next);
 }
 
+exports.getTireById = (req, res, next) => {
+  var tireId = req.body.tireId
+  console.log(tireId)
+  Tires.getTireById(tireId)
+    .then(getOutput => {
+      res.json(outputHandler(getOutput));
+    })
+    .catch(next);
+}
+
 exports.insertTire = (req, res, next) => {
   const brandTire = req.body.brand;
   const modelTire = req.body.model;

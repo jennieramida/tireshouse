@@ -1,9 +1,17 @@
 <template>
   <div>
-    <h1> Input Username and password of staff</h1>
-    <input v-model="username" type="text" /><br/>
-    <input v-model="password" type="password" />
-    <nuxt-link to="/staff/handler" > <button> login </button></nuxt-link>
+    <h1> features</h1>
+    <!-- <input v-model="username" type="text" /><br/> -->
+    <!-- <input v-model="password" type="password" /> -->
+    features<br>
+    <nuxt-link to="/staff/order" > <button> ordermanagement </button></nuxt-link><br>
+    <nuxt-link to="/staff/tire" > <button> tiremanagement </button></nuxt-link><br>
+    <nuxt-link to="/staff/zone" > <button> zonemanagement </button></nuxt-link><br>
+    <nuxt-link to="/staff/store" > <button> storemanagement </button></nuxt-link><br>
+    <nuxt-link to="/staff/handler" > <button> login </button></nuxt-link><br>
+  
+
+
   </div>
 </template>
 

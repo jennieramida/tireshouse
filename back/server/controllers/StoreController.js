@@ -8,6 +8,15 @@ exports.getStore = (req, res, next) => {
   })
   .catch(next);
 }
+exports.getStoreById = (req, res, next) => {
+  const storeId = req.body.storeId;
+  Store.getStoreById(storeId)
+    .then(storeOuput => {
+      res.json(outputHandler(storeOuput));
+    })
+    .catch(next);
+}
+
 
 exports.insertStore = (req, res, next) => {
   const nameStore = req.body.nameStore;
