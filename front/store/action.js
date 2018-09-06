@@ -18,10 +18,9 @@ const actions = {
 
 	},
 	async FINDPLACEGEOCODE({ commit }, queryString) {
-		let stringUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="
+		let stringUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
 		let keyUrl = "&key=AIzaSyBPhWQjyLqgDZkctg0AzewEhJgVPeLCiyU"
-		 
-		let { data } = await axios.get(stringUrl + queryString+ keyUrl);
+		let { data } = await axios.get(stringUrl + queryString.lat()+","+queryString.lng()+ keyUrl);
 		let output = parseJsonToLatLong(data)
 		commit('LATLONGFROMGEOCODE', output);
 		return output;

@@ -7,7 +7,6 @@
           <li class="active">เลือกไซส์ยาง</li>
           <li class="active">เลือกยางรถยนต์</li>
           <li>สถานที่และเวลา</li>
-
           <li>ชำระเงิน</li>
         </ul>
       </div>
@@ -24,35 +23,39 @@
 
     <div class="row">
       <div class="col-12 col-md-6">
-    
+
         <div class="_pdv-24px">ค้นหาสถานที่ </div>
         <div class="bio-input">
-          <input
+          <GmapAutocomplete
+            v-on:place_changed="setPlace"
             v-model="findPlaceAddress"
             v-on:keyup.enter="findPlace"
-            type="text"
-            placeholder="ค้นหาสถานที่">
+            placeholder="ค้นหาสถานที่"
+            >
+          </GmapAutocomplete>
 
         </div>
-        <div class="_pdv-24px">
-      
-          <GmapMap
-  :center="{ lat: 13.736717, lng:100.523186}"
-  :zoom="12"
-  ref="mmm"
-  map-type-id="terrain"
-  style="width: 500px; height: 300px"
->
-  <GmapMarker
-    :key="index"
-    v-for="(m, index) in $store.state.GEOCODE_RESULTS.markers"
-    :position="m.position"
-    :clickable="true"
-    :draggable="true"
-    @click="center=m.position"
-  />
-</GmapMap>
-         
+        <div class="_pdv-24px"></div>
+        <GmapMap
+          :center="{ lat: 13.736717, lng:100.523186}"
+          :zoom="12"
+          ref="map"
+          map-type-id="terrain"
+          style="width: 500px; height: 300px"
+          @click="findPlace"
+        >
+          <GmapMarker v-if="this.place"
+                :key="index"
+                :position="{
+                  lat: this.place.geometry.location.lat(),
+                  lng: this.place.geometry.location.lng(),
+                }"
+                ref="mark"
+                :clickable="true"
+                :draggable="true"
+          />
+        </GmapMap>
+
         </div>
       </div>
       <div class="col-12 col-md-6">
@@ -101,7 +104,7 @@
             <div class="_pdv-24px">เวลา</div>
             <div class="bio-input _w-256px _pdr-256px">
               <no-ssr>
-                <vue-timepicker> </vue-timepicker>
+                <!-- <vue-timepicker> </vue-timepicker> -->
               </no-ssr>
             </div>
           </div>
@@ -119,7 +122,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -133,8 +135,6 @@ export default{
 
   components: {
     'no-ssr': NoSSR,
-      // datePicker,
-      // VueTimepicker
     },
 
   data: () =>  ({
@@ -142,6 +142,7 @@ export default{
       detail:'',
       area:'',
       province:'',
+      place: null,
       time: {
         HH:'13',
         mm:'00',
@@ -156,7 +157,6 @@ export default{
     methods: {
     inputAddressInsertStore:  function(event) {
       let inputAddressArray = {};
-
       inputAddressArray["detail"] = (this.detail)
       inputAddressArray["area"] = (this.area)
       inputAddressArray["province"] = (this.province)
@@ -164,18 +164,29 @@ export default{
       inputAddressArray["date"] = (this.date)
       console.log(inputAddressArray);
       this.$store.commit('ADDRESSSELECTED', inputAddressArray)
+    },setPlace(place) {
+      this.place = place
+      this.$refs.map.panTo({
+          lat: this.place.geometry.location.lat(),
+          lng: this.place.geometry.location.lng(),
+      })
+
     },
     findPlace: function(event) {
-      
-       this.$store.dispatch('FINDPLACEGEOCODE',this.findPlaceAddress)
-       .then( (response)=> {
-         let position = this.$store.state.GEOCODE_RESULTS.markers[0].position
-          //need loading
-        this.$refs.mmm.panTo({
+      this.$store.dispatch('FINDPLACEGEOCODE',event.latLng).then( (response)=> {
+        let address = this.$store.state.GEOCODE_RESULTS.address
+        console.log(this.$store.state.GEOCODE_RESULTS)
+        let latlng = {
               lat: position.lat,
               lng: position.lng
-            });
-       })
+        }
+        this.$refs.map.panTo(latlng);
+        if(this.$refs.mark){
+          this.$refs.mark.setPosition(latlng)
+        }else{
+          this.place = this.$store.state.GEOCODE_RESULTS
+        }
+      })
     }
 
   },

@@ -43,7 +43,7 @@
 				<div class="bio-select">
 				<select v-model="selected.front.width">
 					<option value="" disabled>โปรดเลือกขนาดยางรถยนต์ </option>
-					 <option v-for="width in  $store.state.TIRESINFO[0]" :key="width.width">{{ width.width }}</option>
+					 <option v-for="width in  $store.state.TIRESINFO.width" :key="width">{{ width }}</option>
 				</select>
 				</div>
 			</div>
@@ -52,7 +52,7 @@
 				<div class="bio-select">
 				 <select v-model="selected.front.series">
 					<option value="" disabled>โปรดเลือกขนาดยางรถยนต์ </option>
-					 <option v-for="series in  $store.state.TIRESINFO[1]" :key="series.series">{{ series.series }}</option>
+					 <option v-for="series in  $store.state.TIRESINFO.series" :key="series">{{ series }}</option>
 				</select>
 				</div>
 			</div>
@@ -61,7 +61,7 @@
 				<div class="bio-select">
 				<select v-model="selected.front.size">
 					<option value="" disabled>โปรดเลือกขนาดยางรถยนต์ </option>
-					 <option v-for="size in  $store.state.TIRESINFO[2]" :key="size.size">{{ size.size }}</option>
+					 <option v-for="size in  $store.state.TIRESINFO.size" :key="size">{{ size }}</option>
 				</select>
 				</div>
 			</div>
@@ -93,7 +93,7 @@
 				<div class="bio-select">
 					<select v-model="selected.back.width">
 					<option value="" disabled>โปรดเลือกขนาดยางรถยนต์ </option>
-					 <option v-for="width in  $store.state.TIRESINFO[0]" :key="width.width">{{ width.width }}</option>
+					 <option v-for="width in  $store.state.TIRESINFO.width" :key="width">{{ width }}</option>
 				</select>
 				</div>
 				</div>
@@ -102,7 +102,7 @@
 				<div class="bio-select">
 					<select v-model="selected.back.series">
 					<option value="" disabled>โปรดเลือกขนาดยางรถยนต์ </option>
-					 <option v-for="series in  $store.state.TIRESINFO[1]" :key="series.series">{{ series.series }}</option>
+					 <option v-for="series in  $store.state.TIRESINFO.series" :key="series">{{ series }}</option>
 				</select>
 				</div>
 				</div>
@@ -111,7 +111,7 @@
 				<div class="bio-select">
 					<select v-model="selected.back.size">
 					<option value="" disabled>โปรดเลือกขนาดยางรถยนต์ </option>
-					 <option v-for="size in  $store.state.TIRESINFO[2]" :key="size.size">{{ size.size }}</option>
+					 <option v-for="size in  $store.state.TIRESINFO.size" :key="size">{{ size }}</option>
 				</select>
 				</div>
 				</div>
