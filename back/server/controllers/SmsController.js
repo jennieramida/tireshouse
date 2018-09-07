@@ -26,6 +26,24 @@ exports.smsOTPHandler = (req, res, next) => {
     });
 }
 
+exports.mapTest = (req, res, next) => {
+  //server Call external api
+  const urlMap = req.query.url;
+  axios.get(urlMap)
+    .then(function (response) {
+      // handle success
+      console.log(response);
+      res.json(response.data);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
+    });
+}
+
 
 //generateString
 makeid = () => {
