@@ -28,7 +28,9 @@ exports.smsOTPHandler = (req, res, next) => {
 
 exports.mapTest = (req, res, next) => {
   //server Call external api
-  const urlMap = req.query.url;
+  const locMap = req.query.location;
+  const urlMap = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ locMap+'&radius=1000&key=AIzaSyBPhWQjyLqgDZkctg0AzewEhJgVPeLCiyU';
+
   axios.get(urlMap)
     .then(function (response) {
       // handle success
