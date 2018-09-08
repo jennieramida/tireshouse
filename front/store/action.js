@@ -18,10 +18,15 @@ const actions = {
 
 	},
 	async FINDPLACEGEOCODE({ commit }, queryString) {
-
 		let { data } = await axios.get(config.PATH+'/common/test/map?location='+queryString.lat()+","+queryString.lng());
-		commit('LATLONGFROMGEOCODE', data.results[0]);
-		return data;
+		return parseJsonToLatLong(data);
+  },
+  async FINDLOCATION({ commit }, queryString) {
+    let stringUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="
+    let keyUrl = "&key=AIzaSyBPhWQjyLqgDZkctg0AzewEhJgVPeLCiyU"
+    console.log(stringUrl + queryString+ keyUrl)
+    let { data } = await axios.get(stringUrl + queryString+ keyUrl);
+    return parseJsonToLatLong(data);
 	},
 	async LOGIN({ commit }, queryString) {
 		console.log(queryString)
@@ -83,3 +88,4 @@ const parseJsonToLatLong = (data) => {
 	}
 	return output;
 }
+

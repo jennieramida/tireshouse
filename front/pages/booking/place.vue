@@ -27,9 +27,8 @@
         <div class="_pdv-24px">ค้นหาสถานที่ </div>
         <div class="bio-input">
           <GmapAutocomplete
-            v-on:place_changed="setPlace"
+            v-on:place_changed="findByLocation"
             v-model="findPlaceAddress"
-            v-on:keyup.enter="findPlace"
             placeholder="ค้นหาสถานที่"
             >
           </GmapAutocomplete>
@@ -47,12 +46,10 @@
           <GmapMarker v-if="this.place"
                 :key="index"
                 :position="{
-                  lat: this.place.geometry.location.lat,
-                  lng: this.place.geometry.location.lng,
+                  lat: this.place.markers[0].position.lat,
+                  lng: this.place.markers[0].position.lng,
                 }"
                 ref="mark"
-                :clickable="true"
-                :draggable="true"
           />
         </GmapMap>
 
@@ -162,31 +159,35 @@ export default{
       inputAddressArray["date"] = (this.date)
       sessionStorage.setItem('queryPlace', JSON.stringify(inputAddressArray))
       this.$router.push('/booking/checkout')
-    },setPlace(place) {
-      this.place = place
-      this.$refs.map.panTo({
-          lat: this.place.geometry.location.lat,
-          lng: this.place.geometry.location.lng,
-      })
-
     },
     findPlace: function(event) {
+      console.log(event.latLng.lat(),event.latLng.lng())
       this.$store.dispatch('FINDPLACEGEOCODE',event.latLng).then( (response)=> {
-        let address = this.$store.state.GEOCODE_RESULTS
-        console.log(address.geometry.location.lat)
+        this.place = response
         let latlng = {
-              lat: address.geometry.location.lat,
-              lng: address.geometry.location.lng,
+              lat: response.markers[0].position.lat,
+              lng: response.markers[0].position.lng,
         }
         this.$refs.map.panTo(latlng);
         if(this.$refs.mark){
-          this.$refs.mark.setPosition(latlng)
-        }else{
-          this.place = address
+          this.$refs.mark.position.lat = latlng.lat
+          this.$refs.mark.position.lng = latlng.lng
         }
       })
+    },findByLocation: function(event){
+      this.$store.dispatch('FINDLOCATION',event.formatted_address).then( (response)=> {
+        this.place = response
+        let latlng = {
+              lat: response.markers[0].position.lat,
+              lng: response.markers[0].position.lng,
+        }
+        this.$refs.map.panTo(latlng);
+        if(this.$refs.mark){
+          this.$refs.mark.position.lat = latlng.lat
+          this.$refs.mark.position.lng = latlng.lng
+        }
+     })
     }
-
   },
 
 }
