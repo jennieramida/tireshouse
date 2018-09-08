@@ -20,7 +20,7 @@
 			  <div class="col">
 				<div class="_fs-4 _fw-500">{{ heading }}
 				  <span class="_fw-300">
-					(ล้อหน้า)
+
 				  </span>
 				</div>
 				<div class="_fs-6 _fw-300 _lh-125pct _pdv-12px">{{ info }}</div>
@@ -72,7 +72,7 @@
 			  <div class="col">
 				<div class="_fs-4 _fw-500">{{ backheading }}
 				  <span class="_fw-300">
-					(ล้อหลัง)
+
 				  </span>
 				</div>
 				<div class="_fs-6 _fw-300 _lh-125pct _pdv-12px">{{ backinfo }}</div>

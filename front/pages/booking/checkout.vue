@@ -6,14 +6,14 @@
           <li class="active">เลือกไซส์ยาง</li>
           <li class="active">เลือกยางรถยนต์</li>
           <li >สถานที่และเวลา</li>
-    
+
           <li>ชำระเงิน</li>
         </ul>
       </div>
     </div>
     <div class="row _pdt-24px">
       <div class="col-12 _tal-ct _pdbt-48px">
-        <div 
+        <div
           v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'30px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
           class="_fs-3  _fw-500 _cl-darkred">
           ดำเนินการชำระเงิน
@@ -26,50 +26,50 @@
         <div class=" _fs-4 _cl-black _pdbt-24px">รายละเอียดลูกค้า</div>
         <div class="_pdv-24px">ชื่อ-นามสกุล</div>
         <div class="bio-input">
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder="โปรดกรอกชื่อและนามสกุล">
         </div>
 
         <div class="_pdv-24px">เบอร์โทรศัพท์</div>
         <div class="bio-input">
-          <input 
-            type="tel" 
+          <input
+            type="tel"
             placeholder="โปรดกรอกเบอร์โทรศัพท์">
         </div>
 
         <div class="_pdv-24px">อีเมล</div>
         <div class="bio-input">
-          <input 
-            type="email" 
+          <input
+            type="email"
             placeholder="โปรดกรอกอีเมล">
         </div>
 
         <!--<div class="_pdv-24px">รหัสผ่าน</div>
         <div class="bio-input">
-          <input 
+          <input
             type="password"
             placeholder="โปรดตั้งรหัสผ่านใหม่">
         </div> -->
 
         <div class="_fs-7 _fs-6-md _mgt-12px _pdt-12px">
-          เป็นสมาชิก Tireshouse แล้ว?  
+          เป็นสมาชิก Tireshouse แล้ว?
           <span
           @click="showLogin"
-            to="/signin" 
+            to="/signin"
             class="_cl-darkred _cs-pt">
             กดที่นี่เพื่อเข้าสู่ระบบ</span>
           เพื่อติดตามการบริการ
         </div>
-     
-      
-  
-        <div 
-          v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
+
+
+
+        <div
+          v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
           class="_dp-f _jtfct-ct _pdv-24px _pdt-48px _pdt-24px-md">
           <!-- <nuxt-link to="/booking/payment" > -->
             <button id="show-modal" @click="showConfirm" class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">ยืนยัน</button>
-<!--             
+<!--
           </nuxt-link> -->
         </div>
         <modal name="comfirm" height="auto">
@@ -79,26 +79,26 @@
           <div class="_fs-3 _cl-black _tal-ct _pdt-64px">กรุณากรอกรหัส OTP</div>
           <div class="_pdt-24px _fs-5 _cl-black _pdbt-8px">รหัส OTP 4 หลัก</div>
           <div class="bio-input">
-            <input 
-              type="number" 
+            <input
+              type="number"
               placeholder="โปรดกรอกรหัส OTP">
           </div>
           <div class="_pdt-24px _fs-7 _cl-black _pdbt-8px">
             <div>
-              <nuxt-link 
-                to="/reset" 
+              <nuxt-link
+                to="/reset"
                 class="_cl-darkred">กดเพื่อรับรหัสผ่านใหม่</nuxt-link></div>
           </div>
           <div class="_dp-f _jtfct-ct">
             <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">
-              <nuxt-link 
-                to="/booking/payment" 
+              <nuxt-link
+                to="/booking/payment"
                 class="_cl-white">
                 ยืนยัน
             </nuxt-link></button>
           </div>
-    
-      
+
+
       </div>
           </div>
         </div>
@@ -110,37 +110,29 @@
           <div class="_fs-2 _cl-black _tal-ct _pdt-64px">เข้าสู่ระบบ</div>
           <div class="_pdt-24px _fs-5 _cl-black _pdbt-8px">อีเมล</div>
           <div class="bio-input">
-            <input 
-              type="email" 
+            <input
+              v-model="email"
+              type="email"
               placeholder="โปรดกรอกอีเมล">
           </div>
 
           <div class="_pdt-24px _fs-5 _cl-black _pdbt-8px">รหัสผ่าน</div>
           <div class="bio-input">
-            <input 
+            <input
+              v-model="password"
               type="password"
               placeholder="โปรดกรอกรหัสผ่านใหม่">
           </div>
-          <div class="_pdt-24px _fs-7 _cl-black _pdbt-8px _dp-f _jtfct-spbtw">
-            <div>
-              <nuxt-link 
-                to="/reset" 
-                class="_cl-darkred">ลืมรหัสผ่าน</nuxt-link></div>
-            <div>ยังไม่เป็นสมาชิก? 
-              <nuxt-link 
-                to="/signup" 
-                class="_cl-darkred">สมัครสมาชิก</nuxt-link></div>
-          </div>
           <div class="_dp-f _jtfct-ct">
             <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">
-              <nuxt-link 
-                to="/booking/checkout" 
+              <nuxt-link
+                to="/booking/checkout"
                 class="_cl-white">
                 เข้าสู่ระบบ
             </nuxt-link></button>
           </div>
-    
-      
+
+
       </div>
       </div>
       </div>
@@ -148,9 +140,9 @@
       </div>
     </div>
 
-    
-   
-    
+
+
+
   </div>
 </template>
 

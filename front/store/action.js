@@ -18,12 +18,10 @@ const actions = {
 
 	},
 	async FINDPLACEGEOCODE({ commit }, queryString) {
-		let stringUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
-		let keyUrl = "&key=AIzaSyBPhWQjyLqgDZkctg0AzewEhJgVPeLCiyU"
-		let { data } = await axios.get(stringUrl + queryString.lat()+","+queryString.lng()+ keyUrl);
-		let output = parseJsonToLatLong(data)
-		commit('LATLONGFROMGEOCODE', output);
-		return output;
+
+		let { data } = await axios.get(config.PATH+'/common/test/map?location='+queryString.lat()+","+queryString.lng());
+		commit('LATLONGFROMGEOCODE', data.results[0]);
+		return data;
 	},
 	// staff partition please write above this
 	async GETLISTORDER({ commit } ) {

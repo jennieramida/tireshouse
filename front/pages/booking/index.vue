@@ -39,28 +39,28 @@
 			<!-- Options -->
 			<div class="row _pdt-24px">
 			<div class="col-12 col-md-6">
-				<div class="_pdv-12px">Width</div>
+				<div class="_pdv-12px">หน้ายางรถยนต์(WIDTH)</div>
 				<div class="bio-select">
 				<select v-model="selected.front.width">
-					<option value="" disabled>โปรดเลือกขนาดยางรถยนต์ </option>
+					<option value="" disabled>โปรดเลือกหน้ายางรถยนต์ </option>
 					 <option v-for="width in  $store.state.TIRESINFO.width" :key="width">{{ width }}</option>
 				</select>
 				</div>
 			</div>
 			<div class="col-12 col-md-6">
-				<div class="_pdv-12px">Series</div>
+				<div class="_pdv-12px">ซีรี่ส์ยางรถยนต์(SERIES)</div>
 				<div class="bio-select">
 				 <select v-model="selected.front.series">
-					<option value="" disabled>โปรดเลือกขนาดยางรถยนต์ </option>
+					<option value="" disabled>โปรดเลือกซีรี่ส์ยางรถยนต์ </option>
 					 <option v-for="series in  $store.state.TIRESINFO.series" :key="series">{{ series }}</option>
 				</select>
 				</div>
 			</div>
 			<div class="col-12 col-md-6 _pdt-12px">
-				<div class="_pdv-12px">Diameter</div>
+				<div class="_pdv-12px">ขนาดกะทะล้อ(SIZE)</div>
 				<div class="bio-select">
 				<select v-model="selected.front.size">
-					<option value="" disabled>โปรดเลือกขนาดยางรถยนต์ </option>
+					<option value="" disabled>โปรดเลือกขนาดกะทะล้อ </option>
 					 <option v-for="size in  $store.state.TIRESINFO.size" :key="size">{{ size }}</option>
 				</select>
 				</div>
@@ -89,28 +89,28 @@
 			<!-- Options -->
 			<div class="row _pdt-24px">
 				<div class="col-12 col-md-6">
-				<div class="_pdv-12px">Width</div>
+				<div class="_pdv-12px">หน้ายางรถยนต์(WIDTH)</div>
 				<div class="bio-select">
 					<select v-model="selected.back.width">
-					<option value="" disabled>โปรดเลือกขนาดยางรถยนต์ </option>
+					<option value="" disabled>โปรดเลือกหน้ายางรถยนต์ </option>
 					 <option v-for="width in  $store.state.TIRESINFO.width" :key="width">{{ width }}</option>
 				</select>
 				</div>
 				</div>
 				<div class="col-12 col-md-6">
-				<div class="_pdv-12px">Series</div>
+				<div class="_pdv-12px">ซีรี่ส์ยางรถยนต์(SERIES)</div>
 				<div class="bio-select">
 					<select v-model="selected.back.series">
-					<option value="" disabled>โปรดเลือกขนาดยางรถยนต์ </option>
+					<option value="" disabled>โปรดเลือกซีรี่ส์ยางรถยนต์ </option>
 					 <option v-for="series in  $store.state.TIRESINFO.series" :key="series">{{ series }}</option>
 				</select>
 				</div>
 				</div>
 				<div class="col-12 col-md-6 _pdt-12px">
-				<div class="_pdv-12px">Diameter</div>
+				<div class="_pdv-12px">ขนาดกะทะล้อ(SIZE)</div>
 				<div class="bio-select">
 					<select v-model="selected.back.size">
-					<option value="" disabled>โปรดเลือกขนาดยางรถยนต์ </option>
+					<option value="" disabled>โปรดเลือกขนาดกะทะล้อ </option>
 					 <option v-for="size in  $store.state.TIRESINFO.size" :key="size">{{ size }}</option>
 				</select>
 				</div>

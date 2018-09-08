@@ -47,8 +47,8 @@
           <GmapMarker v-if="this.place"
                 :key="index"
                 :position="{
-                  lat: this.place.geometry.location.lat(),
-                  lng: this.place.geometry.location.lng(),
+                  lat: this.place.geometry.location.lat,
+                  lng: this.place.geometry.location.lng,
                 }"
                 ref="mark"
                 :clickable="true"
@@ -115,9 +115,7 @@
           <div
             v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
             class="_dp-f _jtfct-ct _pdv-24px">
-            <nuxt-link to="/booking/checkout" >
               <button class="bio-button header-button-red _mgv-24px-md _mgbt-64px _mgbt-0px-md _cl-darkred _bdrd-4px u-rise-5-hover" v-on:click="inputAddressInsertStore">ชำระเงิน</button>
-            </nuxt-link>
           </div>
         </div>
       </div>
@@ -162,29 +160,29 @@ export default{
       inputAddressArray["province"] = (this.province)
       inputAddressArray["time"] = (this.time)
       inputAddressArray["date"] = (this.date)
-      console.log(inputAddressArray);
-      this.$store.commit('ADDRESSSELECTED', inputAddressArray)
+      sessionStorage.setItem('queryPlace', JSON.stringify(inputAddressArray))
+      this.$router.push('/booking/checkout')
     },setPlace(place) {
       this.place = place
       this.$refs.map.panTo({
-          lat: this.place.geometry.location.lat(),
-          lng: this.place.geometry.location.lng(),
+          lat: this.place.geometry.location.lat,
+          lng: this.place.geometry.location.lng,
       })
 
     },
     findPlace: function(event) {
       this.$store.dispatch('FINDPLACEGEOCODE',event.latLng).then( (response)=> {
-        let address = this.$store.state.GEOCODE_RESULTS.address
-        console.log(this.$store.state.GEOCODE_RESULTS)
+        let address = this.$store.state.GEOCODE_RESULTS
+        console.log(address.geometry.location.lat)
         let latlng = {
-              lat: position.lat,
-              lng: position.lng
+              lat: address.geometry.location.lat,
+              lng: address.geometry.location.lng,
         }
         this.$refs.map.panTo(latlng);
         if(this.$refs.mark){
           this.$refs.mark.setPosition(latlng)
         }else{
-          this.place = this.$store.state.GEOCODE_RESULTS
+          this.place = address
         }
       })
     }
