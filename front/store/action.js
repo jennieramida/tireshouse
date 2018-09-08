@@ -23,6 +23,15 @@ const actions = {
 		commit('LATLONGFROMGEOCODE', data.results[0]);
 		return data;
 	},
+	async LOGIN({ commit }, queryString) {
+		console.log(queryString)
+		let { data } = await axios.post(config.PATH + '/auth/login', queryString)
+		return data;
+	},
+	async SMSCHECK({ commit } ,queryString) {
+		let { data } = await axios.get(config.PATH + '/common/test/sms')
+		return data.data
+	},
 	// staff partition please write above this
 	async GETLISTORDER({ commit } ) {
 		let { data } = await axios.get(config.PATH + '/staff/order/getorder')

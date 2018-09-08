@@ -24,6 +24,11 @@ exports.signin = (req, res, next) => {
             type: 'customer',
             id: user.id,
             username: user.username,
+            firstname: user.firstname,
+            lastname: user.lastname,
+            email : user.email,
+            mobile: user.mobile,
+            address: user.address,
             token
           });
         } else {
@@ -55,12 +60,17 @@ exports.signin = (req, res, next) => {
             const token = jwt.sign({
               type: 'technician',
               id: user.id,
-              username: user.username
+              username: user.username,
             }, jwtSecret);
             res.json({
               type: 'technician',
               id: user.id,
               username: user.username,
+              firstname: user.firstname,
+              lastname: user.lastname,
+              email: user.email,
+              mobile: user.mobile,
+              address: user.address,
               token
             });
           } else {
