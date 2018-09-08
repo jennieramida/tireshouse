@@ -24,9 +24,17 @@
     <div class="row _dp-f _jtfct-ct">
       <div class="col-12 col-md-8 _pdbt-48px _pdbt-0px-md">
         <div class=" _fs-4 _cl-black _pdbt-24px">รายละเอียดลูกค้า</div>
-        <div class="_pdv-24px">ชื่อ-นามสกุล</div>
+        <div class="_pdv-24px">ชื่อ</div>
         <div class="bio-input">
           <input 
+            v-model ="customerDetail.firstName"
+            type="text" 
+            placeholder="โปรดกรอกชื่อและนามสกุล">
+        </div>
+        <div class="_pdv-24px">นามสกุล</div>
+        <div class="bio-input">
+          <input 
+            v-model ="customerDetail.lastName"
             type="text" 
             placeholder="โปรดกรอกชื่อและนามสกุล">
         </div>
@@ -34,6 +42,7 @@
         <div class="_pdv-24px">เบอร์โทรศัพท์</div>
         <div class="bio-input">
           <input 
+          v-model ="customerDetail.mobile"
             type="tel" 
             placeholder="โปรดกรอกเบอร์โทรศัพท์">
         </div>
@@ -41,6 +50,21 @@
         <div class="_pdv-24px">อีเมล</div>
         <div class="bio-input">
           <input 
+            v-model ="customerDetail.email"
+            type="email" 
+            placeholder="โปรดกรอกอีเมล">
+        </div>
+        <div class="_pdv-24px">รหัสผ่าน</div>
+        <div class="bio-input">
+          <input 
+            v-model ="customerDetail.password"
+            type="email" 
+            placeholder="โปรดกรอกอีเมล">
+        </div>
+        <div class="_pdv-24px">รหัสผ่าน อีกครั้ง</div>
+        <div class="bio-input">
+          <input 
+            v-model ="customerDetail.rePassword"
             type="email" 
             placeholder="โปรดกรอกอีเมล">
         </div>
@@ -68,7 +92,7 @@
           v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
           class="_dp-f _jtfct-ct _pdv-24px _pdt-48px _pdt-24px-md">
           <!-- <nuxt-link to="/booking/payment" > -->
-            <button id="show-modal" @click="showConfirm" class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">ยืนยัน</button>
+            <button id="show-modal" v-on:click="signUpCustomer" class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">ยืนยัน</button>
 <!--             
           </nuxt-link> -->
         </div>
@@ -80,6 +104,7 @@
           <div class="_pdt-24px _fs-5 _cl-black _pdbt-8px">รหัส OTP 4 หลัก</div>
           <div class="bio-input">
             <input 
+              v-model ="OTPPassword"
               type="number" 
               placeholder="โปรดกรอกรหัส OTP">
           </div>
@@ -90,12 +115,13 @@
                 class="_cl-darkred">กดเพื่อรับรหัสผ่านใหม่</nuxt-link></div>
           </div>
           <div class="_dp-f _jtfct-ct">
-            <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">
-              <nuxt-link 
+            <button v-on:click="confirmSMS" class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">
+              <!-- <nuxt-link 
                 to="/booking/payment" 
                 class="_cl-white">
+            </nuxt-link> -->
                 ยืนยัน
-            </nuxt-link></button>
+            </button>
           </div>
     
       
@@ -111,6 +137,7 @@
           <div class="_pdt-24px _fs-5 _cl-black _pdbt-8px">อีเมล</div>
           <div class="bio-input">
             <input 
+              v-model="loginEmail"
               type="email" 
               placeholder="โปรดกรอกอีเมล">
           </div>
@@ -118,6 +145,7 @@
           <div class="_pdt-24px _fs-5 _cl-black _pdbt-8px">รหัสผ่าน</div>
           <div class="bio-input">
             <input 
+              v-model="loginPassword"
               type="password"
               placeholder="โปรดกรอกรหัสผ่านใหม่">
           </div>
@@ -132,7 +160,7 @@
                 class="_cl-darkred">สมัครสมาชิก</nuxt-link></div>
           </div>
           <div class="_dp-f _jtfct-ct">
-            <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">
+            <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover" v-on:click="loginCustomer">
               <nuxt-link 
                 to="/booking/checkout" 
                 class="_cl-white">
@@ -149,7 +177,7 @@
     </div>
 
     
-   
+  
     
   </div>
 </template>
@@ -157,7 +185,50 @@
 
 <script>
 export default {
+  data: () => ({
+    loginEmail:'',
+    loginPassword: '',
+    customerDetail: {
+      firstName: '',
+      lastName:'',
+      mobile: '',
+      email: '',
+      password: '',
+      rePassword: ''
+    }
+	}),
   methods: {
+  loginCustomer () {
+    console.log(this.loginEmail)
+    const queryString = {"flag":"customer","username": this.loginEmail,"password":this.loginPassword}
+    this.$store.dispatch("LOGIN", queryString)
+    .then(resp => {
+      
+      sessionStorage.setItem('LoginDetail', JSON.stringify(resp));
+      this.$modal.hide('login');
+      this.loginEmail = ''
+      this.loginPassword = ''
+    })
+
+  },
+  signUpCustomer() {
+    this.$modal.show('comfirm');
+    const queryString = {"mobile":this.mobile}
+  },
+  confirmSMS () {
+    const queryString = {"OTP":this.OTPPassword}
+    console.log('asdf')
+    this.$store.dispatch("SMSCHECK",queryString)
+    .then( resp => {
+      console.log(resp)
+      if(resp.messege === "ok"){
+        this.$modal.hide('comfirm');
+      }else {
+        alert("try again");
+      }
+    })
+  }
+  ,
   showConfirm () {
     this.$modal.show('comfirm');
   },
