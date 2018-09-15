@@ -8,6 +8,7 @@
           <div class="_pdt-24px _fs-5 _cl-black _pdbt-8px">อีเมล</div>
           <div class="bio-input">
             <input 
+              v-model ="loginEmail"
               type="email" 
               placeholder="โปรดกรอกอีเมล">
           </div>
@@ -15,6 +16,7 @@
           <div class="_pdt-24px _fs-5 _cl-black _pdbt-8px">รหัสผ่าน</div>
           <div class="bio-input">
             <input 
+              v-model ="loginPassword"
               type="password"
               placeholder="โปรดกรอกรหัสผ่านใหม่">
           </div>
@@ -29,12 +31,13 @@
                 class="_cl-darkred">สมัครสมาชิก</nuxt-link></div>
           </div>
           <div class="_dp-f _jtfct-ct">
-            <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">
-              <nuxt-link 
+            <button v-on:click="loginCustomer" class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">
+              <!-- <nuxt-link 
                 to="/booking/checkout" 
-                class="_cl-white">
+                class="_cl-white"> -->
                 เข้าสู่ระบบ
-            </nuxt-link></button>
+            <!-- </nuxt-link> -->
+            </button>
           </div>
         </div>
         <div class="col-4"/>
@@ -44,7 +47,34 @@
 </template>
 
 <script>
+import Cookie from 'js-cookie'
 export default {
+  middleware: 'authenticated',
+  data: () => ({
+    loginEmail:'',
+    loginPassword: '',
+  
+  }),
+  methods: {
+  loginCustomer () {
+    console.log(this.loginEmail)
+    const queryString = {"flag":"customer","username": this.loginEmail,"password":this.loginPassword}
+    this.$store.dispatch("LOGIN", queryString)
+    .then(resp => {
+      if(resp){
+        Cookie.set('LoginDetail', resp) 
+        this.$router.push('/users')
+        this.$modal.hide('login');
+      } else {
+        alert("something")
+      }
+      this.loginEmail = ''
+      this.loginPassword = ''
+
+    })
+
+  }
+  }
   
 }
 </script>

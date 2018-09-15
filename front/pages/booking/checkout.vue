@@ -20,9 +20,9 @@
         </div>
       </div>
     </div>
-
+  
     <div class="row _dp-f _jtfct-ct">
-      <div class="col-12 col-md-8 _pdbt-48px _pdbt-0px-md">
+      <div class="col-12 col-md-8 _pdbt-48px _pdbt-0px-md"  v-if="!authenticated">
         <div class=" _fs-4 _cl-black _pdbt-24px">รายละเอียดลูกค้า</div>
         <div class="_pdv-24px">ชื่อ</div>
         <div class="bio-input">
@@ -164,9 +164,49 @@
       </div>
       </modal>
       </div>
+      <div v-else>
+                <div class=" _fs-4 _cl-black _pdbt-24px">รายละเอียดลูกค้า</div>
+        <div class="_pdv-24px">ชื่อ</div>
+        <div class="bio-input">
+          <input
+            v-model ="customerDetail.firstName"
+            type="text"
+            placeholder="โปรดกรอกชื่อและนามสกุล">
+        </div>
+        <div class="_pdv-24px">นามสกุล</div>
+        <div class="bio-input">
+          <input
+            v-model ="customerDetail.lastName"
+            type="text"
+            placeholder="โปรดกรอกชื่อและนามสกุล">
+        </div>
+
+        <div class="_pdv-24px">เบอร์โทรศัพท์</div>
+        <div class="bio-input">
+          <input
+          v-model ="customerDetail.mobile"
+            type="tel"
+            placeholder="โปรดกรอกเบอร์โทรศัพท์">
+        </div>
+
+        <div class="_pdv-24px">อีเมล</div>
+        <div class="bio-input">
+          <input
+            v-model ="customerDetail.email"
+            type="email"
+            placeholder="โปรดกรอกอีเมล">
+        </div>
+         <div
+          v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
+          class="_dp-f _jtfct-ct _pdv-24px _pdt-48px _pdt-24px-md">
+          <nuxt-link to="/booking/payment" >
+            <button id="show-modal" v-on:click="nextStep" class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">ถัดไป</button>
+          </nuxt-link>
+        </div>
+      </div>
     </div>
 
-
+ 
 
 
   </div>
@@ -174,7 +214,18 @@
 
 
 <script>
+import Cookie from 'js-cookie'
+
 export default {
+   created () {
+    // fetch the data when the view is created and the data is
+    // // already being observed
+    this.fetchData()
+  },
+  watch: {
+  '$route': 'fetchData'
+  },
+
   data: () => ({
     loginEmail:'',
     loginPassword: '',
@@ -185,29 +236,61 @@ export default {
       email: '',
       password: '',
       rePassword: ''
+    },
+    logindetail:'',
+    OTPPassword:''
+  }),
+  computed: {
+    authenticated() {
+      if(this.$store.state.auth){
+      this.customerDetail.firstName = this.$store.state.auth.firstname
+      this.customerDetail.lastName = this.$store.state.auth.lastname
+      this.customerDetail.mobile = this.$store.state.auth.mobile
+      this.customerDetail.email = this.$store.state.auth.email
+      }
+      return this.$store.state.auth
     }
-	}),
+  },
   methods: {
+     fetchData () {
+      //  this.logindetail = sessionStorage.getItem('LoginDetail');
+      if(this.$store.state.auth){
+      this.customerDetail.firstName = this.$store.state.auth.firstname
+      this.customerDetail.lastName = this.$store.state.auth.lastname
+      this.customerDetail.mobile = this.$store.state.auth.mobile
+      this.customerDetail.email = this.$store.state.auth.email
+      }
+    },
   loginCustomer () {
     console.log(this.loginEmail)
     const queryString = {"flag":"customer","username": this.loginEmail,"password":this.loginPassword}
     this.$store.dispatch("LOGIN", queryString)
     .then(resp => {
-
+      Cookie.set('LoginDetail', resp) 
       sessionStorage.setItem('LoginDetail', JSON.stringify(resp));
       this.$modal.hide('login');
       this.loginEmail = ''
       this.loginPassword = ''
+
     })
 
   },
+
   signUpCustomer() {
     this.$modal.show('comfirm');
-    const queryString = {"mobile":this.mobile}
+    console.log("dafsad")
+    const queryString = {"phone":this.customerDetail.mobile}
+    this.$store.dispatch("SMSVERIFY",queryString)
+    .then( resp => {
+      console.log(resp)
+    }).
+    catch( error => {
+      console.log(error)
+    })
   },
   confirmSMS () {
-    const queryString = {"OTP":this.OTPPassword}
-    console.log('asdf')
+    const queryString = {"OTPCode":this.OTPPassword,"phone":this.customerDetail.mobile}
+   
     this.$store.dispatch("SMSCHECK",queryString)
     .then( resp => {
       console.log(resp)

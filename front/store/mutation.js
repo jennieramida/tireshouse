@@ -46,6 +46,9 @@ const mutations = {
   },
   PAGING (state, payload) {
     state.PAGINATION = payload
+  },
+  UPDATETOKEN (state, payload) {
+    state.auth = payload
   }
 
 }

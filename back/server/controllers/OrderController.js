@@ -97,13 +97,33 @@ exports.getOrderByZone = (req, res, next) => {
     res.json(outputHandler(getOutput));
   })
 }
-// exports.getOrder = (req, res,)
-// exports.updateOrderProgressByStaff = (req, res, next) => {
-//   const technicianId = req.user.id;
-//   const zoneOrder = req.body.zoneId;
-//   const storeOrder = req.body.storeId;
-  
-// }
+
+exports.getCustomerOrderHistory = (req, res, next) => {
+  const userId = req.user.id;
+  Order.getOrderByCustomerId(userId)
+  .then( getOutput => {
+    Order.getAllOrderDetail(getOutput)
+    .then(getOutputDetail => {
+      processHistory.getProcessByOrderId(getOutput)
+      .then(getOutputProcess =>{
+        if (getOutput.length === getOutputDetail.length && getOutput.length === getOutputProcess.length){
+          const sumGetOutput = []
+          const lengthOutput = getOutput.length
+          console.log(getOutput)
+          for(var i=0 ;i<lengthOutput;i++){
+            sumGetOutput[i] = ({ "order": getOutput[i], "orderDetail": getOutputDetail[i], "process": getOutputProcess[i] } )
+          }
+          res.json(sumGetOutput);
+        } else {
+          res.json("length Error")
+        }
+      })
+      .catch(next)
+    })
+    .catch(next);
+  })
+  .catch(next);
+}
 
 exports.deleteOrder  
 

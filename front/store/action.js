@@ -1,7 +1,15 @@
 import axios  from 'axios'
 import config from '../pages/config'
-
+var cookieparser = require('cookieparser')
 const actions = {
+	nuxtServerInit({ commit }, { req }) {
+		let accessToken = null
+		if (req.headers.cookie) {
+			var parsed = cookieparser.parse(req.headers.cookie)
+			accessToken = JSON.parse(parsed.LoginDetail)
+		}
+		commit('UPDATETOKEN', accessToken)
+	},
 	async GETTIRESINFO ({ commit }) {
     let { data } = await axios.get(config.PATH+'/common/tires/info')
 		commit('TIRESINFO', data)
@@ -31,10 +39,17 @@ const actions = {
 	async LOGIN({ commit }, queryString) {
 		console.log(queryString)
 		let { data } = await axios.post(config.PATH + '/auth/login', queryString)
-		return data;
+		console.log(data)
+		commit('UPDATETOKEN', data)
+		return data.data;
+	},
+	async SMSVERIFY({ commit }, queryString) {
+	
+		let { data } = await axios.post(config.PATH + '/common/sms/smssend', queryString)
+		return data
 	},
 	async SMSCHECK({ commit } ,queryString) {
-		let { data } = await axios.get(config.PATH + '/common/test/sms')
+		let { data } = await axios.post(config.PATH + '/common/sms/otpcheck', queryString)
 		return data.data
 	},
 	// staff partition please write above this

@@ -16,4 +16,13 @@ ProcessHistory.deleteProcessHistory = (id) => (
   db.result("DELETE FROM process_history WHERE id=$1", [$1])
 )
 
+ProcessHistory.getProcessByOrderId = (order) => (
+  db.tx( t => {
+    const queries = order.map(o => {
+      return  db.manyOrNone('SELECT * FROM process_history WHERE order_id =$1', [o.id]);
+    })
+    return t.batch(queries);
+  })
+)
+
 module.exports = ProcessHistory;

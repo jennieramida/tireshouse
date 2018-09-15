@@ -61,6 +61,19 @@ Order.updateOrdeyByStaff = (id, store_id) => (
 Order.getOrderDetail = (order_id) => (
   db.manyOrNone('SELECT * FROM order_detail WHERE order_id=$1', [order_id])
 )
+
+Order.getOrderByCustomerId = (id) => (
+  db.manyOrNone('SELECT * FROM order_record as o , process_history as p WHERE  o.id=p.order_id AND o.customer_id=$1', [id])
+)
+
+Order.getAllOrderDetail = (order) => (
+  db.tx(t => {
+    const queries = order.map(o => {
+      return db.manyOrNone('SELECT * FROM order_detail WHERE order_id =$1', [o.id]);
+    });
+    return t.batch(queries);
+  })
+)
 // Order.updateTechnicianInOrder = (id, technician_id) => (
 //   db.one('UPDATE SET technician_id=$1, updated_time=$2 WHERE id=$3',
 //     [id, moment().format('YYYY-MM-DD HH:mm:ss'), technician_id])
