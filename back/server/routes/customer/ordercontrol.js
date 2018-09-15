@@ -3,7 +3,7 @@ const OrderController = require('../../controllers/OrderController');
 
 router.post('/create', OrderController.createOrder);
 
-router.put('/cancel', OrderController.cancelOrder);
+router.post('/cancel', OrderController.cancelOrder);
 
 router.post('/getorderdetail', OrderController.getOrderWithDeatil);
 

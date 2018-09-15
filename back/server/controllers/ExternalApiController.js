@@ -18,18 +18,26 @@ exports.mapNearPlaceApi = (req ,res, next) => {
   axios.get(urlMap)
     .then(function (response) {
       // handle success
-      console.log(urlMap)
-      res.json(response.data);
+      const search = response.data;
+      var lastOutput;
+      for(var i=0;i<search.results.length;i++){
+        var arraySearch = search.results[i].vicinity.split(" ");
+        for(var j=0 ;j<arraySearch.length; j++){
+          const set = new Set(area);
+          if(set.has(arraySearch[j])) {
+            lastOutput  = arraySearch[j];
+            break;
+          }
+        }
+        if(lastOutput){
+          break;
+        }
+      }
+      res.json(outputHandler({areaResult: lastOutput}));
+
     })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
+    .catch(next)
     .then(function () {
       // always executed
     });
-}
-
-exports.mapGeoCodePlaceApi = (req, res, next) => {
-  
 }

@@ -22,7 +22,7 @@ exports.createOrder = (req, res, next) => {
       .then( () => {
         Order.insertOrderDetail(orderDetail, orderId.id)
         .then( () => {
-          res.json(successHandler("insert"));
+          res.json(outputHandler(orderId));
         })  
         .catch(next)
       })
@@ -80,10 +80,10 @@ exports.cancelOrder = (req, res, next) => {
   // const customerId = req.user.id;
   const orderId = req.body.orderId;
   const technicianProgress = 0;
-  processHistory.updateProcessHistory(orderId, technicianProgress)
-  .then(updateOutput => {
-    console.log(updateOutput);
-      res.json(successHandler("update"));
+  processHistory.insertProcessHistoryWithCode(orderId, technicianProgress)
+  .then(insertOutput => {
+    console.log(insertOutput);
+    res.json(outputHandler(insertOutput));
   })
   .catch(next)
 }
