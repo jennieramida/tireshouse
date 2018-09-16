@@ -161,32 +161,26 @@ export default{
       this.$router.push('/booking/checkout')
     },
     findPlace: function(event) {
-      console.log(event.latLng.lat(),event.latLng.lng())
       this.$store.dispatch('FINDPLACEGEOCODE',event.latLng).then( (response)=> {
-        this.place = response
-        let latlng = {
-              lat: response.markers[0].position.lat,
-              lng: response.markers[0].position.lng,
-        }
-        this.$refs.map.panTo(latlng);
-        if(this.$refs.mark){
-          this.$refs.mark.position.lat = latlng.lat
-          this.$refs.mark.position.lng = latlng.lng
-        }
+        this.findGoogle(response)
       })
-    },findByLocation: function(event){
+    },
+    findByLocation: function(event){
       this.$store.dispatch('FINDLOCATION',event.formatted_address).then( (response)=> {
-        this.place = response
-        let latlng = {
-              lat: response.markers[0].position.lat,
-              lng: response.markers[0].position.lng,
-        }
-        this.$refs.map.panTo(latlng);
-        if(this.$refs.mark){
-          this.$refs.mark.position.lat = latlng.lat
-          this.$refs.mark.position.lng = latlng.lng
-        }
+				this.findGoogle(response)
      })
+    },
+    findGoogle: function(result){
+      this.place = result
+    	let latlng = {
+				lat: result.markers[0].position.lat,
+				lng: result.markers[0].position.lng
+      }
+     	this.$refs.map.panTo(latlng);
+      if(this.$refs.mark){
+				this.$refs.mark.position.lat = latlng.lat
+				this.$refs.mark.position.lng = latlng.lng
+			}
     }
   },
 
