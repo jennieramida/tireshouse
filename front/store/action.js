@@ -66,7 +66,7 @@ const actions = {
 		console.log(queryString)
 		let { data } = await axios.post(config.PATH + '/auth/login', queryString)
 		console.log(data)
-		commit('UPDATETOKEN', data)
+		commit('UPDATETOKEN', data.data)
 		return data.data;
 	},
 	async SMSVERIFY({ commit }, queryString) {

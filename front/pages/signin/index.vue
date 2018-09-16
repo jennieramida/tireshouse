@@ -62,7 +62,7 @@ export default {
     this.$store.dispatch("LOGIN", queryString)
     .then(resp => {
       if(resp){
-        Cookie.set('LoginDetail', resp) 
+        Cookie.set('LoginDetail', resp)
         this.$router.push('/users')
         this.$modal.hide('login');
       } else {
