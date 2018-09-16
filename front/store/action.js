@@ -21,6 +21,30 @@ const actions = {
 		let { data } = await axios.get(config.PATH+'/common/test/map?location='+queryString.lat()+","+queryString.lng());
 		return parseJsonToLatLong(data);
   },
+  async CREATEORDER({ commit }, detail) {
+    //let config
+    let orderList = []
+    if(detail.orderList.front != null){
+      orderList.push({
+        "tireId":detail.orderList.front.id,
+        "amount":detail.orderList.front.amount
+      })
+    }
+    if(detail.orderList.back != null){
+      orderList.push({
+        "tireId":detail.orderList.back.id,
+        "amount":detail.orderList.back.amount
+      })
+    }
+		let { data } = await axios.post(config.PATH+'/custoomer/order/create',{
+      "location": detail.address.detail,
+      "latitude":19,
+      "longtitude":101,
+      "orderDateTime":"2018-08-08",
+      "orederDetail":orderList
+    });
+		return parseJsonToLatLong(data);
+  },
   async FINDLOCATION({ commit }, queryString) {
     let stringUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="
     let keyUrl = "&key=AIzaSyBPhWQjyLqgDZkctg0AzewEhJgVPeLCiyU"
@@ -76,7 +100,7 @@ export default actions
 const parseJsonToLatLong = (data) => {
 	let lat,long,address
 	let output = {}
-
+  console.log(data)
 	if(data.status==="OK"){
 		let result = data.results[0]
 		lat = result.geometry.location.lat
