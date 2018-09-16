@@ -5,10 +5,9 @@ var cookieparser = require('cookieparser')
 const actions = {
 	nuxtServerInit({ commit }, { req }) {
 		let accessToken = null
-		if (req.headers.cookie) {
-			var parsed = cookieparser.parse(req.headers.cookie)
+    if (req.headers.cookie && req.headers.cookie.LoginDetail) {
+			var parsed = cookieparser.parse(req.headers.cookie.LoginDetail)
 			accessToken = JSON.parse(parsed.LoginDetail)
-		
 		}
 		commit('UPDATETOKEN', accessToken)
 	},
@@ -70,7 +69,6 @@ const actions = {
 		return data.data;
 	},
 	async SMSVERIFY({ commit }, queryString) {
-	
 		let { data } = await axios.post(config.PATH + '/common/sms/smssend', queryString)
 		return data
 	},

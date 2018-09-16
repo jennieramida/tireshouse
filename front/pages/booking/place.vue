@@ -53,7 +53,6 @@
         </GmapMap>
 
         </div>
-      </div>
       <div class="col-12 col-md-6">
         <div class="_pdv-24px">รายละเอียดสถานที่</div>
         <div class="bio-input">
@@ -83,22 +82,22 @@
           <div class=" _dp-ilb">
             <div class="_pdv-24px">วัน</div>
             <div class="bio-input _w-256px">
-               <date-picker
-                  v-model="date"
-                  :config="options"/>
+               <datepicker :value="date" :language="th" :disabledDates="disabledDates" ></datepicker>
             </div>
 
           </div>
           <div class=" _dp-ilb">
             <div class="_pdv-24px">เวลา</div>
             <div class="bio-input _w-256px _pdr-256px">
-              <no-ssr>
-                <!-- <vue-timepicker> </vue-timepicker> -->
-              </no-ssr>
+              <select v-model="selectTime">
+                <option value="" disabled selected>โปรดเลือกเวลาให้ทำการ </option>
+                <option v-for="t in time" :key="t.HH">{{ t.HH+":"+t.mm }}</option>
+              </select>
             </div>
           </div>
         </div>
 
+</div>
 
         <div class="col">
           <div
@@ -113,15 +112,13 @@
 
 <script>
 
-// import VueTimepicker from 'vue2-timepicker';
-// import datePicker from 'vue-bootstrap-datetimepicker';
-// import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
+import Datepicker from 'vuejs-datepicker';
+import {th} from 'vuejs-datepicker/dist/locale'
 import NoSSR from 'vue-no-ssr';
 export default{
-
-
   components: {
-    'no-ssr': NoSSR,
+    NoSSR,
+    Datepicker
     },
 
   data: () =>  ({
@@ -130,17 +127,29 @@ export default{
       area:'',
       province:'',
       place: null,
-      time: {
-        HH:'13',
-        mm:'00',
-        ss:'00'
-      },
-      date: new Date(),
-       options: {
-          format: 'DD/MM/YYYY HH',
-          useCurrent: false,
-          minDate: new Date(Date.now() + 172800000)
-       }
+      selectTime: "",
+      time: [
+        {HH:'08',mm:'00',ss:'00'},
+        {HH:'09',mm:'00',ss:'00'},
+        {HH:'10',mm:'00',ss:'00'},
+        {HH:'11',mm:'00',ss:'00'},
+        {HH:'12',mm:'00',ss:'00'},
+        {HH:'13',mm:'00',ss:'00'},
+        {HH:'14',mm:'00',ss:'00'},
+        {HH:'15',mm:'00',ss:'00'},
+        {HH:'16',mm:'00',ss:'00'},
+        {HH:'17',mm:'00',ss:'00'},
+      ],
+      date: new Date(Date.now() + 172800000),
+      th:th,
+      disabledDates: {
+        customPredictor: function (date) {
+          if (Date.parse(date) < Date.now() + 86400000) {
+            return true
+          }
+        }
+      }
+
   }),
     methods: {
     inputAddressInsertStore:  function(event) {
