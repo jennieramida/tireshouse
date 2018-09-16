@@ -45,12 +45,12 @@ exports.signin = (req, res, next) => {
       code: usernameUser,
       key: passwordUser
     }, jwtSecret);
-    res.json({
+    res.json(outputHandler({
       type: 'staff',
       id: '999999',
       username: 'staff',
       token
-    });
+    }));
   }
   else if (flagUser === 'technician') {
     User.findTechnicianByUsername(usernameUser)
