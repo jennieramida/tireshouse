@@ -18,6 +18,9 @@ const mutations = {
   },
   LATLONGFROMGEOCODE (state, payload) {
     state.GEOCODE_RESULTS = payload
+  },
+  UPDATEHISTORY (state, payload) {
+    state.HISTORY = payload
   }
   ,
   LISTORDER (state, payload) {
@@ -49,7 +52,8 @@ const mutations = {
   },
   UPDATETOKEN (state, payload) {
     state.auth = payload
-  }
+  },
+  
 
 }
 

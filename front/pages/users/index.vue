@@ -245,6 +245,7 @@
         </div>
       </div>
     </div>
+    {{$store.state.HISTORY}}
   </div>
 </template>
 
@@ -253,7 +254,11 @@ import History from '~/components/History.vue'
 export default {
   middleware:'notAuthenticated',
   components: {History},
-     created () {
+	async fetch({ store}) {
+    await store.dispatch('FETCHORDERHISTORY');
+    
+	},
+  created () {
     // fetch the data when the view is created and the data is
     // // already being observed
     this.fetchData()
@@ -296,6 +301,12 @@ export default {
       this.customerDetail.mobile = this.$store.state.auth.mobile
       this.customerDetail.email = this.$store.state.auth.email
       }
+     
+      // .then( resp => {
+      //   console.log(resp);
+      // }).catch( err=> {
+      //   console.log(err);
+      // })
     },
   }
 }

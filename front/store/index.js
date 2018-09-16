@@ -17,7 +17,8 @@ const createStore = () => {
       },
       DEFAULT_LAT_LONG: { "lat": "13.736717", "lng":"100.523186"},
       GEOCODE_RESULTS:"",
-      auth:""
+      auth:"",
+      HISTORY:[]
       //please write code above staff section
       ,
       ORDER_LIST:[],
