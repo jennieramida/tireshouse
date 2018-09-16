@@ -4,7 +4,7 @@ const moment = require('moment');
 
 /*NEW*/
 Order.insertOrder = (customer_id, location, zone_id, latitude, longitude) => (
-  db.oneOrNone('INSERT INTO order_record (customer_id,  location, zone_id, latitude, longitude, order_date_time, created_time) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING id',
+  db.oneOrNone('INSERT INTO order_record (customer_id,  location, zone_id, latitude, longitude, order_date_time, created_time) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *',
     [customer_id, location, zone_id, latitude, longitude, moment().format('YYYY-MM-DD HH:mm:ss'), moment().format('YYYY-MM-DD HH:mm:ss')])
 )
 
@@ -60,6 +60,26 @@ Order.updateOrdeyByStaff = (id, store_id) => (
 
 Order.getOrderDetail = (order_id) => (
   db.manyOrNone('SELECT * FROM order_detail WHERE order_id=$1', [order_id])
+)
+
+Order.getOrderByCustomerId = (id) => (
+  db.manyOrNone('SELECT order_record.id, order_record.location, CONCAT(technician.firstname , technician.lastname) as technician,'+
+  '  order_record.created_time, order_record.updated_time, '+
+  ' store.name as store , zone.zone_name as zone, order_record.longitude, order_record.latitude FROM order_record'+
+  ' LEFT JOIN zone ON zone.id=order_record.zone_id   '+
+  ' LEFT JOIN store ON store.id=order_record.store_id'+
+  ' LEFT JOIN technician ON technician.id= order_record.technician_id '+
+  '  WHERE  order_record.customer_id=$1 '
+  , [id])
+)
+
+Order.getAllOrderDetail = (order) => (
+  db.tx(t => {
+    const queries = order.map(o => {
+      return db.manyOrNone('SELECT * FROM order_detail as a, tires as b WHERE b.id= a.tire_id AND a.order_id =$1', [o.id]);
+    });
+    return t.batch(queries);
+  })
 )
 // Order.updateTechnicianInOrder = (id, technician_id) => (
 //   db.one('UPDATE SET technician_id=$1, updated_time=$2 WHERE id=$3',

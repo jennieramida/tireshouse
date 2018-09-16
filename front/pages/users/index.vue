@@ -10,8 +10,8 @@
          
         </div>
         <div class="_mgt-64px _pdt-64px _bdtlrd-8px _pdbt-24px-md _pdbt-16px _bdtrrd-8px _cl-white bg-red _tal-ct">
-          <div class="_fs-4-md _fs-5 _fw-400 _pdt-24px _pdbt-4px">รมิดา จึงไพศาล</div>
-          <div class="_fs-5-md _fs-6 _fw-300">jennieramida@gmail.com</div>
+          <div class="_fs-4-md _fs-5 _fw-400 _pdt-24px _pdbt-4px">{{$store.state.auth.firstname +' ' +$store.state.auth.lastname }}</div>
+          <div class="_fs-5-md _fs-6 _fw-300">{{$store.state.auth.email}}</div>
         </div>
         <div class=" _bdbtlrd-8px _bdbtrrd-8px _pdv-32px-md _pdv-16px _cl-dark bg-white _tal-ct _fs-4 _fw-400">
          
@@ -207,6 +207,7 @@
               <div class="_pdt-24px _pdbt-4px">เบอร์โทรศัพท์</div>
               <div class="bio-input">
                 <input 
+                  v-model ="customerDetail.firstName"
                   type="tel" 
                   value="0959969153">
               </div>
@@ -214,6 +215,7 @@
               <div class="_pdt-24px _pdbt-4px">อีเมล</div>
               <div class="bio-input">
                 <input 
+                  v-model ="customerDetail.email"
                   type="email" 
                   value="jennieramida@gmail.com">
               </div>
@@ -221,15 +223,17 @@
               <div class="_pdt-24px _pdbt-4px">รหัสผ่าน</div>
               <div class="bio-input">
                 <input 
+                  v-model ='customerDetail.password'
                   type="password"
-                  value="hellojennie">
+                  value="">
               </div>
 
               <div class="_pdt-24px _pdbt-4px">ยืนยันรหัสผ่าน</div>
               <div class="bio-input">
                 <input 
+                  v-model ='customerDetail.rePassword'
                   type="password"
-                  value="hellojennie">
+                  value="">
               </div>
             </div>
             <div class="_dp-f _jtfct-ct">
@@ -241,14 +245,33 @@
         </div>
       </div>
     </div>
+    {{$store.state.HISTORY}}
   </div>
 </template>
 
 <script>
 import History from '~/components/History.vue'
 export default {
+  middleware:'notAuthenticated',
   components: {History},
+	async fetch({ store}) {
+    await store.dispatch('FETCHORDERHISTORY');
+    
+	},
+  created () {
+    // fetch the data when the view is created and the data is
+    // // already being observed
+    this.fetchData()
+  },
   data: () => ({
+    customerDetail: {
+      firstName: '',
+      lastName:'',
+      mobile: '',
+      email: '',
+      password: '',
+      rePassword: ''
+    },
     isShowing: 'history',
      history: [
        {
@@ -268,7 +291,24 @@ export default {
       technician: 'xxxxx',
     }, 
     ]
-  })
+  }),
+  methods: {
+    fetchData () {
+      //  this.logindetail = sessionStorage.getItem('LoginDetail');
+      if(this.$store.state.auth){
+      this.customerDetail.firstName = this.$store.state.auth.firstname
+      this.customerDetail.lastName = this.$store.state.auth.lastname
+      this.customerDetail.mobile = this.$store.state.auth.mobile
+      this.customerDetail.email = this.$store.state.auth.email
+      }
+     
+      // .then( resp => {
+      //   console.log(resp);
+      // }).catch( err=> {
+      //   console.log(err);
+      // })
+    },
+  }
 }
 </script>
 

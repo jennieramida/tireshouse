@@ -20,7 +20,7 @@ exports.signin = (req, res, next) => {
             id: user.id,
             username: user.username
           }, jwtSecret);
-          res.json({
+          res.json(outputHandler({
             type: 'customer',
             id: user.id,
             username: user.username,
@@ -30,7 +30,7 @@ exports.signin = (req, res, next) => {
             mobile: user.mobile,
             address: user.address,
             token
-          });
+          }));
         } else {
           res.json('Incorrect Password')
         }

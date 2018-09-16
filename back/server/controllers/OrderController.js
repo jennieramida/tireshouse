@@ -22,7 +22,7 @@ exports.createOrder = (req, res, next) => {
       .then( () => {
         Order.insertOrderDetail(orderDetail, orderId.id)
         .then( () => {
-          res.json(successHandler("insert"));
+          res.json(outputHandler(orderId));
         })  
         .catch(next)
       })
@@ -80,10 +80,10 @@ exports.cancelOrder = (req, res, next) => {
   // const customerId = req.user.id;
   const orderId = req.body.orderId;
   const technicianProgress = 0;
-  processHistory.updateProcessHistory(orderId, technicianProgress)
-  .then(updateOutput => {
-    console.log(updateOutput);
-      res.json(successHandler("update"));
+  processHistory.insertProcessHistoryWithCode(orderId, technicianProgress)
+  .then(insertOutput => {
+    console.log(insertOutput);
+    res.json(outputHandler(insertOutput));
   })
   .catch(next)
 }
@@ -97,13 +97,33 @@ exports.getOrderByZone = (req, res, next) => {
     res.json(outputHandler(getOutput));
   })
 }
-// exports.getOrder = (req, res,)
-// exports.updateOrderProgressByStaff = (req, res, next) => {
-//   const technicianId = req.user.id;
-//   const zoneOrder = req.body.zoneId;
-//   const storeOrder = req.body.storeId;
-  
-// }
+
+exports.getCustomerOrderHistory = (req, res, next) => {
+  const userId = req.user.id;
+  Order.getOrderByCustomerId(userId)
+  .then( getOutput => {
+    Order.getAllOrderDetail(getOutput)
+    .then(getOutputDetail => {
+      processHistory.getProcessByOrderId(getOutput)
+      .then(getOutputProcess =>{
+        if (getOutput.length === getOutputDetail.length && getOutput.length === getOutputProcess.length){
+          const sumGetOutput = []
+          const lengthOutput = getOutput.length
+          console.log(getOutput)
+          for(var i=0 ;i<lengthOutput;i++){
+            sumGetOutput[i] = ({ "order": getOutput[i], "orderDetail": getOutputDetail[i], "process": getOutputProcess[i] } )
+          }
+          res.json(sumGetOutput);
+        } else {
+          res.json("length Error")
+        }
+      })
+      .catch(next)
+    })
+    .catch(next);
+  })
+  .catch(next);
+}
 
 exports.deleteOrder  
 

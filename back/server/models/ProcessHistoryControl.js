@@ -3,8 +3,13 @@ const ProcessHistory = {};
 const moment = require('moment');
 const defaultProcessId = 1 ;
 ProcessHistory.insertProcessHistory = (order_id) => (
-  db.one("INSERT INTO process_history (order_id, process_id,created_time) VALUES ($1,$2,$3) RETURNING id",
+  db.one("INSERT INTO process_history (order_id, process_id,created_time) VALUES ($1,$2,$3) RETURNING *",
     [order_id, defaultProcessId, moment().format('YYYY-MM-DD HH:mm:ss') ])
+)
+
+ProcessHistory.insertProcessHistoryWithCode = (order_id,status_code) => (
+  db.one("INSERT INTO process_history (order_id, process_id,created_time) VALUES ($1,$2,$3) RETURNING *",
+    [order_id, status_code, moment().format('YYYY-MM-DD HH:mm:ss')])
 )
 
 ProcessHistory.updateProcessHistory = (order_id, process_id) => (
@@ -14,6 +19,15 @@ ProcessHistory.updateProcessHistory = (order_id, process_id) => (
 
 ProcessHistory.deleteProcessHistory = (id) => (
   db.result("DELETE FROM process_history WHERE id=$1", [$1])
+)
+
+ProcessHistory.getProcessByOrderId = (order) => (
+  db.tx( t => {
+    const queries = order.map(o => {
+      return  db.manyOrNone('SELECT a.*, b.name FROM process_history as a, process as b WHERE a.order_id =$1 AND a.process_id=b.id ', [o.id]);
+    })
+    return t.batch(queries);
+  })
 )
 
 module.exports = ProcessHistory;
