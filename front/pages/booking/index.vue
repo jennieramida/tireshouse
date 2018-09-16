@@ -139,7 +139,7 @@ import { mapState, mapMutations } from 'vuex'
 
 export default {
 	async fetch({ store}) {
-  	await store.dispatch('FETCHORDERHISTORY');
+  	await store.dispatch('GETTIRESINFO');
 	},
 	data: () => ({
 	isActive: false,
