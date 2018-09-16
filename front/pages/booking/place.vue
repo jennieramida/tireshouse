@@ -44,7 +44,6 @@
           @click="findPlace"
         >
           <GmapMarker v-if="this.place"
-                :key="index"
                 :position="{
                   lat: this.place.markers[0].position.lat,
                   lng: this.place.markers[0].position.lng,
@@ -83,17 +82,10 @@
         <div class="_dp-f _jtfct-spbtw ">
           <div class=" _dp-ilb">
             <div class="_pdv-24px">วัน</div>
-            <!-- <div class="bio-input">
-              <input
-                type="text"
-                placeholder="Type Something">
-            </div> -->
             <div class="bio-input _w-256px">
-              <!-- <no-ssr> -->
-                <date-picker
+               <date-picker
                   v-model="date"
                   :config="options"/>
-                  <!-- </no-ssr> -->
             </div>
 
           </div>
@@ -145,8 +137,9 @@ export default{
       },
       date: new Date(),
        options: {
-          format: 'DD/MM/YYYY',
-          useCurrent: false
+          format: 'DD/MM/YYYY HH',
+          useCurrent: false,
+          minDate: new Date(Date.now() + 172800000)
        }
   }),
     methods: {
@@ -162,6 +155,8 @@ export default{
     },
     findPlace: function(event) {
       this.$store.dispatch('FINDPLACEGEOCODE',event.latLng).then( (response)=> {
+        response.markers[0].position.lat = event.latLng.lat()
+        response.markers[0].position.lng = event.latLng.lng()
         this.findGoogle(response)
       })
     },

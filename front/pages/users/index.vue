@@ -1,25 +1,25 @@
 <template>
   <div class="container Prompt">
     <div class="row _mgt-64px-md _mgt-12px">
-      
+
       <div class="col-md-4 col-12">
         <div class="_dp-f _jtfct-ct _pst-rlt">
-          <img 
-            src="~/assets/images/koala.jpg" 
+          <img
+            src="~/assets/images/koala.jpg"
             class="_h-128px _w-128px _bdrd-50pct _pst-asl _bdcl-white _bdw-4px shadow">
-         
+
         </div>
         <div class="_mgt-64px _pdt-64px _bdtlrd-8px _pdbt-24px-md _pdbt-16px _bdtrrd-8px _cl-white bg-red _tal-ct">
           <div class="_fs-4-md _fs-5 _fw-400 _pdt-24px _pdbt-4px">{{$store.state.auth.firstname +' ' +$store.state.auth.lastname }}</div>
           <div class="_fs-5-md _fs-6 _fw-300">{{$store.state.auth.email}}</div>
         </div>
         <div class=" _bdbtlrd-8px _bdbtrrd-8px _pdv-32px-md _pdv-16px _cl-dark bg-white _tal-ct _fs-4 _fw-400">
-         
-          <div 
-            class="_fs-5-md _fs-6  _dp-b _pdv-4px-md _pdv-1px _fw-300" 
+
+          <div
+            class="_fs-5-md _fs-6  _dp-b _pdv-4px-md _pdv-1px _fw-300"
             @click="isShowing = 'history'">  <p class="hover-underline-animation">ประวัติการทำรายการเปลี่ยนยาง</p>
           </div>
-          <div 
+          <div
             class="_fs-5-md _fs-6  _dp-b _pdv-4px-md _pdv-1px _fw-300"
             @click="isShowing = 'profile'"> <p class="hover-underline-animation">แก้ไขโปรไฟล์</p>
           </div>
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="col-md-8 col-12">
-       
+
         <div v-show="isShowing === 'history'">
           <div class="_fs-3-md _tal-l-md _tal-ct _fs-4 _pdbt-24px _pdt-32px _pdt-0px-md">ประวัติการทำรายการเปลี่ยนยาง</div>
           <!-- ถ้าไม่มีการทำรายการมาก่อน Show this one -->
@@ -43,12 +43,12 @@
               </nuxt-link>
             </div>
           </div> -->
-          <div 
+          <div
             v-for="(item,i) in history"
-            :key="i" 
+            :key="i"
             class="_pdv-24px bio-accordion">
-            <input 
-              :id="i" 
+            <input
+              :id="i"
               type="checkbox">
             <label :for="i">
               <history
@@ -59,7 +59,7 @@
                 :insurance="item.insurance"
                 :technician="item.technician"
             /></label>
-           
+
             <div class="bio-accordion-content">
               <div>
                 <div class="_fs-5-md _tal-l-md _tal-ct _fs-4 _pdbt-24px _pdt-32px ">ติดตามสถานะการเปลี่ยนยาง</div>
@@ -113,12 +113,12 @@
                       </div>
                     </div>
                     <div class="col-12 _tal-ct _fw-300 _pdt-24px _fs-7">
-                      หากต้องการเปลี่ยนแปลงรายละเอียด กรุณาติดต่อ<a 
-                        href="tel:" 
+                      หากต้องการเปลี่ยนแปลงรายละเอียด กรุณาติดต่อ<a
+                        href="tel:"
                         class="_cl-darkred">            Tireshouse</a>
                     </div>
                     <!-- End Step 1 -->
-                
+
                     <!-- Step 2 -->
                     <!-- <div class="col-12">
                   <div class="_fs-5 _tal-ct _pdt-64px _pdbt-24px _cl-darkred">รายละเอียดช่าง</div>
@@ -132,8 +132,8 @@
                   <div>0938383838</div>
                 </div>
                 <div class="col-12 _tal-ct _fw-300 _pdt-24px _fs-7">
-                  หากมีข้อสงสัย กรุณาติดต่อ<a 
-                    href="tel:" 
+                  หากมีข้อสงสัย กรุณาติดต่อ<a
+                    href="tel:"
                     class="_cl-darkred">            Tireshouse</a>
                 </div> -->
                     <!-- End Step 2 -->
@@ -143,45 +143,45 @@
                   <div class="_fs-5 _tal-ct _pdt-64px _pdbt-24px _cl-darkred">กรุณาให้คะแนนการให้บริการ</div>
                   <div class="_dp-f _jtfct-ct">
                     <fieldset class="rating">
-                      <input 
-                        id="star5" 
-                        type="radio" 
-                        name="rating" 
-                        value="5" ><label 
-                          class = "full" 
-                          for="star5" 
+                      <input
+                        id="star5"
+                        type="radio"
+                        name="rating"
+                        value="5" ><label
+                          class = "full"
+                          for="star5"
                           title="5 stars"/>
-                      <input 
-                        id="star4" 
-                        type="radio" 
-                        name="rating" 
-                        value="4" ><label 
-                          class = "full" 
-                          for="star4" 
+                      <input
+                        id="star4"
+                        type="radio"
+                        name="rating"
+                        value="4" ><label
+                          class = "full"
+                          for="star4"
                           title="4 stars"/>
-                      <input 
-                        id="star3" 
-                        type="radio" 
-                        name="rating" 
-                        value="3" ><label 
-                          class = "full" 
-                          for="star3" 
+                      <input
+                        id="star3"
+                        type="radio"
+                        name="rating"
+                        value="3" ><label
+                          class = "full"
+                          for="star3"
                           title="stars"/>
-                      <input 
-                        id="star2" 
-                        type="radio" 
-                        name="rating" 
-                        value="2" ><label 
-                          class = "full" 
-                          for="star2" 
+                      <input
+                        id="star2"
+                        type="radio"
+                        name="rating"
+                        value="2" ><label
+                          class = "full"
+                          for="star2"
                           title="2 stars"/>
-                      <input 
-                        id="star1" 
-                        type="radio" 
-                        name="rating" 
-                        value="1" ><label 
-                          class = "full" 
-                          for="star1" 
+                      <input
+                        id="star1"
+                        type="radio"
+                        name="rating"
+                        value="1" ><label
+                          class = "full"
+                          for="star1"
                           title="1 star"/>
                     </fieldset>
                   </div>
@@ -199,30 +199,30 @@
             <div>
               <div class="_pdbt-4px">ชื่อ-นามสกุล</div>
               <div class="bio-input">
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value="รมิดา จึงไพศาล">
               </div>
 
               <div class="_pdt-24px _pdbt-4px">เบอร์โทรศัพท์</div>
               <div class="bio-input">
-                <input 
+                <input
                   v-model ="customerDetail.firstName"
-                  type="tel" 
+                  type="tel"
                   value="0959969153">
               </div>
 
               <div class="_pdt-24px _pdbt-4px">อีเมล</div>
               <div class="bio-input">
-                <input 
+                <input
                   v-model ="customerDetail.email"
-                  type="email" 
+                  type="email"
                   value="jennieramida@gmail.com">
               </div>
 
               <div class="_pdt-24px _pdbt-4px">รหัสผ่าน</div>
               <div class="bio-input">
-                <input 
+                <input
                   v-model ='customerDetail.password'
                   type="password"
                   value="">
@@ -230,7 +230,7 @@
 
               <div class="_pdt-24px _pdbt-4px">ยืนยันรหัสผ่าน</div>
               <div class="bio-input">
-                <input 
+                <input
                   v-model ='customerDetail.rePassword'
                   type="password"
                   value="">
@@ -256,7 +256,7 @@ export default {
   components: {History},
 	async fetch({ store}) {
     await store.dispatch('FETCHORDERHISTORY');
-    
+
 	},
   created () {
     // fetch the data when the view is created and the data is
@@ -281,7 +281,7 @@ export default {
       brand:'Michelin',
       insurance:'234567890',
       technician: 'xxxxx',
-    }, 
+    },
     {
       date: '12 มกราคม 2559',
       time: '12:00 น.',
@@ -289,7 +289,7 @@ export default {
       brand:'Michelin',
       insurance:'4567890765',
       technician: 'xxxxx',
-    }, 
+    },
     ]
   }),
   methods: {
@@ -301,7 +301,7 @@ export default {
       this.customerDetail.mobile = this.$store.state.auth.mobile
       this.customerDetail.email = this.$store.state.auth.email
       }
-     
+
       // .then( resp => {
       //   console.log(resp);
       // }).catch( err=> {
