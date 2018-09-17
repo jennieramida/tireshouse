@@ -44,12 +44,18 @@ exports.mapNearPlaceApi = (req ,res, next) => {
 
 exports.mapGeocode = (req, res, next) => {
   //server Call external api
-  const locMap = req.query.location;
-  const urlMap = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + locMap + '&language=th' + keyAPi;
+  let locMap = req.query.location;
+  // locMap ='S%26P%20สยามพารากอน%20ถนน%20พระรามที่%20๑%20แขวง%20ปทุมวัน%20เขต%20ปทุมวัน%20กรุงเทพมหานคร%20ประเทศไทย';
+  const urlMap = 'https://maps.googleapis.com/maps/api/geocode/json?' +  keyAPi;
 
-  // console.log(area)
+  console.log(urlMap)
   // res.json(area);
-  axios.get(urlMap)
+  axios.get(urlMap, {
+    params: {
+      address: locMap,
+      language: 'th'
+    }
+  } )
     .then(function (response) {
       // handle success
       const search = response.data;
