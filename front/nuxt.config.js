@@ -80,6 +80,7 @@ module.exports = {
   modules: [
     'semantic-ui-vue/nuxt',
     '@nuxtjs/toast',
+    'bootstrap-vue/nuxt',
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios'
     // ['@nuxtjs/google-analytics', {

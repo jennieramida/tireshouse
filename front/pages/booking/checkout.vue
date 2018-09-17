@@ -6,7 +6,6 @@
           <li class="active">เลือกไซส์ยาง</li>
           <li class="active">เลือกยางรถยนต์</li>
           <li >สถานที่และเวลา</li>
-
           <li>ชำระเงิน</li>
         </ul>
       </div>
@@ -20,9 +19,9 @@
         </div>
       </div>
     </div>
-  
+
     <div class="row _dp-f _jtfct-ct">
-      <div class="col-12 col-md-8 _pdbt-48px _pdbt-0px-md"  v-if="!authenticated">
+      <div class="col-12 col-md-8 _pdbt-48px _pdbt-0px-md" >
         <div class=" _fs-4 _cl-black _pdbt-24px">รายละเอียดลูกค้า</div>
         <div class="_pdv-24px">ชื่อ</div>
         <div class="bio-input">
@@ -54,29 +53,25 @@
             type="email"
             placeholder="โปรดกรอกอีเมล">
         </div>
-        <div class="_pdv-24px">รหัสผ่าน</div>
-        <div class="bio-input">
-          <input
-            v-model ="customerDetail.password"
-            type="email"
-            placeholder="โปรดกรอกอีเมล">
+        <div v-if="!this.login">
+          <div  class="_pdv-24px">รหัสผ่าน</div>
+          <div class="bio-input">
+            <input
+              v-model ="customerDetail.password"
+              type="password"
+              placeholder="โปรดกรอกอีเมล">
+          </div>
         </div>
-        <div class="_pdv-24px">รหัสผ่าน อีกครั้ง</div>
-        <div class="bio-input">
-          <input
-            v-model ="customerDetail.rePassword"
-            type="email"
-            placeholder="โปรดกรอกอีเมล">
+        <div v-if="!this.login">
+          <div class="_pdv-24px">รหัสผ่าน อีกครั้ง</div>
+          <div class="bio-input">
+            <input
+              v-model ="customerDetail.rePassword"
+              type="password"
+              placeholder="โปรดกรอกอีเมล">
+          </div>
         </div>
-
-        <!--<div class="_pdv-24px">รหัสผ่าน</div>
-        <div class="bio-input">
-          <input
-            type="password"
-            placeholder="โปรดตั้งรหัสผ่านใหม่">
-        </div> -->
-
-        <div class="_fs-7 _fs-6-md _mgt-12px _pdt-12px">
+        <div v-if="!this.login" class="_fs-7 _fs-6-md _mgt-12px _pdt-12px">
           เป็นสมาชิก Tireshouse แล้ว?
           <span
           @click="showLogin"
@@ -85,15 +80,11 @@
             กดที่นี่เพื่อเข้าสู่ระบบ</span>
           เพื่อติดตามการบริการ
         </div>
-
-
-
         <div
           v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
           class="_dp-f _jtfct-ct _pdv-24px _pdt-48px _pdt-24px-md">
-          <nuxt-link to="/booking/payment" >
-            <button id="show-modal" v-on:click="signUpCustomer" class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">ยืนยัน</button>
-          </nuxt-link>
+            <button v-if="login==false" id="show-modal" v-on:click="signUpCustomer" class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">ยืนยัน</button>
+            <button v-else id="show-modal" v-on:click="nextstep" class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">ถัดไป</button>
         </div>
         <modal name="comfirm" height="auto">
         <div class="container">
@@ -109,21 +100,14 @@
           </div>
           <div class="_pdt-24px _fs-7 _cl-black _pdbt-8px">
             <div>
-              <nuxt-link
-                to="/reset"
-                class="_cl-darkred">กดเพื่อรับรหัสผ่านใหม่</nuxt-link></div>
+              <a v-on:click="resend" href="#resend" class="_cl-darkred">กดเพื่อรับรหัสผ่านใหม่</a>
+            </div>
           </div>
           <div class="_dp-f _jtfct-ct">
             <button v-on:click="confirmSMS" class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">
-              <!-- <nuxt-link
-                to="/booking/payment"
-                class="_cl-white">
-            </nuxt-link> -->
                 ยืนยัน
             </button>
           </div>
-
-
       </div>
           </div>
         </div>
@@ -150,68 +134,17 @@
           </div>
           <div class="_dp-f _jtfct-ct">
             <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover" v-on:click="loginCustomer">
-              <nuxt-link
-                to="/booking/checkout"
-                class="_cl-white">
                 เข้าสู่ระบบ
-            </nuxt-link></button>
+            </button>
           </div>
-
-
       </div>
       </div>
       </div>
       </modal>
       </div>
-      <div v-else>
-                <div class=" _fs-4 _cl-black _pdbt-24px">รายละเอียดลูกค้า</div>
-        <div class="_pdv-24px">ชื่อ</div>
-        <div class="bio-input">
-          <input
-            v-model ="customerDetail.firstName"
-            type="text"
-            placeholder="โปรดกรอกชื่อและนามสกุล">
-        </div>
-        <div class="_pdv-24px">นามสกุล</div>
-        <div class="bio-input">
-          <input
-            v-model ="customerDetail.lastName"
-            type="text"
-            placeholder="โปรดกรอกชื่อและนามสกุล">
-        </div>
-
-        <div class="_pdv-24px">เบอร์โทรศัพท์</div>
-        <div class="bio-input">
-          <input
-          v-model ="customerDetail.mobile"
-            type="tel"
-            placeholder="โปรดกรอกเบอร์โทรศัพท์">
-        </div>
-
-        <div class="_pdv-24px">อีเมล</div>
-        <div class="bio-input">
-          <input
-            v-model ="customerDetail.email"
-            type="email"
-            placeholder="โปรดกรอกอีเมล">
-        </div>
-         <div
-          v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
-          class="_dp-f _jtfct-ct _pdv-24px _pdt-48px _pdt-24px-md">
-          <nuxt-link to="/booking/payment" >
-            <button id="show-modal" v-on:click="nextStep" class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">ถัดไป</button>
-          </nuxt-link>
-        </div>
-      </div>
     </div>
-
- 
-
-
   </div>
 </template>
-
-
 <script>
 import Cookie from 'js-cookie'
 
@@ -236,65 +169,106 @@ export default {
       password: '',
       rePassword: ''
     },
-    logindetail:'',
-    OTPPassword:''
+    login:false,
+    OTPPassword:'',
+    error: null
   }),
   computed: {
     authenticated() {
       if(this.$store.state.auth){
-      this.customerDetail.firstName = this.$store.state.auth.firstname
-      this.customerDetail.lastName = this.$store.state.auth.lastname
-      this.customerDetail.mobile = this.$store.state.auth.mobile
-      this.customerDetail.email = this.$store.state.auth.email
+        this.customerDetail.firstName = this.$store.state.auth.firstname
+        this.customerDetail.lastName = this.$store.state.auth.lastname
+        this.customerDetail.mobile = this.$store.state.auth.mobile
+        this.customerDetail.email = this.$store.state.auth.email
       }
       return this.$store.state.auth
     }
   },
   methods: {
      fetchData () {
-      //  this.logindetail = sessionStorage.getItem('LoginDetail');
-      if(this.$store.state.auth){
-      this.customerDetail.firstName = this.$store.state.auth.firstname
-      this.customerDetail.lastName = this.$store.state.auth.lastname
-      this.customerDetail.mobile = this.$store.state.auth.mobile
-      this.customerDetail.email = this.$store.state.auth.email
+      if(Cookie.get('LoginDetail')!=null){
+        this.login = true
+        let customer = JSON.parse(Cookie.get('LoginDetail'))
+        this.customerDetail.firstName = customer.firstname
+        this.customerDetail.lastName = customer.lastname
+        this.customerDetail.mobile = customer.mobile
+        this.customerDetail.email = customer.email
       }
     },
-  loginCustomer () {
-    console.log(this.loginEmail)
-    const queryString = {"flag":"customer","username": this.loginEmail,"password":this.loginPassword}
-    this.$store.dispatch("LOGIN", queryString)
-    .then(resp => {
-      Cookie.set('LoginDetail', resp) 
-      sessionStorage.setItem('LoginDetail', JSON.stringify(resp));
-      this.$modal.hide('login');
-      this.loginEmail = ''
-      this.loginPassword = ''
-
+    resend(){
+      const queryString = {"phone":this.customerDetail.mobile}
+      this.$store.dispatch("SMSVERIFY",queryString)
+      .then( resp => {
+        console.log(resp)
+      }).
+      catch( error => {
+        console.log(error)
+      })
+    },
+    nextstep(){
+      this.$router.push('/booking/payment')
+    },
+    loginCustomer () {
+      const queryString = {"flag":"customer","username": this.loginEmail,"password":this.loginPassword}
+      this.$store.dispatch("LOGIN", queryString)
+      .then(resp => {
+        Cookie.set('LoginDetail', resp)
+        this.fetchData()
+        this.$modal.hide('login');
+        this.loginEmail = ''
+        this.loginPassword = ''
     })
 
   },
+  checkfill(){
+    if(this.customerDetail.firstname != "" && this.customerDetail.lastname != "" && this.customerDetail.mobile != "" && this.customerDetail.email != "" && this.customerDetail.rePassword != "" && this.customerDetail.password != "" && this.customerDetail.password==this.customerDetail.rePassword){
+      return true
+    }else return false
 
+  },
   signUpCustomer() {
-    this.$modal.show('comfirm');
-    console.log("dafsad")
-    const queryString = {"phone":this.customerDetail.mobile}
-    this.$store.dispatch("SMSVERIFY",queryString)
-    .then( resp => {
-      console.log(resp)
-    }).
-    catch( error => {
-      console.log(error)
-    })
+    if(!this.login){
+      if(this.checkfill()){
+        this.$modal.show('comfirm');
+        const queryString = {"phone":this.customerDetail.mobile}
+        this.$store.dispatch("SMSVERIFY",queryString)
+        .then( resp => {
+          console.log(resp)
+        }).
+        catch( error => {
+          console.log(error)
+        })
+      }else{
+        if(this.customerDetail.password!=this.customerDetail.rePassword){
+          this.error = {
+            "errorcode":"E030002",
+            "errormsg":"password not same"
+          }
+        }else{
+          this.error = {
+            "errorcode":"E030001",
+            "errormsg":"Tire register mobile"
+          }
+        }
+        console.log(this.error)
+      }
+    }
   },
   confirmSMS () {
-    const queryString = {"OTPCode":this.OTPPassword,"phone":this.customerDetail.mobile}
-   
+    const queryString = {
+        "OTPCode":this.OTPPassword,
+        "firstName": this.customerDetail.firstName,
+        "lastName":this.customerDetail.lastName,
+        "mobile": this.customerDetail.mobile,
+        "email": this.customerDetail.email,
+        "password": this.customerDetail.password
+    }
     this.$store.dispatch("SMSCHECK",queryString)
     .then( resp => {
       console.log(resp)
-      if(resp.messege === "ok"){
+      if(resp.status == true){
         this.$modal.hide('comfirm');
+        loginCustomer()
       }else {
         alert("try again");
       }

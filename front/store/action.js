@@ -75,7 +75,6 @@ const actions = {
 		return data.data;
 	},
 	async SMSVERIFY({ commit }, queryString) {
-	
 		let { data } = await axios.post(config.PATH + '/common/sms/smssend', queryString)
 		return data
 	},
