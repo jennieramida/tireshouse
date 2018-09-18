@@ -53,6 +53,9 @@ const mutations = {
   UPDATETOKEN (state, payload) {
     state.auth = payload
   },
+  TOKENSTAFF (state, payload) {
+    state.AUTHSTAFF = payload
+  }
   
 
 }

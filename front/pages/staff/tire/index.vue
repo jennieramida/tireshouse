@@ -2,7 +2,10 @@
   <div>
       <div class="ui segment " align="center">
         <h2 is="sui-header" floated="right">Floated Content</h2>
- 
+  <input type="file" multiple :name="uploadFieldName" :disabled="isSaving" v-on:change="filesChange"
+            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel,text/comma-separated-values, text/csv, application/csv"  class="input-file">
+        <sui-button v-on:click="importXLSX"> Import </sui-button>
+        <sui-button> Export </sui-button>
        <!-- {{$store.state}} -->
         <sui-divider clearing />
         <sui-table size="small" selectable celled>
@@ -63,18 +66,21 @@
  
                 <!-- {{($store.state.TIRE_LIST.data.length/10).toFixed()}} -->
     </div>
+  
   </div>
 </template>
 
 <script>
   let pageSize = 10;
 export default {
+   layout: 'staff',
   async fetch({store}){
     store.commit("PAGING", {"start":0,"end":pageSize-1})
     await store.dispatch("GETLISTTIRE")
   } ,
   data: () => ({
-    headers: ["index","brand","model","name","width","price","size","series","description"]
+    headers: ["index","brand","model","name","width","price","size","series","description"],
+    filexlsx: []
   }),
   methods: {
     pathToOrderDeatail: function(id) {
@@ -85,6 +91,12 @@ export default {
       let startPage = (num*pageSize)-pageSize
       let endPage = (num*pageSize)-1
       this.$store.commit("PAGING", {"start":startPage,"end":endPage})
+    },
+    filesChange: function( event ){
+      this.filexlsx = event.target.files
+    },
+    importXLSX: function () {
+      this.$store.dispatch("UPLOADXLSX", this.filexlsx)
     }
   },
 

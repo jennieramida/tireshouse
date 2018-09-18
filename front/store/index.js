@@ -29,7 +29,8 @@ const createStore = () => {
       ZONE_LIST_DETAIL:[],
       STORE_LIST:[],
       STORE_LIST_DETAIL:[],
-      PAGINATION:""
+      PAGINATION:"",
+      AUTHSTAFF:"",
 
 
     },

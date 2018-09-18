@@ -5,11 +5,17 @@ var cookieparser = require('cookieparser')
 const actions = {
 	nuxtServerInit({ commit }, { req }) {
 		let accessToken = null
-    if (req.headers.cookie && req.headers.cookie.LoginDetail) {
-			var parsed = cookieparser.parse(req.headers.cookie.LoginDetail)
-			accessToken = JSON.parse(parsed.LoginDetail)
+		if (req.headers.cookie) {
+			var parsed = cookieparser.parse(req.headers.cookie)
+			if(parsed.LoginDetail){
+				commit('UPDATETOKEN', accessToken)
+			} 
+			if (parsed.StaffDetail){
+				accessToken = JSON.parse(parsed.StaffDetail)
+				commit('TOKENSTAFF', accessToken)
+			}
+			// console.log(parsed)
 		}
-		commit('UPDATETOKEN', accessToken)
 	},
 	async GETTIRESINFO ({ commit }) {
     let { data } = await axios.get(config.PATH+'/common/tires/info')
@@ -112,6 +118,13 @@ const actions = {
 		let { data } = await axios.post(config.PATH + '/staff/store/staffdetail', queryString)
 		commit('LISTSTOREDETAIL', data)
 	},
+	async UPLOADXLSX ({commit}, files) {
+		const head = { 'headers': { 'Authorization': 'Bearer ' + state.AUTHSTAFF.token, 'Content-Type': 'multipart/form-data'} }
+		let formData = new FormData();
+		formData.append("excelImport", files[0])
+		let { data } = await axios.post(config.PATH + '/staff/store/staffdetail', formData,head)
+	}
+	
 }
 export default actions
 
