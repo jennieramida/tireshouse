@@ -1,6 +1,7 @@
 import axios  from 'axios'
 import config from '../pages/config'
 var cookieparser = require('cookieparser')
+var FileSaver = require('file-saver');
 
 const actions = {
 	nuxtServerInit({ commit }, { req }) {
@@ -126,6 +127,22 @@ const actions = {
 		let formData = new FormData();
 		formData.append("excelImport", files[0])
 		let { data } = await axios.post(config.PATH + '/staff/store/staffdetail', formData,head)
+	},
+	async EXPORTXLSX ({commit}) {
+		const head = { 'headers': { 'responseType': 'blob' } }
+		// console.log(blob)
+		let { data } = await axios.get(config.PATH + '/staff/file/', head)
+		// .then(response => {
+		// 	console.log(response.data.Blob())
+		// 		// response.blob()
+		// 	// var blob = new Blob(response.data, response.headers);
+		// 	// console.log(blob)
+		// 	var url = URL.createObjectURL(response);
+		// 	console.log(url)
+		// 		FileSaver.saveAs(response.data, "hello world.xlsx");
+		// 	})
+			// console.log(data)
+		return data;
 	}
 	
 }
@@ -145,5 +162,12 @@ const parseJsonToLatLong = (data) => {
 		output = {"error": "Wrong Format"}
 	}
 	return output;
+}
+
+function blobToFile(theBlob, fileName) {
+	//A Blob() is almost a File() - it's just missing the two properties below which we will add
+	theBlob.lastModifiedDate = new Date();
+	theBlob.name = fileName;
+	return theBlob;
 }
 

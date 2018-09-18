@@ -5,7 +5,7 @@
   <input type="file" multiple :name="uploadFieldName" :disabled="isSaving" v-on:change="filesChange"
             accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel,text/comma-separated-values, text/csv, application/csv"  class="input-file">
         <sui-button v-on:click="importXLSX"> Import </sui-button>
-        <sui-button> Export </sui-button>
+        <sui-button v-on:click="exportXLSX"> Export </sui-button>
        <!-- {{$store.state}} -->
         <sui-divider clearing />
         <sui-table size="small" selectable celled>
@@ -73,7 +73,7 @@
 <script>
   let pageSize = 10;
 export default {
-   layout: 'staff',
+  layout: 'staff',
   async fetch({store}){
     store.commit("PAGING", {"start":0,"end":pageSize-1})
     await store.dispatch("GETLISTTIRE")
@@ -84,10 +84,10 @@ export default {
   }),
   methods: {
     pathToOrderDeatail: function(id) {
-       this.$router.push('/staff/tire/'+id)
+      this.$router.push('/staff/tire/'+id)
     },
     paging: function(num) {
-     
+      
       let startPage = (num*pageSize)-pageSize
       let endPage = (num*pageSize)-1
       this.$store.commit("PAGING", {"start":startPage,"end":endPage})
@@ -97,6 +97,23 @@ export default {
     },
     importXLSX: function () {
       this.$store.dispatch("UPLOADXLSX", this.filexlsx)
+    },
+    exportXLSX: function () {
+      this.$store.dispatch("EXPORTXLSX")
+      .then(xlsxfile => {
+        // console.log(xlsxfile)
+        console.log(process.downloads)
+        if(process.browser){
+          console.log(window.location)
+          var FileSaver = require('file-saver');
+          let url = URL.createObjectURL(xlsxfile);
+          console.log()
+        }
+      // if(process.browser){
+        //   FileSaver.saveAs(xlsxfile.data, "hello world.xlsx");
+        // }
+        // saveAs(xlsxfile);
+      })
     }
   },
 

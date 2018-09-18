@@ -72,6 +72,8 @@ exports.mapGeocode = (req, res, next) => {
           }
         }
         lastOutput = Object.assign(lastOutput, { "address": search.results[0].formatted_address })
+        lastOutput = Object.assign(lastOutput, search.results[0].geometry.location)
+
       }
       // console.log([
       // )

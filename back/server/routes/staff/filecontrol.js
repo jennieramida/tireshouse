@@ -16,5 +16,7 @@ var upload = multer({ storage: storage })
 
 router.post('/', upload.single('excelImport'), FileController.excelImport);
 
+router.get('/', FileController.excelExport );
+
 module.exports = router;
 // router.get('/info', OrderController.info);
