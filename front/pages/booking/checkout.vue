@@ -173,17 +173,6 @@ export default {
     OTPPassword:'',
     error: null
   }),
-  computed: {
-    authenticated() {
-      if(this.$store.state.auth){
-        this.customerDetail.firstName = this.$store.state.auth.firstname
-        this.customerDetail.lastName = this.$store.state.auth.lastname
-        this.customerDetail.mobile = this.$store.state.auth.mobile
-        this.customerDetail.email = this.$store.state.auth.email
-      }
-      return this.$store.state.auth
-    }
-  },
   methods: {
      fetchData () {
       if(Cookie.get('LoginDetail')!=null){
