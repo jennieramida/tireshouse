@@ -34,9 +34,13 @@ const actions = {
 
 	},
 	async FINDPLACEGEOCODE({ commit }, queryString) {
-		let { data } = await axios.get(config.PATH+'/common/test/map?location='+queryString.lat()+","+queryString.lng());
+		let { data } = await axios.get(config.PATH+'/common/external/geocode?location='+queryString.lat()+","+queryString.lng());
 		return parseJsonToLatLong(data);
   },
+  async FINDLOCATION({ commit }, queryString) {
+    let { data } = await axios.get(config.PATH+'/common/external/geocode?location='+queryString);
+		return parseJsonToLatLong(data);
+	},
   async CREATEORDER({ commit }, detail) {
     //let config
     let orderList = []
@@ -61,13 +65,6 @@ const actions = {
     });
 		return parseJsonToLatLong(data);
   },
-  async FINDLOCATION({ commit }, queryString) {
-    let stringUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="
-    let keyUrl = "&key=AIzaSyBPhWQjyLqgDZkctg0AzewEhJgVPeLCiyU"
-    console.log(stringUrl + queryString+ keyUrl)
-    let { data } = await axios.get(stringUrl + queryString+ keyUrl);
-    return parseJsonToLatLong(data);
-	},
 	async LOGIN({ commit }, queryString) {
 		console.log(queryString)
 		let { data } = await axios.post(config.PATH + '/auth/login', queryString)
