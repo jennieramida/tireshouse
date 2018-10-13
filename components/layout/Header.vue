@@ -10,7 +10,6 @@
               class="_h-48px _bgs-ct _bgrp-nrp "/>
           </nuxt-link>
         </div>
-     
         <div class="col-8 _dp-f _jtfct-spbtw _pdl-128px _alit-ct ">
           <div>
             <nuxt-link 
@@ -41,13 +40,12 @@
             <button class="bio-button header-button _cl-darkred _bdrd-4px">เปลี่ยนยางรถยนต์</button>
           </nuxt-link>
         </div>
-     
       </div>
     </div>
     <!-- Mobile -->
     <div class="container-fluid header-mobile Prompt">
       <div class="container">
-        <div class="row  _dp-b _dp-n-md _pdv-16px _mgbt-32px">
+        <div class="row  _dp-f _dp-n-md _pdv-16px _mgbt-32px">
           <div class="col-5">
             <nuxt-link to="/">
               <div 
@@ -55,12 +53,34 @@
                 class="_h-32px _bgs-ct _bgrp-nrp "/>
             </nuxt-link>
           </div>
-          <div class="col"/>
+          <div class="col _dp-f _dp-n-md _jtfct-fe">
+            <button
+              :class="{'-open': isShowingMenu }"
+              class="bio-button _pd-0px _zid-1 _bgcl-tpr _bdcl-tpr hamburger-container _w-32px _h-32px _dp-f"
+              @click=" isShowingMenu = !isShowingMenu">
+              <div class="hamburger-btn"/>
+            </button>
+            <fade-transition>
+              <HBGMenu v-show="isShowingMenu"/>
+            </fade-transition>
+          </div>
         </div>
       </div>
     </div>
   </header>
 </template>
+
+<script>
+import HBGMenu from '~/components/HBGMenu'
+export default {
+  components: {
+    HBGMenu
+  },
+  data:() => ({
+    isShowingMenu: false
+  })
+}
+</script>
 
 
 
@@ -88,12 +108,82 @@ $primary: #941e2e;
   color: rgba(0, 0, 0, 0.7);
 }
 
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0) translateY(4px);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: $primary;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+    cursor: pointer;
+  }
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1) translateY(4px);
+  transform-origin: bottom left;
+  cursor: pointer;
+}
+
+.hamburger-btn {
+  width: 33px;
+  height: 3px;
+  background: $primary;
+  border-radius: 8px;
+  position: absolute;
+  transition: 0.2s;
+  :not(.-open) {
+    &:hover {
+      width: 28px;
+      &::before {
+        width: 33px;
+      }
+      &::after {
+        width: 30px;
+      }
+    }
+  }
+
+  &::before {
+    width: 28px;
+    position: absolute;
+    height: 3px;
+    background: $primary;
+    border-radius: 8px;
+    content: ' ';
+    top: -11px;
+    right: 0px;
+    transition: 0.2s;
+  }
+
+  &::after {
+    position: absolute;
+    width: 28px;
+    height: 3px;
+    background: $primary;
+    border-radius: 8px;
+    content: ' ';
+    top: 11px;
+    right: 0px;
+    transition: 0.2s;
+  }
+}
+
 .hamburger-container {
-  z-index: 4 !important;
+  z-index: 70 !important;
   &.-open {
     .hamburger-btn {
       background: $primary;
       background-color: $primary;
+      position: fixed;
       &::before {
         width: 33px;
         top: 0px;
@@ -118,74 +208,5 @@ $primary: #941e2e;
       }
     }
   }
-
-  .hamburger-btn {
-    width: 33px;
-    height: 3px;
-    background: $primary;
-    border-radius: 8px;
-    position: absolute;
-    transition: 0.2s;
-    :not(.-open) {
-      &:hover {
-        width: 28px;
-        &::before {
-          width: 33px;
-        }
-        &::after {
-          width: 30px;
-        }
-      }
-    }
-
-    &::before {
-      width: 28px;
-      position: absolute;
-      height: 3px;
-      background: $primary;
-      border-radius: 8px;
-      content: ' ';
-      top: -11px;
-      right: 0px;
-      transition: 0.2s;
-    }
-
-    &::after {
-      position: absolute;
-      width: 28px;
-      height: 3px;
-      background: $primary;
-      border-radius: 8px;
-      content: ' ';
-      top: 11px;
-      right: 0px;
-      transition: 0.2s;
-    }
-  }
-}
-
-.hover-underline-animation {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0) translateY(4px);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: $primary;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-    cursor: pointer;
-  }
-}
-
-.hover-underline-animation:hover::after {
-  transform: scaleX(1) translateY(4px);
-  transform-origin: bottom left;
-  cursor: pointer;
 }
 </style>
