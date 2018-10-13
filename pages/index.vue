@@ -67,88 +67,193 @@
         </div>
       </div>
     </div>
+    <!-- Step Mobile -->
+    <div class="container _mgt-256px _pdv-32px _dp-b _dp-n-md">
+      <div class="row _pdt-24px _jtfct-ct">
+        <div class="col-12">
+          <div 
+            v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'50px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
+            class="_cl-darkred _fs-4 _fw-500 _tal-ct">
+            เพียง 4 ขั้นตอนง่ายๆ 
+          </div>
+        </div>
+        <div class="col-10 _dp-f _jtfct-spar _pdv-24px">
+          <div 
+            :class="{'point-active' : selectedStep === '1'}" 
+            class="point _cs-pt" 
+            @click="selectedStep = '1'">
+            1
+          </div>
+          <div 
+            :class="{'point-active' : selectedStep === '2'}" 
+            class="point _cs-pt" 
+            @click="selectedStep = '2'">
+            2
+          </div>
+          <div 
+            :class="{'point-active' : selectedStep === '3'}" 
+            class="point _cs-pt" 
+            @click="selectedStep = '3'">
+            3
+          </div>
+          <div 
+            :class="{'point-active' : selectedStep === '4'}" 
+            class="point _cs-pt" 
+            @click="selectedStep = '4'">
+            4
+          </div>
+        </div>
+        <div 
+          v-show="selectedStep === '1'" 
+          class="col-12 _tal-ct _mgv-32px" >
+          <div 
+            v-lazy:background="require(`~/assets/images/01.svg`)"
+            class="_h-256px _bgs-ct _bgpst-ct _bgrp-nrp"/>
+          <div class="_cl-darkred _fs-4 _fw-500 _pdt-24px">
+            ทำรายการเปลี่ยนยาง
+          </div>
+          <div class="_cl-grey _fs-6-md _lh-125pct _pdh-24px _pdt-8px">
+            กรอกไซส์ยางของรถคุณ เลือกยางที่ต้องการ
+            กำหนดวันเวลา และสถานที่ให้บริการ  
+          </div>
+        </div>
+        <div 
+          v-show="selectedStep === '2'" 
+          class="col-12 _tal-ct _mgv-32px" >
+          <div 
+            v-lazy:background="require(`~/assets/images/02.svg`)"
+            class="_h-256px _bgs-ct _bgpst-ct _bgrp-nrp"/>
+          <div class="_cl-darkred _fs-4 _fw-500 _pdt-24px">
+            ระบบจัดหาช่างผู้ชำนาญ
+          </div>
+          <div class="_cl-grey _fs-6-md _lh-125pct _pdh-24px _pdt-8px">
+            อำนวยความสะดวกสบาย ทำให้คุณมีเวลาทำในสิ่งที่อยากทำ
+            โดยไม่ต้องเสียเวลาเดินทางและนั่งรอเปลี่ยนยางในรูปแบบเดิมๆ  
+          </div>
+        </div>
+        <div 
+          v-show="selectedStep === '3'" 
+          class="col-12 _tal-ct _mgv-32px" >
+          <div 
+            v-lazy:background="require(`~/assets/images/03.svg`)"
+            class="_h-256px _bgs-ct _bgpst-ct _bgrp-nrp"/>
+          <div class="_cl-darkred _fs-4 _fw-500 _pdt-24px">
+            ช่างให้บริการตามวันเวลาที่กำหนด 
+          </div>
+          <div class="_cl-grey _fs-6-md _lh-125pct _pdh-24px _pdt-8px">
+            ช่างมาถึงสถานที่ให้บริการตามวัน เวลาที่คุณกำหนด 
+            และนำยางไปเปลี่ยนกับร้านยางที่เป็นพาร์ทเนอร์  
+          </div>
+        </div>
+        <div 
+          v-show="selectedStep === '4'" 
+          class="col-12 _tal-ct _mgv-32px" >
+          <div 
+            v-lazy:background="require(`~/assets/images/04.svg`)"
+            class="_h-256px _bgs-ct _bgpst-ct _bgrp-nrp"/>
+          <div class="_cl-darkred _fs-4 _fw-500 _pdt-24px">
+            เสร็จสิ้นรายการ
+          </div>
+          <div class="_cl-grey _fs-6-md _lh-125pct _pdh-24px _pdt-8px">
+            คุณสามารถตรวจสอบข้อมูลของยาง และแสดงความคิดเห็นผ่านทางเว็บของเรา  
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Step Desktop -->
     <div 
-      id="services"
-      class="_dp-b ">
-      <div class="container _mgt-128px-md _mgt-256px _pdt-64px _dp-b _pst-rlt">
-        <div class="row _pdt-24px">
-          <div class="col-12 col-md-7 _tal-ct _tal-l">
-          
-            <div class="_tal-ct _tal-l-md _dp-f-md _alit-ct-md">
-              <div class="_dp-ilb-md _dp-n _mgh-64px">ol</div>
-              <div class="_dp-ilb">
-                <div 
-                  v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'50px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
-                  class="_cl-darkred _fs-3 _fw-500 ">
-                  เพียง 4 ขั้นตอนง่ายๆ 
-                </div>
-                <div 
-                  v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'50px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
-                  class="_pdt-24px"
-                >
-                  <div class="_dp-b _dp-n-md">
-                    Step
-
-                  </div>
-                  <div class="_pdt-8px">
-                    <div class="_cl-darkred _fs-4 _fw-540">
-                      ทำรายการเปลี่ยนยาง
-                    </div>
-                    <div class="_cl-grey _fs-6-md _lh-125pct _pdh-24px _pdh-0px-md _pdt-12px">
-                      กรอกไซส์ยางของรถคุณ เลือกยางที่ต้องการ
-                      <br>กำหนดวันเวลา และสถานที่ให้บริการ  
-                    </div>
-                  </div>
-                  <div class="_dp-n _dp-b-md">
-                    <div class="_pdt-24px">
-                      <div class="_cl-darkred _fs-4  _fw-400">
-                        ระบบจัดหาช่างผู้ชำนาญ
-                      </div>
-                      <div class="_cl-grey _fs-6-md _lh-125pct  _pdt-12px">
-                        อำนวยความสะดวกสบาย ทำให้คุณมีเวลาทำในสิ่งที่อยากทำ<br> 
-                        โดยไม่ต้องเสียเวลาเดินทางและนั่งรอเปลี่ยนยางในรูปแบบเดิมๆ      
-                      </div>
-                    </div>
-                    <div class="_pdt-24px">
-                      <div class="_cl-darkred _fs-4  _fw-400">
-                        ช่างให้บริการตามวันเวลาที่กำหนด    
-                      </div>
-                      <div class="_cl-grey _fs-6-md _lh-125pct  _pdt-12px">
-                        ช่างมาถึงสถานที่ให้บริการตามวัน เวลาที่คุณกำหนด <br> 
-                        และนำยางไปเปลี่ยนกับร้านยางที่เป็นพาร์ทเนอร์  
-                      </div>
-                    </div>
-                    <div class="_pdt-24px">
-                      <div class="_cl-darkred _fs-4  _fw-400">
-                        เสร็จสิ้นรายการ
-                      </div>
-                      <div class="_cl-grey _fs-6-md _lh-125pct  _pdt-12px">
-                        คุณสามารถตรวจสอบข้อมูลของยาง <br>และแสดงความคิดเห็นผ่านทางเว็บของเรา
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      id="services" 
+      class="container _mgv-128px _dp-b-md _dp-n">
+      <div class="row">
+        <div class="col-12">
+          <div 
+            v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'50px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
+            class="_cl-darkred _fs-3 _fw-500 _tal-ct">
+            เพียง 4 ขั้นตอนง่ายๆ 
+          </div>
+        </div>
+      </div>
+      <div class="row _pdt-48px _alit-ct">
+        <div class="col-md-6">
+          <div 
+            v-lazy:background="require(`~/assets/images/01.svg`)"
+            v-show="selectedStep === '1'" 
+            class="size _bgs-ct _bgpst-ct _bgrp-nrp"/>
+          <div 
+            v-lazy:background="require(`~/assets/images/02.svg`)"
+            v-show="selectedStep === '2'" 
+            class="size _bgs-ct _bgpst-ct _bgrp-nrp"/>
+          <div 
+            v-lazy:background="require(`~/assets/images/03.svg`)"
+            v-show="selectedStep === '3'" 
+            class="size _bgs-ct _bgpst-ct _bgrp-nrp"/>
+          <div 
+            v-lazy:background="require(`~/assets/images/04.svg`)"
+            v-show="selectedStep === '4'" 
+            class="size _bgs-ct _bgpst-ct _bgrp-nrp"/>
+        </div>
+        <div class="col-md-6">
+          <div 
+            class="_dp-f _alit-ct _mgv-24px _cs-pt list" 
+            @click="selectedStep = '1'">
+            <div 
+              :class="{'point-active' : selectedStep === '1'}" 
+              class="_mgr-48px point">1</div>
+            <div class="">
+              <div class="_cl-darkred _fs-4 _fw-540">
+                ทำรายการเปลี่ยนยาง
+              </div>
+              <div class="_cl-grey _fs-6-md _lh-150pct _pdh-24px _pdh-0px-md">
+                กรอกไซส์ยางของรถคุณ เลือกยางที่ต้องการ
+                <br>กำหนดวันเวลา และสถานที่ให้บริการ  
               </div>
             </div>
-
           </div>
-          <div class="col-12 col-md-5">
-            <!-- phone-mobile -->
+          <div 
+            class="_dp-f _alit-ct _mgv-24px _cs-pt list" 
+            @click="selectedStep = '2'">
             <div 
-              v-scroll-reveal="{viewFactor:0.5, delay:80,scale: 1, origin:'bottom', distance:'40px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
-              class="_dp-b _dp-n-md _w-100vw _h-512px _pdt-32px">
-              <div 
-                v-lazy:background="require(`~/assets/images/hand-iphone.png`)" 
-                class="_h-100pct _bgs-ct _bgrp-nrp _bgpst-ct"/>
+              :class="{'point-active' : selectedStep === '2'}" 
+              class="_mgr-48px point" >2</div>
+            <div class="">
+              <div class="_cl-darkred _fs-4 _fw-540">
+                ระบบจัดหาช่างผู้ชำนาญ
+              </div>
+              <div class="_cl-grey _fs-6-md _lh-150pct _pdh-24px _pdh-0px-md">
+                อำนวยความสะดวกสบาย ทำให้คุณมีเวลาทำในสิ่งที่อยากทำ<br>
+                โดยไม่ต้องเสียเวลาเดินทางและนั่งรอเปลี่ยนยางในรูปแบบเดิมๆ
+              </div>
             </div>
-            <!-- phone-desktop -->
+          </div>
+          <div 
+            class="_dp-f _alit-ct _mgv-24px _cs-pt list" 
+            @click="selectedStep = '3'">
             <div 
-              v-scroll-reveal="{viewFactor:0.5, delay:80,scale: 1, origin:'bottom', distance:'40px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
-              class="_dp-n _dp-b-md _w-512px _h-512px _pdl-48px _pdt-32px">
-              <div 
-                v-lazy:background="require(`~/assets/images/hand-iphone.png`)" 
-                class="_h-100pct _bgs-ct _bgrp-nrp _bgpst-ct _bgpst-btl-md"/>
+              :class="{'point-active' : selectedStep === '3'}" 
+              class="_mgr-48px point" >3</div>
+            <div class="">
+              <div class="_cl-darkred _fs-4 _fw-540">
+                ช่างให้บริการตามวันเวลาที่กำหนด 
+              </div>
+              <div class="_cl-grey _fs-6-md _lh-150pct _pdh-24px _pdh-0px-md">
+                ช่างมาถึงสถานที่ให้บริการตามวัน เวลาที่คุณกำหนด <br> 
+                และนำยางไปเปลี่ยนกับร้านยางที่เป็นพาร์ทเนอร์  
+              </div>
+            </div>
+          </div>
+          <div 
+            class="_dp-f _alit-ct _mgv-24px _cs-pt list" 
+            @click="selectedStep = '4'">
+            <div 
+              :class="{'point-active' : selectedStep === '4'}" 
+              class="_mgr-48px point" >4</div>
+            <div class="">
+              <div class="_cl-darkred _fs-4 _fw-540">
+                เสร็จสิ้นรายการ
+              </div>
+              <div class="_cl-grey _fs-6-md _lh-150pct _pdh-24px _pdh-0px-md">
+                คุณสามารถตรวจสอบข้อมูลของยาง <br>และแสดงความคิดเห็นผ่านทางเว็บของเรา 
+              </div>
             </div>
           </div>
         </div>
@@ -261,7 +366,12 @@
 </div></template>
 
 <script>
+export default {
+  data: ()=> ({
+     selectedStep: '1',
+  })
 
+}
 </script>
 
 
@@ -327,5 +437,57 @@ $secondary: #f8f8f9;
 
 ._sd {
   text-shadow: 2px 2px 10px rgba($color: #000000, $alpha: 0.3);
+}
+
+.point {
+  border: 2px solid $primary;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $primary;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    border: 2px solid $primary;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary;
+    color: white;
+  }
+}
+
+.point-active {
+  border: 2px solid $primary;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary;
+  color: white;
+}
+
+.list:hover {
+  .point {
+    border: 2px solid $primary;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary;
+    color: white;
+  }
+}
+.size {
+  height: 360px;
 }
 </style>
