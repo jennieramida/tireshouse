@@ -55,9 +55,9 @@
         <div class="_fs-7 _fs-6-md _mgt-12px _pdt-12px">
           เป็นสมาชิก Tireshouse แล้ว?  
           <span
-          @click="showLogin"
-            to="/signin" 
-            class="_cl-darkred _cs-pt">
+            to="/signin"
+            class="_cl-darkred _cs-pt" 
+            @click="$modal.show('login')">
             กดที่นี่เพื่อเข้าสู่ระบบ</span>
           เพื่อติดตามการบริการ
         </div>
@@ -68,83 +68,15 @@
           v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'20px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
           class="_dp-f _jtfct-ct _pdv-24px _pdt-48px _pdt-24px-md">
           <!-- <nuxt-link to="/booking/payment" > -->
-            <button id="show-modal" @click="showConfirm" class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">ยืนยัน</button>
-<!--             
+          <button 
+            id="show-modal" 
+            class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover" 
+            @click="$modal.show('otp')">ยืนยัน</button>
+            <!--             
           </nuxt-link> -->
         </div>
-        <modal name="comfirm" height="auto">
-        <div class="container">
-          <div class="row">
-          <div class="col _pdh-12px">
-          <div class="_fs-3 _cl-black _tal-ct _pdt-64px">กรุณากรอกรหัส OTP</div>
-          <div class="_pdt-24px _fs-5 _cl-black _pdbt-8px">รหัส OTP 4 หลัก</div>
-          <div class="bio-input">
-            <input 
-              type="number" 
-              placeholder="โปรดกรอกรหัส OTP">
-          </div>
-          <div class="_pdt-24px _fs-7 _cl-black _pdbt-8px">
-            <div>
-              <nuxt-link 
-                to="/reset" 
-                class="_cl-darkred">กดเพื่อรับรหัสผ่านใหม่</nuxt-link></div>
-          </div>
-          <div class="_dp-f _jtfct-ct">
-            <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">
-              <nuxt-link 
-                to="/booking/payment" 
-                class="_cl-white">
-                ยืนยัน
-            </nuxt-link></button>
-          </div>
-    
-      
-      </div>
-          </div>
-        </div>
-      </modal>
-       <modal name="login" height="auto">
-      <div class="container _dp-f _alit-ct _fdrt-cl _pdbt-24px">
-    <div class="row _w-100pct">
-        <div class="col _pdh-12px">
-          <div class="_fs-2 _cl-black _tal-ct _pdt-64px">เข้าสู่ระบบ</div>
-          <div class="_pdt-24px _fs-5 _cl-black _pdbt-8px">อีเมล</div>
-          <div class="bio-input">
-            <input 
-              type="email" 
-              placeholder="โปรดกรอกอีเมล">
-          </div>
-
-          <div class="_pdt-24px _fs-5 _cl-black _pdbt-8px">รหัสผ่าน</div>
-          <div class="bio-input">
-            <input 
-              type="password"
-              placeholder="โปรดกรอกรหัสผ่านใหม่">
-          </div>
-          <div class="_pdt-24px _fs-7 _cl-black _pdbt-8px _dp-f _jtfct-spbtw">
-            <div>
-              <nuxt-link 
-                to="/reset" 
-                class="_cl-darkred">ลืมรหัสผ่าน</nuxt-link></div>
-            <div>ยังไม่เป็นสมาชิก? 
-              <nuxt-link 
-                to="/signup" 
-                class="_cl-darkred">สมัครสมาชิก</nuxt-link></div>
-          </div>
-          <div class="_dp-f _jtfct-ct">
-            <button class="bio-button header-button-red _mgv-24px-md _mgbt-0px _cl-darkred _bdrd-4px u-rise-5-hover">
-              <nuxt-link 
-                to="/booking/checkout" 
-                class="_cl-white">
-                เข้าสู่ระบบ
-            </nuxt-link></button>
-          </div>
-    
-      
-      </div>
-      </div>
-      </div>
-      </modal>
+        <o-t-p-modal/>
+        <login-modal/>
       </div>
     </div>
 
@@ -156,21 +88,13 @@
 
 
 <script>
+import OTPModal from '~/components/modal/OTPModal'
+import LoginModal from '~/components/modal/LoginModal'
 export default {
-  methods: {
-  showConfirm () {
-    this.$modal.show('comfirm');
+  components: {
+    OTPModal, LoginModal
   },
-  hideConfirm () {
-    this.$modal.hide('comfirm');
-  },
-  showLogin () {
-    this.$modal.show('login');
-  },
-  hideLogin () {
-    this.$modal.hide('login');
-  }
-}
+
 }
 </script>
 
