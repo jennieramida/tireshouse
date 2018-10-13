@@ -33,8 +33,8 @@
             v-scroll-reveal="{viewFactor:0.5, delay:80,scale: 1, origin:'right', distance:'100px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
             class="_pst-asl _w-100vw _h-100vh">
             <div 
-              v-lazy:background="require(`~/assets/images/hero-img.jpg`)" 
-              class="_h-100pct _bgs-ct _bgrp-nrp "/>
+              v-lazy:background="require(`~/assets/images/Hero.jpg`)" 
+              class="_h-512px-md _h-256px _bgs-cv _bgpst-ct _bgrp-nrp flip"/>
           </div>
         </div>
       </div>
@@ -44,12 +44,12 @@
           <div class=" _dp-b col-6">
             <div 
               v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'left', distance:'100px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
-              class="_pdt-128px font-hero _cl-white _lh-100pct _fw-500">
+              class="_pdt-128px font-hero _cl-white _lh-100pct _fw-500 _sd">
               บริการเปลี่ยน<br>ยางรถยนต์
             </div>
             <div 
               v-scroll-reveal="{viewFactor:0.5, delay:200,scale: 1, origin:'left', distance:'100px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
-              class="_pdt-12px _cl-white _fs-4 _lh-125pct">
+              class="_pdt-12px _cl-white _fs-4 _lh-125pct _sd">
               ให้บริการเปลี่ยนยางรถยนต์ถึงบ้านคุณ
               <br>ช่วยทำให้การเปลี่ยนยางรถยนต์เป็นเรื่องง่าย
               <br>และสะดวกสบายมากยิ่งขึ้น
@@ -59,7 +59,7 @@
               class="_pdt-32px">
               <nuxt-link to="/booking" >
                 <button 
-                  class="bio-button header-button _fs-4 _cl-darkred _bdrd-4px"
+                  class="bio-button header-button-red _mgv-24px _cl-darkred _bdrd-4px u-rise-5-hover"
                 >เปลี่ยนยางรถยนต์</button>
               </nuxt-link>
             </div>
@@ -71,7 +71,7 @@
     <div 
       id="services"
       class="_dp-b ">
-      <div class="container _mgt-128px _pdt-64px _dp-b _pst-rlt">
+      <div class="container _mgt-128px-md _mgt-256px _pdt-64px _dp-b _pst-rlt">
         <div class="row _pdt-24px">
           <div class="col-12 col-md-7 _tal-ct _tal-l">
           
@@ -161,16 +161,16 @@
       <div class="row bg-red _mgbt-48px _dp-f-md _alit-ct-md">
         <div class="col-md-6 col-12 _w-100vw tires-h _pdh-0px">
           <div 
-            v-lazy:background="require(`~/assets/images/tires.jpg`)" 
-            class="_h-100pct _bgs-ct _bgrp-nrp "/>
+            v-lazy:background="require(`~/assets/images/About.jpg`)" 
+            class="_h-100pct _bgpst-ct _bgs-cv _bgrp-nrp "/>
         </div>
-        <div class="col-md-6 col-12 container">
+        <div class="col-md-6 col-12 _pdl-32px-md">
           <div 
             v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'right', distance:'40px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
             class="_fs-3 _fw-400 _cl-white _tal-ct _tal-l-md _pdt-48px">เกี่ยวกับ TIRESHOUSE</div>
           <div 
             v-scroll-reveal="{viewFactor:0.5, delay:200,scale: 1, origin:'right', distance:'40px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}" 
-            class="_fs-5 _fw-300 _fw-400-md _cl-white _tal-ct _tal-l-md _pdt-24px _pdr-64px-md _pdbt-48px">ฟิวเจอร์ม้าหินอ่อนโปรโมเตอร์เฟรม วัคค์ สเตชันโปรเจ็กเตอร์ ฮิตพลาซ่าวอฟเฟิล มาร์เก็ตติ้งแซ็กสปอร์ต อาร์ติสต์คอนโดมิเนียมโต๋เต๋ สโรชาเพรสแจ็กพอตลิมูซีน โคโยตี เคลื่อนย้ายยูวีโพลล์ แอ็กชั่นเวิร์กคอลเล็กชั่น เอาท์เย้วซัพพลายเออร์
+            class="_fs-5 _fw-300 _fw-400-md _cl-white _tal-ct _tal-l-md _pdt-24px _pdr-64px-md _pdbt-48px">ไทร์เฮาส์ เว็บไซต์ให้บริการเปลี่ยนยางรถยนต์ของคุณถึงที่บ้าน เพื่อให้การเปลี่ยนยางรถยนต์นั้นเป็นเรื่องที่ง่ายและสะดวกสบายมากยิ่งขึ้น ทำให้คุณไม่ต้องเสียเวลาออกจากบ้านไปนั่งรอเป็นเวลาหลายชั่วโมง แต่จ่ายในราคาที่เท่ากับราคาในตลาด โดยยางรถยนต์ทุกเส้นจะถูกคัดสรรเฉพาะยางที่ได้คุณภาพ และถูกเปลี่ยนโดยร้านผู้เชี่ยวชาญเท่านั้น
           </div>
         </div>
       </div>
@@ -318,5 +318,14 @@ $secondary: #f8f8f9;
 
 .font-hero {
   font-size: 60px;
+}
+
+.flip {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+._sd {
+  text-shadow: 2px 2px 10px rgba($color: #000000, $alpha: 0.3);
 }
 </style>
