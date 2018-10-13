@@ -285,7 +285,7 @@
       <div 
         v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'50px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
         class="row  _cl-darkred _fs-3 _fw-500 _tal-ct _tal-l-md _pdv-24px">
-        <div class="col">Our Suppliers</div>
+        <div class="col">All Brands</div>
       </div>
       <div 
         v-scroll-reveal="{viewFactor:0.5, delay:100,scale: 1, origin:'top', distance:'50px', easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)' , opacity: 0, duration: 1000}"
