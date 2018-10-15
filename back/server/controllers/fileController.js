@@ -1,6 +1,6 @@
 const { outputHandler, successHandler } = require('../middlewares')
 const Tires = require('../models/TiresControl');
-
+const moment = require('moment');
 // var Excel = require('exceljs');
 var Excel = require('exceljs');
 
@@ -51,9 +51,18 @@ exports.excelExport = (req, res, next) => {
           worksheet.getCell('G' + id).value = getOutput[i].price;
           worksheet.getCell('H' + id).value = getOutput[i].description;
         }
-  
-        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        workbook.xlsx.write(res);
+        // res.setHeader('Content-disposition', 'attachment; filename=db_dump.xlsx');
+        // res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        var fileOut = 'storage/public/tires_' + moment().format('MMDDYYYY_HHmmss')+'.xlsx';
+        var output = 'tires_' + moment().format('MMDDYYYY_HHmmss')+'.xlsx';
+
+        workbook.xlsx.writeFile(fileOut)
+        .then(response =>{
+          console.log('test')
+        }).catch(err => {
+          console.log(err)
+        })
+        res.json(outputHandler({ "url": output}));
       })
       .catch(error => {
         console.log(error)
